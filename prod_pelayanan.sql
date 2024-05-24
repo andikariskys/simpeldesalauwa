@@ -337,7 +337,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `Nama_user`, `Username`, `Password`) VALUES
-(1, 'Budi', 'budi123', 'password123');
+(1, 'admin', 'Super Admin', '0192023a7bbd73250516f069df18b500');
 
 --
 -- Indexes for dumped tables

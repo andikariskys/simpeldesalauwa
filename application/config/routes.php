@@ -53,6 +53,7 @@ $route['default_controller'] = 'pelayanan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// dashboard
 $route['dashboard'] = 'admin';
 
 // profiles
