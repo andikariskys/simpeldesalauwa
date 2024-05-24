@@ -4,7 +4,7 @@
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+          <a href="<?= base_url('dashboard') ?>" class="app-brand-link">
             <span class="app-brand-logo demo">
               <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z" fill="#7367F0" />
@@ -25,14 +25,18 @@
         <div class="menu-inner-shadow"></div>
 
         <ul class="menu-inner py-1">
-          <li class="menu-item active">
-            <a href="<?= base_url('') ?>" class="menu-link">
+          <li class="menu-item <?php if ($active == "Dashboard") {
+                                  echo "active";
+                                } ?>">
+            <a href="<?= base_url('dashboard') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-smart-home"></i>
               <div data-i18n="Dashboard">Dashboard</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="<?= base_url('') ?>" class="menu-link">
+          <li class="menu-item <?php if ($active == "Profil") {
+                                  echo "active";
+                                } ?>">
+            <a href="<?= base_url('profiles') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-user-exclamation"></i>
               <div data-i18n="Profil">Profil</div>
             </a>
@@ -101,7 +105,7 @@
             </a>
           </li>
           <li class="menu-item active mt-3">
-            <a href="<?= base_url('') ?>" class="menu-link bg-danger">
+            <a href="<?= base_url('') ?>" class="menu-link" style="background: linear-gradient(72.47deg, #f06767 22.16%, rgba(240, 103, 103, 0.7) 76.47%);">
               <i class="menu-icon tf-icons ti ti-logout"></i>
               <div data-i18n="Logout">Logout</div>
             </a>
@@ -118,12 +122,8 @@
           </div>
           <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <div class="nav-item d-flex align-items-center">
-              <h4 class="ps-1 ps-sm-2 my-2">Dashboard</h4>
+              <h4 class="ps-1 ps-sm-2 my-2"><?= $active ?></h4>
             </div>
-          </div>
-          <div class="navbar-search-wrapper search-input-wrapper d-none">
-            <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..." aria-label="Search..." />
-            <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
           </div>
         </nav>
 

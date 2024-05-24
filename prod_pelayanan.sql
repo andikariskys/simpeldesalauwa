@@ -296,7 +296,7 @@ INSERT INTO `profil` (`id_profil`, `Tanggal_profil`, `Sambutan_kepaladesa`, `Vis
 -- Table structure for table `skck`
 --
 
-CREATE TABLE `skck` (
+CREATE TABLE `spkck` (
   `id_pengantarskck` int NOT NULL,
   `Tanggal_pengantarskck` date DEFAULT NULL,
   `Nama` varchar(100) DEFAULT NULL,
@@ -316,7 +316,7 @@ CREATE TABLE `skck` (
 -- Dumping data for table `skck`
 --
 
-INSERT INTO `skck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Nik`, `Ktp`, `Foto`, `Status_pengantarskck`) VALUES
+INSERT INTO `spkck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Nik`, `Ktp`, `Foto`, `Status_pengantarskck`) VALUES
 (1, '2023-05-20', 'Tono', 'Jakarta, 6 Juni 1985', 'Laki-laki', 'Wiraswasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 50', 1234567890123456, 'ktp_tono.jpg', 'foto_tono.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------

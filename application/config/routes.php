@@ -52,3 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pelayanan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['dashboard'] = 'admin';
+
+// profiles
+$route['profiles'] = 'admin/profiles';
+$route['profiles/add'] = 'admin/add_profile';
+$route['profiles/(:any)/delete'] = 'admin/delete_profile/$1';
+$route['profiles/(:any)/update'] = 'admin/update_profile/$1';
