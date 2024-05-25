@@ -1,5 +1,5 @@
  <!-- Navigation -->
- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
      <div class="container">
 
          <!-- Image Logo -->

@@ -1196,6 +1196,11 @@ a:hover.back-to-top {
 
 /* Min-width 1200px */
 @media (min-width: 1200px) {
+	/* CSS */
+.navbar {
+    background-color: #24262a; /* Ubah sesuai warna yang diinginkan */
+}
+
 
 	/* General Styles */
 	.h1-large {

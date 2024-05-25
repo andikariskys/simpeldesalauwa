@@ -52,3 +52,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'Service';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+
+//**Frontend Routes */
+$route['authentication']        = 'Service/serviceLogin';
+$route['logout']                = 'Service/serviceLogout';
+
+$route['profile']               = 'Service/serviceProfile';
+$route['information']           = 'Service/serviceInformation';
+$route['galery']                = 'Service/serviceGalery';
+$route['contact']               = 'Service/serviceContact';
+
+
+
+//** End Frontend Routes */
