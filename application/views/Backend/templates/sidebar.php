@@ -41,8 +41,10 @@
               <div data-i18n="Profil">Profil</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="<?= base_url('') ?>" class="menu-link">
+          <li class="menu-item <?php if ($active == "Informasi") {
+                                  echo "active";
+                                } ?>">
+            <a href="<?= base_url('informations') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-info-circle"></i>
               <div data-i18n="Informasi">Informasi</div>
             </a>

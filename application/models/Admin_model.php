@@ -44,16 +44,43 @@ final class Admin_model extends CI_Model
     {
         $this->db->insert($this->profil, $data_profile);
     }
-
+    
     function delete_profile($id_profile)
     {
         $this->db->where('id_profil', $id_profile);
         $this->db->delete($this->profil);
     }
-
+    
     function update_profile($data_profile, $id_profile)
     {
         $this->db->where('id_profil', $id_profile);
         $this->db->update($this->profil, $data_profile);
+    }
+    
+    function get_informations($id_information = null)
+    {
+        if ($id_information != null) {
+            $this->db->where('id_informasi', $id_information);
+            return $this->db->get($this->informasi)->row();
+        } else {
+            return $this->db->get($this->informasi)->result();
+        }
+    }
+    
+    function save_information($data_information)
+    {
+        $this->db->insert($this->informasi, $data_information);
+    }
+    
+    function delete_information($id_information)
+    {
+        $this->db->where('id_informasi', $id_information);
+        $this->db->delete($this->informasi);
+    }
+    
+    function update_information($data_information, $id_information)
+    {
+        $this->db->where('id_informasi', $id_information);
+        $this->db->update($this->informasi, $data_information);
     }
 }

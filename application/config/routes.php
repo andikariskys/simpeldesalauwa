@@ -61,3 +61,9 @@ $route['profiles'] = 'admin/profiles';
 $route['profiles/add'] = 'admin/add_profile';
 $route['profiles/(:any)/delete'] = 'admin/delete_profile/$1';
 $route['profiles/(:any)/update'] = 'admin/update_profile/$1';
+
+// informations
+$route['informations'] = 'admin/informations';
+$route['informations/add'] = 'admin/add_information';
+$route['informations/(:any)/delete'] = 'admin/delete_information/$1';
+$route['informations/(:any)/update'] = 'admin/update_information/$1';
