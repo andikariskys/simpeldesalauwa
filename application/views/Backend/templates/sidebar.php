@@ -1,4 +1,7 @@
 <body>
+  <script src="<?= base_url('assets/vendor/libs/datatables-bs5/datatables.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') ?>"></script>
+
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
 
@@ -49,15 +52,19 @@
               <div data-i18n="Informasi">Informasi</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php if ($active == "SK Penghasilan Orang Tua") {
+                                  echo "active open";
+                                } ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons ti ti-notes"></i>
               <div data-i18n="Pelayanan">Pelayanan</div>
               <div class="badge bg-label-primary rounded-pill ms-auto">6</div>
             </a>
             <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="<?= base_url('') ?>" class="menu-link">
+              <li class="menu-item <?php if ($active == "SK Penghasilan Orang Tua") {
+                                  echo "active";
+                                } ?>">
+                <a href="<?= base_url('parent_incomes') ?>" class="menu-link">
                   <div data-i18n="SK Penghasilan Orang Tua">SK Penghasilan Orang Tua</div>
                 </a>
               </li>

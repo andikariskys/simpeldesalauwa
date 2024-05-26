@@ -227,4 +227,87 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/footer');
 		}
 	}
+
+	function parent_incomes()
+	{
+		$data['active'] = "SK Penghasilan Orang Tua";
+		$data['parent_incomes'] = $this->admin_model->get_parent_incomes();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/parent_incomes/parent_incomes', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_parent_income()
+	{
+		if ($this->input->post('sambutan_kepala_desa') != null) {
+
+			$tanggal 				= $this->input->post('tanggal');
+			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
+			$visi 					= $this->input->post('visi');
+			$misi 					= $this->input->post('misi');
+			$jam_kerja 				= $this->input->post('jam_kerja');
+
+			$data_profile = array(
+				'Tanggal_profil' 		=> $tanggal,
+				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
+				'Visi' 					=> $visi,
+				'Misi' 					=> $misi,
+				'Jam_kerja' 			=> $jam_kerja
+			);
+
+			if (!$this->admin_model->save_profile($data_profile)) {
+				$this->session->set_flashdata('add_profile', 'Data berhasil disimpan!');
+				redirect('profiles');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Penghasilan Orang Tua";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/parent_incomes/add_parent_income');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	// function delete_profile($id_profile)
+	// {
+	// 	if (!$this->admin_model->delete_profile($id_profile)) {
+	// 		$this->session->set_flashdata('delete_profile', 'Data berhasil dihapus!');
+	// 		redirect('profiles');
+	// 	}
+	// }
+
+	// function update_profile($id_profile)
+	// {
+	// 	if ($this->input->post('this_update') == true) {
+
+	// 		$tanggal 				= $this->input->post('tanggal');
+	// 		$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
+	// 		$visi 					= $this->input->post('visi');
+	// 		$misi 					= $this->input->post('misi');
+	// 		$jam_kerja 				= $this->input->post('jam_kerja');
+
+	// 		$data_profile = array(
+	// 			'Tanggal_profil' 		=> $tanggal,
+	// 			'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
+	// 			'Visi' 					=> $visi,
+	// 			'Misi' 					=> $misi,
+	// 			'Jam_kerja' 			=> $jam_kerja
+	// 		);
+
+	// 		if (!$this->admin_model->update_profile($data_profile, $id_profile)) {
+	// 			$this->session->set_flashdata('update_profile', 'Ubah data berhasil disimpan!');
+	// 			redirect('profiles');
+	// 		}
+	// 	} else {
+
+	// 		$data['active'] = "Ubah Profil";
+	// 		$data['data_profile'] = $this->admin_model->get_profiles($id_profile);
+	// 		$this->load->view('backend/templates/header', $data);
+	// 		$this->load->view('backend/templates/sidebar', $data);
+	// 		$this->load->view('backend/profiles/update_profile', $data);
+	// 		$this->load->view('backend/templates/footer');
+	// 	}
+	// }
 }

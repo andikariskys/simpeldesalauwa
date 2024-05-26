@@ -83,4 +83,14 @@ final class Admin_model extends CI_Model
         $this->db->where('id_informasi', $id_information);
         $this->db->update($this->informasi, $data_information);
     }
+
+    function get_parent_incomes($id_parent_income = null)
+    {
+        if ($id_parent_income != null) {
+            $this->db->where('id_penghasilan', $id_parent_income);
+            return $this->db->get($this->spot)->row();
+        } else {
+            return $this->db->get($this->spot)->result();
+        }
+    }
 }
