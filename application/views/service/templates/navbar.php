@@ -10,7 +10,7 @@
      <div class=" container">
 
          <!-- Image Logo -->
-         <a class="" href="index.html"><img class="logo-img" src="<?php echo base_url() ?>assets/mark/images/luwu.png" alt="alternative"></a>
+         <a class="" href="<?php echo base_url() ?>"><img class="logo-img" src="<?php echo base_url() ?>assets/mark/images/luwu.png" alt="alternative"></a>
          <h3 class="text-white">Desa Lauwa</h3>
 
 
