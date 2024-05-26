@@ -1,9 +1,16 @@
+ <?php
+    // Mendapatkan segment terakhir dari URL
+    $current_url_segment = $this->uri->segment($this->uri->total_segments());
+    // echo $current_url_segment;
+    // exit;
+    ?>
+
  <!-- Navigation -->
- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-     <div class="container">
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark <?php echo $is_home != true ? 'bg-dark' : ''; ?>">
+     <div class=" container">
 
          <!-- Image Logo -->
-         <a class="" href="index.html"><img class="logo-img" src="<?php echo base_url() ?>assets/mark/images/luwu.png" alt="alternative"></a>
+         <a class="" href="<?php echo base_url() ?>"><img class="logo-img" src="<?php echo base_url() ?>assets/mark/images/luwu.png" alt="alternative"></a>
          <h3 class="text-white">Desa Lauwa</h3>
 
 
@@ -88,7 +95,7 @@
                      </div>
                      <div class="form-group">
                          <label for="exampleInputPassword1">Password</label>
-                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                      </div>
                      <button type="submit" class="btn btn-secondary">Login</button>
                  </form>

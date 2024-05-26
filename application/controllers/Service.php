@@ -12,15 +12,21 @@ class Service extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_service');
+		$this->load->model('M_profile');
+		$this->load->model('M_information');
+		$this->load->model('M_galery');
+		$this->load->model('M_contact');
 	}
 
 
 	public function index()
 	{
+		$data['is_home'] = true;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar_home');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/dashboard');
-
+		// echo json_encode($data);
+		// exit;
 		// $this->load->view('service/templates/footer');
 	}
 
@@ -64,29 +70,34 @@ class Service extends CI_Controller
 
 	public function serviceProfile()
 	{
+		$data['is_home'] = false;
+		$data['profil'] = $this->M_profile->get_data();
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
-		$this->load->view('service/profile/index');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/profile/index', $data);
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceInformation()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/information/index');
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceGalery()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/galery/index');
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceContact()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/contact/index');
 		$this->load->view('service/templates/footer');
 	}
