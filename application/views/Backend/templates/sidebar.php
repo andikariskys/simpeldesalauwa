@@ -107,7 +107,7 @@
             </a>
           </li>
           <li class="menu-item active mt-3">
-            <a href="<?= base_url('') ?>" class="menu-link" style="background: linear-gradient(72.47deg, #f06767 22.16%, rgba(240, 103, 103, 0.7) 76.47%);">
+            <a href="<?= base_url('logout') ?>" class="menu-link" style="background: linear-gradient(72.47deg, #f06767 22.16%, rgba(240, 103, 103, 0.7) 76.47%);">
               <i class="menu-icon tf-icons ti ti-logout"></i>
               <div data-i18n="Logout">Logout</div>
             </a>

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -53,17 +53,26 @@ $route['default_controller'] = 'service';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// Frontend Routes
+$route['authentication']    = 'Service/serviceLogin';
+$route['logout']            = 'Service/serviceLogout';
+
+$route['profile']           = 'Service/serviceProfile';
+$route['information']       = 'Service/serviceInformation';
+$route['galery']            = 'Service/serviceGalery';
+$route['contact']           = 'Service/serviceContact';
+
 // dashboard
-$route['dashboard'] = 'admin';
+$route['dashboard']         = 'admin';
 
 // profiles
-$route['profiles'] = 'admin/profiles';
-$route['profiles/add'] = 'admin/add_profile';
-$route['profiles/(:any)/delete'] = 'admin/delete_profile/$1';
-$route['profiles/(:any)/update'] = 'admin/update_profile/$1';
+$route['profiles']                  = 'admin/profiles';
+$route['profiles/add']              = 'admin/add_profile';
+$route['profiles/(:any)/delete']    = 'admin/delete_profile/$1';
+$route['profiles/(:any)/update']    = 'admin/update_profile/$1';
 
 // informations
-$route['informations'] = 'admin/informations';
-$route['informations/add'] = 'admin/add_information';
-$route['informations/(:any)/delete'] = 'admin/delete_information/$1';
-$route['informations/(:any)/update'] = 'admin/update_information/$1';
+$route['informations']                  = 'admin/informations';
+$route['informations/add']              = 'admin/add_information';
+$route['informations/(:any)/delete']    = 'admin/delete_information/$1';
+$route['informations/(:any)/update']    = 'admin/update_information/$1';

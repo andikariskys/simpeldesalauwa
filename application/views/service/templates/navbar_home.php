@@ -1,5 +1,5 @@
  <!-- Navigation -->
- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
      <div class="container">
 
          <!-- Image Logo -->
@@ -47,11 +47,11 @@
                  <li class="nav-item">
                      <a class="nav-link page-scroll" href="<?php echo base_url() ?>contact">Contact</a>
                  </li>
-                 <?php if (isset($_SESSION['is_login']) && $_SESSION['is_login'] == true) {  ?>
+                 <?php if ($this->session->userdata('is_login')) {  ?>
                      <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama'] ?></a>
+                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                          <div class="dropdown-menu" aria-labelledby="dropdown01">
-                             <a class="dropdown-item page-scroll" href="project.html">Profil</a>
+                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>dashboard">Dashboard</a>
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>logout">Logout</a>
                          </div>
@@ -88,7 +88,7 @@
                      </div>
                      <div class="form-group">
                          <label for="exampleInputPassword1">Password</label>
-                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                      </div>
                      <button type="submit" class="btn btn-secondary">Login</button>
                  </form>
