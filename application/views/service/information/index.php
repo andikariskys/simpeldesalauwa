@@ -1,10 +1,32 @@
+<style>
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Adjust transparency here */
+    }
+
+    .rounded-top {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .rounded-bottom {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+</style>
+
 <!-- Projects -->
-<div id="projects" class="basic-3">
+<div id="projects" class="basic-3 bg-gray">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="h2-heading">Informasi Desa Lauwa</h2>
-                <p class="p-heading">Listed below are some of the most representative projects I've worked on. They range from basic web design for presentation sites to advanced web development for online shops</p>
+                <p class="p-heading">Daftar Informasi Terkini Desa Lauwa</p>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
@@ -13,72 +35,35 @@
 
 
 <!-- Works -->
-<div class="basic-4">
+<div class="basic-4 bg-gray">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-1.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Zigoland, <strong>Project:</strong> started a new website from ground up for a new product <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-2.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Visodream, <strong>Project:</strong> developed a new forum for the Visodream community <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-3.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Primoday, <strong>Project:</strong> complete redesign of their corporate website and platform <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
+            <?php foreach ($information as $key => $val) { ?>
+                <div class="col-lg-4 mb-3">
+                    <div class="card shadow hover rounded-lg">
+                        <div class="image-container position-relative rounded-top">
+                            <a href="project.html">
+                                <img class="img-fluid" src="<?php echo base_url() ?>assets/img-admin/informasi/<?= $val->Foto ?>" alt="alternative">
+                            </a>
+                            <div class="overlay"></div> <!-- Overlay div -->
+                        </div> <!-- end of image-container -->
+                        <div class="container">
+                            <p><strong><?php
+                                        $timestamp = strtotime($val->Tanggal_informasi);
+                                        echo date("d F Y", $timestamp); // Format the date as DD MonthName YYYY
+                                        ?></strong></p>
+                            <h6><a href="" class="text-decoration-none"><?= $val->Nama_informasi ?></a></h6>
+                            </p>
+                            <a class="btn btn-outline-secondary text-decoration-none mb-2" data-toggle="collapse" href="#multiCollapseExample1<?= $val->id_informasi ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1<?= $val->id_informasi ?>">Selengkapnya..</a>
+                            <div class="collapse multi-collapse mb-2" id="multiCollapseExample1<?= $val->id_informasi ?>">
+                                <div class="card card-body">
+                                    <?= $val->Isi ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of col -->
+            <?php } ?>
         </div> <!-- end of row -->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-4.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Nextlite, <strong>Project:</strong> created a custom video editing and upload web app <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-5.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Syncnow, <strong>Project:</strong> web design for their corporate websites and landing pages <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-            <div class="col-lg-4">
-                <div class="text-container">
-                    <div class="image-container">
-                        <a href="project.html">
-                            <img class="img-fluid" src="<?php echo base_url() ?>assets/mark/images/work-6.jpg" alt="alternative">
-                        </a>
-                    </div> <!-- end of image-container -->
-                    <p><strong>For:</strong> Shifter, <strong>Project:</strong> started a new website from ground up for a new product <a class="blue" href="project.html">details</a></p>
-                </div> <!-- end of text-container -->
-            </div> <!-- end of col -->
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of basic-4 -->
-<!-- end of works -->
+    </div> <!-- end of basic-4 -->
+    <!-- end of works -->

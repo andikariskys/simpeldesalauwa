@@ -35,17 +35,17 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pelayanan</a>
                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                         <a class="dropdown-item page-scroll" href="project.html">Surat Keterangan Pengasilan Ortu</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>parent-income">Surat Keterangan Pengasilan Ortu</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="terms.html">Surat Keterangan Tidak Mampu</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>incapacity-certificate">Surat Keterangan Tidak Mampu</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="privacy.html">Surat Keterangan Kelahiran</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>birth-certificate">Surat Keterangan Kelahiran</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="privacy.html">Surat Keterangan Kematian</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>death-certificate">Surat Keterangan Kematian</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="privacy.html">Surat Pengantar Nikah</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>marriage-letter">Surat Pengantar Nikah</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="privacy.html">Surat Pengantar Catatan Kepolisian</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>police-record-letter">Surat Pengantar Catatan Kepolisian</a>
                      </div>
                  </li>
                  <li class="nav-item">
@@ -58,7 +58,7 @@
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama'] ?></a>
                          <div class="dropdown-menu" aria-labelledby="dropdown01">
-                             <a class="dropdown-item page-scroll" href="project.html">Profil</a>
+                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>session">Profil</a>
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>logout">Logout</a>
                          </div>
