@@ -17,10 +17,12 @@ class Service extends CI_Controller
 
 	public function index()
 	{
+		$data['is_home'] = true;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar_home');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/dashboard');
-
+		// echo json_encode($data);
+		// exit;
 		// $this->load->view('service/templates/footer');
 	}
 
@@ -49,10 +51,10 @@ class Service extends CI_Controller
 			$this->session->set_userdata($data_user);
 			$this->session->set_flashdata('alert', 'Login Berhasil...');
 			$this->session->set_flashdata('alert_type', 'info');
-			redirect('Service');
+			redirect('Admin');
 		} else {
 			$this->session->set_flashdata(array('error_login' => true));
-			redirect('Service');
+			redirect('');
 		}
 	}
 
@@ -66,29 +68,33 @@ class Service extends CI_Controller
 
 	public function serviceProfile()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/profile/index');
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceInformation()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/information/index');
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceGalery()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/galery/index');
 		$this->load->view('service/templates/footer');
 	}
 	public function serviceContact()
 	{
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar');
+		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/contact/index');
 		$this->load->view('service/templates/footer');
 	}
