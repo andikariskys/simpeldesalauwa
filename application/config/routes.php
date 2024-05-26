@@ -78,6 +78,8 @@ $route['informations/(:any)/delete']    = 'admin/delete_information/$1';
 $route['informations/(:any)/update']    = 'admin/update_information/$1';
 
 // Surat Keterangan Penghasilan Orang Tua
-$route['parent_incomes']                  = 'admin/parent_incomes';
-$route['parent_incomes/add']              = 'admin/add_parent_income';
-$route['parent_incomes/(:any)/delete']    = 'admin/delete_parent_incomes';
+$route['parent_incomes']                        = 'admin/parent_incomes';
+$route['parent_incomes/add']                    = 'admin/add_parent_income';
+$route['parent_incomes/(:any)/verification']    = 'admin/verification_parent_income/$1';
+$route['parent_incomes/(:any)/delete']          = 'admin/delete_parent_income/$1';
+$route['parent_incomes/(:any)/update']          = 'admin/update_parent_income/$1';

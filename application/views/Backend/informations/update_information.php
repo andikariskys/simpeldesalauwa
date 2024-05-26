@@ -27,7 +27,7 @@
                 <label class="col-sm-2 col-form-label" for="input-foto-informasi">Foto Informasi</label> <br>
                 <div class="col-sm-10">
                     <input type="hidden" name="image_origin" value="<?= $data_information->Foto ?>">
-                    <img src="<?= base_url('assets/img-admin/' . $data_information->Foto) ?>" alt="<?= $data_information->Foto ?>" class="rounded mb-3" style="max-width: 200px; height: auto;"> <br>
+                    <img src="<?= base_url('assets/img-admin/informasi/' . $data_information->Foto) ?>" alt="<?= $data_information->Foto ?>" class="rounded mb-3" style="max-width: 200px; height: auto;"> <br>
                     <span class="text-disabled">Note. Jika ingin mengubah foto silakan upload foto baru</span> <br>
                     <input type="file" name="foto_informasi" id="input-foto-informasi" class="form-control" accept="image/jpg, image/jpeg, image/png, image/webp">
                 </div>

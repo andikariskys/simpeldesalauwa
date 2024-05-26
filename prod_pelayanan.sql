@@ -79,7 +79,6 @@ CREATE TABLE `keterangan_kelahiran` (
   `Nama_ayah` varchar(100) DEFAULT NULL,
   `Nama_ibu` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
   `Status_keterangankelahiran` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -87,8 +86,8 @@ CREATE TABLE `keterangan_kelahiran` (
 -- Dumping data for table `keterangan_kelahiran`
 --
 
-INSERT INTO `keterangan_kelahiran` (`id_keterangankelahiran`, `Tanggal_keterangankelahiran`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Alamat`, `Nama_ayah`, `Nama_ibu`, `kk`, `foto`, `Status_keterangankelahiran`) VALUES
-(1, '2023-05-20', 'Bayu', 'Jakarta, 3 Maret 2023', 'Laki-laki', 'Islam', 'Jl. Merdeka No. 20', 'Bapak Bayu', 'Ibu Bayu', 'kk_bayu.jpg', 'foto_bayu.jpg', 'Terverifikasi');
+INSERT INTO `keterangan_kelahiran` (`id_keterangankelahiran`, `Tanggal_keterangankelahiran`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Alamat`, `Nama_ayah`, `Nama_ibu`, `kk`, `Status_keterangankelahiran`) VALUES
+(1, '2023-05-20', 'Bayu', 'Jakarta, 3 Maret 2023', 'Laki-laki', 'Islam', 'Jl. Merdeka No. 20', 'Bapak Bayu', 'Ibu Bayu', 'kk_bayu.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -109,7 +108,6 @@ CREATE TABLE `keterangan_kematian` (
   `Hari_kematian` varchar(100) DEFAULT NULL,
   `Tanggal_kematian` date DEFAULT NULL,
   `ktp` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
   `Status_keterangankematian` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -117,8 +115,8 @@ CREATE TABLE `keterangan_kematian` (
 -- Dumping data for table `keterangan_kematian`
 --
 
-INSERT INTO `keterangan_kematian` (`id_keterangankematian`, `Tanggal_keterangankematian`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Alamat`, `Hari_kematian`, `Tanggal_kematian`, `ktp`, `foto`, `Status_keterangankematian`) VALUES
-(1, '2023-05-20', 1234567890123456, 'Udin', 'Jakarta, 4 April 1950', 'Laki-laki', 'Pensiunan', 'Islam', 'Jl. Merdeka No. 30', 'Senin', '2023-04-15', 'ktp_udin.jpg', 'foto_udin.jpg', 'Terverifikasi');
+INSERT INTO `keterangan_kematian` (`id_keterangankematian`, `Tanggal_keterangankematian`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Alamat`, `Hari_kematian`, `Tanggal_kematian`, `ktp`, `Status_keterangankematian`) VALUES
+(1, '2023-05-20', 1234567890123456, 'Udin', 'Jakarta, 4 April 1950', 'Laki-laki', 'Pensiunan', 'Islam', 'Jl. Merdeka No. 30', 'Senin', '2023-04-15', 'ktp_udin.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -137,7 +135,6 @@ CREATE TABLE `keterangan_tidak_mampu` (
   `Agama` varchar(100) DEFAULT NULL,
   `Alamat` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
   `Status_keterangantidakmampu` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -145,8 +142,8 @@ CREATE TABLE `keterangan_tidak_mampu` (
 -- Dumping data for table `keterangan_tidak_mampu`
 --
 
-INSERT INTO `keterangan_tidak_mampu` (`id_keterangantidakmampu`, `Tanggal_keterangantidakmampu`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Alamat`, `kk`, `foto`, `Status_keterangantidakmampu`) VALUES
-(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Siti', 'Jakarta, 2 Februari 2000', 'Perempuan', 'Islam', 'Jl. Merdeka No. 10', 'kk_siti.jpg', 'foto_siti.jpg', 'Terverifikasi');
+INSERT INTO `keterangan_tidak_mampu` (`id_keterangantidakmampu`, `Tanggal_keterangantidakmampu`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Alamat`, `kk`, `Status_keterangantidakmampu`) VALUES
+(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Siti', 'Jakarta, 2 Februari 2000', 'Perempuan', 'Islam', 'Jl. Merdeka No. 10', 'kk_siti.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -217,7 +214,6 @@ CREATE TABLE `pengantar_nikah` (
   `Alamat_ibu` varchar(100) DEFAULT NULL,
   `Ktp` varchar(100) DEFAULT NULL,
   `Kk` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
   `Status_pengantarnikah` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -225,8 +221,8 @@ CREATE TABLE `pengantar_nikah` (
 -- Dumping data for table `pengantar_nikah`
 --
 
-INSERT INTO `pengantar_nikah` (`id_pengantarnikah`, `Tanggal_pengantarnikah`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Anak_ke`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Alamat_ayah`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Alamat_ibu`, `Ktp`, `Kk`, `foto`, `Status_pengantarnikah`) VALUES
-(1, '2023-05-20', 'Joko', 'Jakarta, 5 Mei 1990', 'Laki-laki', 'Karyawan Swasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 40', '1', 'Bapak Joko', 'Bandung, 1 Januari 1960', 'Islam', 'Petani', 'Jl. Desa No. 1', 'Ibu Joko', 'Surabaya, 1 Januari 1965', 'Islam', 'Ibu Rumah Tangga', 'Jl. Desa No. 1', 'ktp_joko.jpg', 'kk_joko.jpg', 'foto_joko.jpg', 'Terverifikasi');
+INSERT INTO `pengantar_nikah` (`id_pengantarnikah`, `Tanggal_pengantarnikah`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Anak_ke`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Alamat_ayah`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Alamat_ibu`, `Ktp`, `Kk`, `Status_pengantarnikah`) VALUES
+(1, '2023-05-20', 'Joko', 'Jakarta, 5 Mei 1990', 'Laki-laki', 'Karyawan Swasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 40', '1', 'Bapak Joko', 'Bandung, 1 Januari 1960', 'Islam', 'Petani', 'Jl. Desa No. 1', 'Ibu Joko', 'Surabaya, 1 Januari 1965', 'Islam', 'Ibu Rumah Tangga', 'Jl. Desa No. 1', 'ktp_joko.jpg', 'kk_joko.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -257,7 +253,6 @@ CREATE TABLE `penghasilan_orang_tua` (
   `Penghasilan_ibu` varchar(100) DEFAULT NULL,
   `ktp` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
   `Status_penghasilanorangtua` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -265,8 +260,8 @@ CREATE TABLE `penghasilan_orang_tua` (
 -- Dumping data for table `penghasilan_orang_tua`
 --
 
-INSERT INTO `penghasilan_orang_tua` (`id_penghasilan`, `Tanggal_penghasilan`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Nik_ayah`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Penghasilan_ayah`, `Nik_ibu`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Penghasilan_ibu`, `ktp`, `kk`, `foto`, `Status_penghasilanorangtua`) VALUES
-(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Andi', 'Jakarta, 1 Januari 2000', 'Laki-laki', 'Islam', 2345678901234567, 'Bapak Andi', 'Bandung, 1 Januari 1970', 'Islam', 'Petani', 'Rp 3.000.000', 3456789012345678, 'Ibu Andi', 'Surabaya, 1 Januari 1975', 'Islam', 'Ibu Rumah Tangga', 'Rp 2.000.000', 'ktp_andi.jpg', 'kk_andi.jpg', 'foto_andi.jpg', 'Terverifikasi');
+INSERT INTO `penghasilan_orang_tua` (`id_penghasilan`, `Tanggal_penghasilan`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Nik_ayah`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Penghasilan_ayah`, `Nik_ibu`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Penghasilan_ibu`, `ktp`, `kk`, `Status_penghasilanorangtua`) VALUES
+(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Andi', 'Jakarta, 1 Januari 2000', 'Laki-laki', 'Islam', 2345678901234567, 'Bapak Andi', 'Bandung, 1 Januari 1970', 'Islam', 'Petani', 'Rp 3.000.000', 3456789012345678, 'Ibu Andi', 'Surabaya, 1 Januari 1975', 'Islam', 'Ibu Rumah Tangga', 'Rp 2.000.000', 'ktp_andi.jpg', 'kk_andi.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -293,7 +288,7 @@ INSERT INTO `profil` (`id_profil`, `Tanggal_profil`, `Sambutan_kepaladesa`, `Vis
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skck`
+-- Table structure for table `spkck`
 --
 
 CREATE TABLE `spkck` (
@@ -308,16 +303,15 @@ CREATE TABLE `spkck` (
   `Alamat` varchar(100) DEFAULT NULL,
   `Nik` bigint DEFAULT NULL,
   `Ktp` varchar(100) DEFAULT NULL,
-  `Foto` varchar(100) DEFAULT NULL,
   `Status_pengantarskck` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `skck`
+-- Dumping data for table `spkck`
 --
 
-INSERT INTO `spkck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Nik`, `Ktp`, `Foto`, `Status_pengantarskck`) VALUES
-(1, '2023-05-20', 'Tono', 'Jakarta, 6 Juni 1985', 'Laki-laki', 'Wiraswasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 50', 1234567890123456, 'ktp_tono.jpg', 'foto_tono.jpg', 'Terverifikasi');
+INSERT INTO `spkck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Nik`, `Ktp`, `Status_pengantarskck`) VALUES
+(1, '2023-05-20', 'Tono', 'Jakarta, 6 Juni 1985', 'Laki-laki', 'Wiraswasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 50', 1234567890123456, 'ktp_tono.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 

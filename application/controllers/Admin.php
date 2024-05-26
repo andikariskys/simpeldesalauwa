@@ -128,7 +128,7 @@ class Admin extends CI_Controller
 			$image              = $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
-				$config['upload_path'] = './assets/img-admin';
+				$config['upload_path'] = './assets/img-admin/informasi';
 				$config['allowed_types'] = 'jpg|jpeg|png|webp';
 
 				$this->load->library('upload', $config);
@@ -187,7 +187,7 @@ class Admin extends CI_Controller
 			$image              = $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
-				$config['upload_path'] = './assets/img-admin';
+				$config['upload_path'] = './assets/img-admin/informasi';
 				$config['allowed_types'] = 'jpg|jpeg|png|webp';
 
 				$this->load->library('upload', $config);
@@ -199,8 +199,7 @@ class Admin extends CI_Controller
 				} else {
 					$image = $this->upload->data('file_name');
 
-					$image_origin = $this->admin_model->get_informations($id_information);
-					unlink('./assets/img-admin/' . $image_origin->Foto);
+					unlink('./assets/img-admin/informasi/' . $image_origin);
 				}
 			} else {
 				$image = $image_origin;
@@ -240,25 +239,88 @@ class Admin extends CI_Controller
 
 	function add_parent_income()
 	{
-		if ($this->input->post('sambutan_kepala_desa') != null) {
+		if ($this->input->post('no_kk') != null) {
 
-			$tanggal 				= $this->input->post('tanggal');
-			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-			$visi 					= $this->input->post('visi');
-			$misi 					= $this->input->post('misi');
-			$jam_kerja 				= $this->input->post('jam_kerja');
+			$tanggal 			= $this->input->post('tanggal');
+			$no_kk 				= $this->input->post('no_kk');
+			$nik 				= $this->input->post('nik');
+			$nama_lengkap 		= $this->input->post('nama_lengkap');
+			$ttl 				= $this->input->post('ttl');
+			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
+			$agama 				= $this->input->post('agama');
+			$nik_ayah 			= $this->input->post('nik_ayah');
+			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
+			$ttl_ayah 			= $this->input->post('ttl_ayah');
+			$agama_ayah 		= $this->input->post('agama_ayah');
+			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
+			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
+			$nik_ibu 			= $this->input->post('nik_ibu');
+			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
+			$ttl_ibu 			= $this->input->post('ttl_ibu');
+			$agama_ibu 			= $this->input->post('agama_ibu');
+			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
+			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
 
-			$data_profile = array(
-				'Tanggal_profil' 		=> $tanggal,
-				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-				'Visi' 					=> $visi,
-				'Misi' 					=> $misi,
-				'Jam_kerja' 			=> $jam_kerja
+			$image_ktp          = $_FILES['foto_ktp']['name'];
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spot';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spot';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+
+			$data_parent_income = array(
+				'Tanggal_penghasilan' 	=> $tanggal,
+				'No_kk'					=> $no_kk,
+				'Nik'					=> $nik,
+				'Nama'					=> $nama_lengkap,
+				'Ttl'					=> $ttl,
+				'Jenis_kelamin'			=> $jenis_kelamin,
+				'Agama'					=> $agama,
+				'Nik_ayah'				=> $nik_ayah,
+				'Nama_ayah'				=> $nama_lengkap_ayah,
+				'Ttl_ayah'				=> $ttl_ayah,
+				'Agama_ayah'			=> $agama_ayah,
+				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
+				'Penghasilan_ayah'		=> $penghasilan_ayah,
+				'Nik_ibu'				=> $nik_ibu,
+				'Nama_ibu'				=> $nama_lengkap_ibu,
+				'Ttl_ibu'				=> $ttl_ibu,
+				'Agama_ibu'				=> $agama_ibu,
+				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
+				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'kk'					=> $image_kk,
+				'ktp'					=> $image_ktp
 			);
 
-			if (!$this->admin_model->save_profile($data_profile)) {
-				$this->session->set_flashdata('add_profile', 'Data berhasil disimpan!');
-				redirect('profiles');
+			if (!$this->admin_model->save_parent_income($data_parent_income)) {
+				$this->session->set_flashdata('update_parent_income', 'Ubah data berhasil disimpan!');
+				redirect('parent_incomes');
 			}
 		} else {
 
@@ -270,44 +332,127 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// function delete_profile($id_profile)
-	// {
-	// 	if (!$this->admin_model->delete_profile($id_profile)) {
-	// 		$this->session->set_flashdata('delete_profile', 'Data berhasil dihapus!');
-	// 		redirect('profiles');
-	// 	}
-	// }
+	function verification_parent_income($id_parent_income)
+	{
+		$data_parent_income = array('Status_penghasilanorangtua' => 'Terverifikasi');
 
-	// function update_profile($id_profile)
-	// {
-	// 	if ($this->input->post('this_update') == true) {
+		if (!$this->admin_model->update_parent_income($data_parent_income, $id_parent_income)) {
+			$this->session->set_flashdata('success_parent_income', 'SK berhasil diverifikasi!');
+			redirect('parent_incomes');
+		}
+	}
 
-	// 		$tanggal 				= $this->input->post('tanggal');
-	// 		$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-	// 		$visi 					= $this->input->post('visi');
-	// 		$misi 					= $this->input->post('misi');
-	// 		$jam_kerja 				= $this->input->post('jam_kerja');
+	function delete_parent_income($id_parent_income)
+	{
+		if (!$this->admin_model->delete_parent_income($id_parent_income)) {
+			$this->session->set_flashdata('danger_parent_income', 'Data berhasil dihapus!');
+			redirect('parent_incomes');
+		}
+	}
 
-	// 		$data_profile = array(
-	// 			'Tanggal_profil' 		=> $tanggal,
-	// 			'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-	// 			'Visi' 					=> $visi,
-	// 			'Misi' 					=> $misi,
-	// 			'Jam_kerja' 			=> $jam_kerja
-	// 		);
+	function update_parent_income($id_parent_income)
+	{
+		if ($this->input->post('this_update') == true) {
 
-	// 		if (!$this->admin_model->update_profile($data_profile, $id_profile)) {
-	// 			$this->session->set_flashdata('update_profile', 'Ubah data berhasil disimpan!');
-	// 			redirect('profiles');
-	// 		}
-	// 	} else {
+			$tanggal 			= $this->input->post('tanggal');
+			$no_kk 				= $this->input->post('no_kk');
+			$nik 				= $this->input->post('nik');
+			$nama_lengkap 		= $this->input->post('nama_lengkap');
+			$ttl 				= $this->input->post('ttl');
+			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
+			$agama 				= $this->input->post('agama');
+			$nik_ayah 			= $this->input->post('nik_ayah');
+			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
+			$ttl_ayah 			= $this->input->post('ttl_ayah');
+			$agama_ayah 		= $this->input->post('agama_ayah');
+			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
+			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
+			$nik_ibu 			= $this->input->post('nik_ibu');
+			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
+			$ttl_ibu 			= $this->input->post('ttl_ibu');
+			$agama_ibu 			= $this->input->post('agama_ibu');
+			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
+			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
+			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
+			$image_kk_origin 	= $this->input->post('image_kk_origin');
 
-	// 		$data['active'] = "Ubah Profil";
-	// 		$data['data_profile'] = $this->admin_model->get_profiles($id_profile);
-	// 		$this->load->view('backend/templates/header', $data);
-	// 		$this->load->view('backend/templates/sidebar', $data);
-	// 		$this->load->view('backend/profiles/update_profile', $data);
-	// 		$this->load->view('backend/templates/footer');
-	// 	}
-	// }
+			$image_ktp          = $_FILES['foto_ktp']['name'];
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spot';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spot/' . $image_ktp_origin);
+				}
+			} else {
+				$image_ktp = $image_ktp_origin;
+			}
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spot';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spot/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			$data_parent_income = array(
+				'Tanggal_penghasilan' 	=> $tanggal,
+				'No_kk'					=> $no_kk,
+				'Nik'					=> $nik,
+				'Nama'					=> $nama_lengkap,
+				'Ttl'					=> $ttl,
+				'Jenis_kelamin'			=> $jenis_kelamin,
+				'Agama'					=> $agama,
+				'Nik_ayah'				=> $nik_ayah,
+				'Nama_ayah'				=> $nama_lengkap_ayah,
+				'Ttl_ayah'				=> $ttl_ayah,
+				'Agama_ayah'			=> $agama_ayah,
+				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
+				'Penghasilan_ayah'		=> $penghasilan_ayah,
+				'Nik_ibu'				=> $nik_ibu,
+				'Nama_ibu'				=> $nama_lengkap_ibu,
+				'Ttl_ibu'				=> $ttl_ibu,
+				'Agama_ibu'				=> $agama_ibu,
+				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
+				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'kk'					=> $image_kk,
+				'ktp'					=> $image_ktp
+			);
+
+			if (!$this->admin_model->update_parent_income($data_parent_income, $id_parent_income)) {
+				$this->session->set_flashdata('update_parent_income', 'Ubah data berhasil disimpan!');
+				redirect('parent_incomes');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Penghasilan Orang Tua";
+			$data['data_parent_income'] = $this->admin_model->get_parent_incomes($id_parent_income);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/parent_incomes/update_parent_income', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
 }

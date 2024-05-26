@@ -83,7 +83,7 @@ final class Admin_model extends CI_Model
         $this->db->where('id_informasi', $id_information);
         $this->db->update($this->informasi, $data_information);
     }
-
+    
     function get_parent_incomes($id_parent_income = null)
     {
         if ($id_parent_income != null) {
@@ -92,5 +92,21 @@ final class Admin_model extends CI_Model
         } else {
             return $this->db->get($this->spot)->result();
         }
+    }
+    
+    function save_parent_income($data_parent_income) {
+        $this->db->insert($this->spot, $data_parent_income);
+    }
+
+    function update_parent_income($data_parent_income, $id_parent_income)
+    {
+        $this->db->where('id_penghasilan', $id_parent_income);
+        $this->db->update($this->spot, $data_parent_income);
+    }
+
+    function delete_parent_income($id_parent_income)
+    {
+        $this->db->where('id_penghasilan', $id_parent_income);
+        $this->db->delete($this->spot);
     }
 }
