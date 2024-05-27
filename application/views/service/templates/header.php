@@ -27,6 +27,9 @@
     <link href="<?php echo base_url() ?>assets/mark/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/mark/css/fontawesome-all.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/mark/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/css/rtl/core.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/css/rtl/theme-default.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/demo.css') ?>" />
 
     <!-- Favicon  -->
     <link rel="icon" href="<?php echo base_url() ?>assets/mark/images/luwu.png">

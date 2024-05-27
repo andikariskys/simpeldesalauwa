@@ -1,7 +1,7 @@
 <!-- About-->
-<div id="about" class="basic-1 bg-gray">
+<div id="about" class="basic-1 bg-white">
     <!-- Projects -->
-    <div id="projects" class="basic-3 bg-gray">
+    <div id="projects" class="basic-3 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

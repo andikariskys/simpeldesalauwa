@@ -21,7 +21,7 @@
 </style>
 
 <!-- Projects -->
-<div id="projects" class="basic-3 bg-gray">
+<div id="projects" class="basic-3 bg-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -35,12 +35,12 @@
 
 
 <!-- Works -->
-<div class="basic-4 bg-gray">
+<div class="basic-4 bg-white">
     <div class="container">
         <div class="row">
             <?php foreach ($information as $key => $val) { ?>
                 <div class="col-lg-4 mb-3">
-                    <div class="card shadow hover rounded-lg">
+                    <div class="card shadow hover rounded-lg rounded-top">
                         <div class="image-container position-relative rounded-top">
                             <a href="project.html">
                                 <img class="img-fluid" src="<?php echo base_url() ?>assets/img-admin/informasi/<?= $val->Foto ?>" alt="alternative">
@@ -66,4 +66,5 @@
             <?php } ?>
         </div> <!-- end of row -->
     </div> <!-- end of basic-4 -->
-    <!-- end of works -->
+</div>
+<!-- end of works -->

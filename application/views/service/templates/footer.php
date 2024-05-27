@@ -1,5 +1,5 @@
 <!-- Footer -->
-<div class="container p-3">
+<div class="container  p-3">
     <div class="row">
         <div class="col-lg-12">
             <p class="footer-text text-dark fw-bold">Copyright © 2023 Design By Desa Lauwa.</p>

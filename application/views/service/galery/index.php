@@ -1,5 +1,5 @@
 <!-- Projects -->
-<div id="projects" class="basic-3 bg-gray">
+<div id="projects" class="basic-3 bg-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -13,7 +13,7 @@
 
 
 <!-- Works -->
-<div class="basic-4 bg-gray">
+<div class="basic-4 bg-white">
     <div class="container">
         <div class="row">
             <?php foreach ($galery as $val) { ?>
