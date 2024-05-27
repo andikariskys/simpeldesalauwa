@@ -39,18 +39,12 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('sambutan_kepala_desa') != null) {
 
-			$tanggal 				= $this->input->post('tanggal');
-			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-			$visi 					= $this->input->post('visi');
-			$misi 					= $this->input->post('misi');
-			$jam_kerja 				= $this->input->post('jam_kerja');
-
 			$data_profile = array(
-				'Tanggal_profil' 		=> $tanggal,
-				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-				'Visi' 					=> $visi,
-				'Misi' 					=> $misi,
-				'Jam_kerja' 			=> $jam_kerja
+				'Tanggal_profil' 		=> $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
+				'Visi' 					=> $this->input->post('visi'),
+				'Misi' 					=> $this->input->post('misi'),
+				'Jam_kerja' 			=> $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->save_profile($data_profile)) {
@@ -79,18 +73,12 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 				= $this->input->post('tanggal');
-			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-			$visi 					= $this->input->post('visi');
-			$misi 					= $this->input->post('misi');
-			$jam_kerja 				= $this->input->post('jam_kerja');
-
 			$data_profile = array(
-				'Tanggal_profil' 		=> $tanggal,
-				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-				'Visi' 					=> $visi,
-				'Misi' 					=> $misi,
-				'Jam_kerja' 			=> $jam_kerja
+				'Tanggal_profil' 		=> $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
+				'Visi' 					=> $this->input->post('visi'),
+				'Misi' 					=> $this->input->post('misi'),
+				'Jam_kerja' 			=> $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->update_profile($data_profile, $id_profile)) {
@@ -122,10 +110,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('nama_informasi') != null) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$nama_informasi 	= $this->input->post('nama_informasi');
-			$isi_informasi 		= $this->input->post('isi_informasi');
-			$image              = $_FILES['foto_informasi']['name'];
+			$image		= $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/informasi';
@@ -143,9 +128,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_information = array(
-				'Tanggal_informasi' => $tanggal,
-				'Nama_informasi'	=> $nama_informasi,
-				'Isi'				=> $isi_informasi,
+				'Tanggal_informasi' => $this->input->post('tanggal'),
+				'Nama_informasi'	=> $this->input->post('nama_informasi'),
+				'Isi'				=> $this->input->post('isi_informasi'),
 				'Foto'				=> $image
 			);
 
@@ -180,9 +165,6 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$nama_informasi 	= $this->input->post('nama_informasi');
-			$isi_informasi 		= $this->input->post('isi_informasi');
 			$image_origin 		= $this->input->post('image_origin');
 			$image              = $_FILES['foto_informasi']['name'];
 
@@ -206,9 +188,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_information = array(
-				'Tanggal_informasi' => $tanggal,
-				'Nama_informasi'	=> $nama_informasi,
-				'Isi'				=> $isi_informasi,
+				'Tanggal_informasi' => $this->input->post('tanggal'),
+				'Nama_informasi'	=> $this->input->post('nama_informasi'),
+				'Isi'				=> $this->input->post('isi_informasi'),
 				'Foto'				=> $image
 			);
 
@@ -240,26 +222,6 @@ class Admin extends CI_Controller
 	function add_parent_income()
 	{
 		if ($this->input->post('no_kk') != null) {
-
-			$tanggal 			= $this->input->post('tanggal');
-			$no_kk 				= $this->input->post('no_kk');
-			$nik 				= $this->input->post('nik');
-			$nama_lengkap 		= $this->input->post('nama_lengkap');
-			$ttl 				= $this->input->post('ttl');
-			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
-			$agama 				= $this->input->post('agama');
-			$nik_ayah 			= $this->input->post('nik_ayah');
-			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
-			$ttl_ayah 			= $this->input->post('ttl_ayah');
-			$agama_ayah 		= $this->input->post('agama_ayah');
-			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
-			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
-			$nik_ibu 			= $this->input->post('nik_ibu');
-			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
-			$ttl_ibu 			= $this->input->post('ttl_ibu');
-			$agama_ibu 			= $this->input->post('agama_ibu');
-			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
-			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
 
 			$image_ktp          = $_FILES['foto_ktp']['name'];
 			$image_kk           = $_FILES['foto_kk']['name'];
@@ -295,25 +257,25 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $tanggal,
-				'No_kk'					=> $no_kk,
-				'Nik'					=> $nik,
-				'Nama'					=> $nama_lengkap,
-				'Ttl'					=> $ttl,
-				'Jenis_kelamin'			=> $jenis_kelamin,
-				'Agama'					=> $agama,
-				'Nik_ayah'				=> $nik_ayah,
-				'Nama_ayah'				=> $nama_lengkap_ayah,
-				'Ttl_ayah'				=> $ttl_ayah,
-				'Agama_ayah'			=> $agama_ayah,
-				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
-				'Penghasilan_ayah'		=> $penghasilan_ayah,
-				'Nik_ibu'				=> $nik_ibu,
-				'Nama_ibu'				=> $nama_lengkap_ibu,
-				'Ttl_ibu'				=> $ttl_ibu,
-				'Agama_ibu'				=> $agama_ibu,
-				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
-				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
+				'No_kk'					=> $this->input->post('no_kk'),
+				'Nik'					=> $this->input->post('nik'),
+				'Nama'					=> $this->input->post('nama_lengkap'),
+				'Ttl'					=> $this->input->post('ttl'),
+				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
+				'Agama'					=> $this->input->post('agama'),
+				'Nik_ayah'				=> $this->input->post('nik_ayah'),
+				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
+				'Agama_ayah'			=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
+				'Nik_ibu'				=> $this->input->post('nik_ibu'),
+				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
+				'Agama_ibu'				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
 				'kk'					=> $image_kk,
 				'ktp'					=> $image_ktp
 			);
@@ -354,25 +316,6 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$no_kk 				= $this->input->post('no_kk');
-			$nik 				= $this->input->post('nik');
-			$nama_lengkap 		= $this->input->post('nama_lengkap');
-			$ttl 				= $this->input->post('ttl');
-			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
-			$agama 				= $this->input->post('agama');
-			$nik_ayah 			= $this->input->post('nik_ayah');
-			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
-			$ttl_ayah 			= $this->input->post('ttl_ayah');
-			$agama_ayah 		= $this->input->post('agama_ayah');
-			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
-			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
-			$nik_ibu 			= $this->input->post('nik_ibu');
-			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
-			$ttl_ibu 			= $this->input->post('ttl_ibu');
-			$agama_ibu 			= $this->input->post('agama_ibu');
-			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
-			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
 			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
 			$image_kk_origin 	= $this->input->post('image_kk_origin');
 
@@ -418,25 +361,25 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $tanggal,
-				'No_kk'					=> $no_kk,
-				'Nik'					=> $nik,
-				'Nama'					=> $nama_lengkap,
-				'Ttl'					=> $ttl,
-				'Jenis_kelamin'			=> $jenis_kelamin,
-				'Agama'					=> $agama,
-				'Nik_ayah'				=> $nik_ayah,
-				'Nama_ayah'				=> $nama_lengkap_ayah,
-				'Ttl_ayah'				=> $ttl_ayah,
-				'Agama_ayah'			=> $agama_ayah,
-				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
-				'Penghasilan_ayah'		=> $penghasilan_ayah,
-				'Nik_ibu'				=> $nik_ibu,
-				'Nama_ibu'				=> $nama_lengkap_ibu,
-				'Ttl_ibu'				=> $ttl_ibu,
-				'Agama_ibu'				=> $agama_ibu,
-				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
-				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
+				'No_kk'					=> $this->input->post('no_kk'),
+				'Nik'					=> $this->input->post('nik'),
+				'Nama'					=> $this->input->post('nama_lengkap'),
+				'Ttl'					=> $this->input->post('ttl'),
+				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
+				'Agama'					=> $this->input->post('agama'),
+				'Nik_ayah'				=> $this->input->post('nik_ayah'),
+				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
+				'Agama_ayah'			=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
+				'Nik_ibu'				=> $this->input->post('nik_ibu'),
+				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
+				'Agama_ibu'				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
 				'kk'					=> $image_kk,
 				'ktp'					=> $image_ktp
 			);
