@@ -53,14 +53,25 @@ $route['default_controller'] = 'service';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// Frontend Routes
+/**Frontend Routes */
 $route['authentication']    = 'Service/serviceLogin';
 $route['logout']            = 'Service/serviceLogout';
+$route['session']           = 'Service/serviceSession';
 
 $route['profile']           = 'Service/serviceProfile';
 $route['information']       = 'Service/serviceInformation';
 $route['galery']            = 'Service/serviceGalery';
 $route['contact']           = 'Service/serviceContact';
+
+//dropdown
+$route['parent-income']             = 'Service/serviceParentIncome';
+$route['incapacity-certificate']    = 'Service/serviceOfIncapacity';
+$route['birth-certificate']         = 'Service/serviceBirthCertificate';
+$route['death-certificate']         = 'Service/servicedeathCertificate';
+$route['marriage-letter']           = 'Service/serviceMarriageLetter';
+$route['police-record-letter']      = 'Service/servicePoliceRecordLetter';
+
+// end Frontend Routes
 
 // dashboard
 $route['dashboard']         = 'admin';

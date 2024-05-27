@@ -1,5 +1,5 @@
 <!-- About-->
-<div id="about" class="basic-1 bg-gray">
+<div id="about" class="basic-1 bg-white ">
     <?php foreach ($profil as $val) { ?>
         <div class="container">
             <div class="row">
