@@ -44,19 +44,19 @@ final class Admin_model extends CI_Model
     {
         $this->db->insert($this->profil, $data_profile);
     }
-    
+
     function delete_profile($id_profile)
     {
         $this->db->where('id_profil', $id_profile);
         $this->db->delete($this->profil);
     }
-    
+
     function update_profile($data_profile, $id_profile)
     {
         $this->db->where('id_profil', $id_profile);
         $this->db->update($this->profil, $data_profile);
     }
-    
+
     function get_informations($id_information = null)
     {
         if ($id_information != null) {
@@ -66,24 +66,24 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->informasi)->result();
         }
     }
-    
+
     function save_information($data_information)
     {
         $this->db->insert($this->informasi, $data_information);
     }
-    
+
     function delete_information($id_information)
     {
         $this->db->where('id_informasi', $id_information);
         $this->db->delete($this->informasi);
     }
-    
+
     function update_information($data_information, $id_information)
     {
         $this->db->where('id_informasi', $id_information);
         $this->db->update($this->informasi, $data_information);
     }
-    
+
     function get_parent_incomes($id_parent_income = null)
     {
         if ($id_parent_income != null) {
@@ -93,23 +93,24 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->spot)->result();
         }
     }
-    
-    function save_parent_income($data_parent_income) {
+
+    function save_parent_income($data_parent_income)
+    {
         $this->db->insert($this->spot, $data_parent_income);
     }
-    
+
     function update_parent_income($data_parent_income, $id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->update($this->spot, $data_parent_income);
     }
-    
+
     function delete_parent_income($id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->delete($this->spot);
     }
-    
+
     function get_financial_hardships($id_financial_hardship = null)
     {
         if ($id_financial_hardship != null) {
@@ -119,23 +120,24 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->sktm)->result();
         }
     }
-    
-    function save_financial_hardship($data_financial_hardship) {
+
+    function save_financial_hardship($data_financial_hardship)
+    {
         $this->db->insert($this->sktm, $data_financial_hardship);
     }
-    
+
     function update_financial_hardship($data_financial_hardship, $id_financial_hardship)
     {
         $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
         $this->db->update($this->sktm, $data_financial_hardship);
     }
-    
+
     function delete_financial_hardship($id_financial_hardship)
     {
         $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
         $this->db->delete($this->sktm);
     }
-    
+
     function get_death_certificates($id_death_certificate = null)
     {
         if ($id_death_certificate != null) {
@@ -145,17 +147,18 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->kematian)->result();
         }
     }
-    
-    function save_death_certificate($data_death_certificate) {
+
+    function save_death_certificate($data_death_certificate)
+    {
         $this->db->insert($this->kematian, $data_death_certificate);
     }
-    
+
     function update_death_certificate($data_death_certificate, $id_death_certificate)
     {
         $this->db->where('id_keterangankematian', $id_death_certificate);
         $this->db->update($this->kematian, $data_death_certificate);
     }
-    
+
     function delete_death_certificate($id_death_certificate)
     {
         $this->db->where('id_keterangankematian', $id_death_certificate);
@@ -171,17 +174,18 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->kelahiran)->result();
         }
     }
-    
-    function save_birth_announcement($data_birth_announcement) {
+
+    function save_birth_announcement($data_birth_announcement)
+    {
         $this->db->insert($this->kelahiran, $data_birth_announcement);
     }
-    
+
     function update_birth_announcement($data_birth_announcement, $id_birth_announcement)
     {
         $this->db->where('id_keterangankelahiran', $id_birth_announcement);
         $this->db->update($this->kelahiran, $data_birth_announcement);
     }
-    
+
     function delete_birth_announcement($id_birth_announcement)
     {
         $this->db->where('id_keterangankelahiran', $id_birth_announcement);
@@ -197,20 +201,48 @@ final class Admin_model extends CI_Model
             return $this->db->get($this->pernikahan)->result();
         }
     }
-    
-    function save_marriage_recommendation($data_marriage_recommendation) {
+
+    function save_marriage_recommendation($data_marriage_recommendation)
+    {
         $this->db->insert($this->pernikahan, $data_marriage_recommendation);
     }
-    
+
     function update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)
     {
         $this->db->where('id_pengantarnikah', $id_marriage_recommendation);
         $this->db->update($this->pernikahan, $data_marriage_recommendation);
     }
-    
+
     function delete_marriage_recommendation($id_marriage_recommendation)
     {
         $this->db->where('id_pengantarnikah', $id_marriage_recommendation);
         $this->db->delete($this->pernikahan);
+    }
+
+    function get_police_reports($id_police_report = null)
+    {
+        if ($id_police_report != null) {
+            $this->db->where('id_pengantarskck', $id_police_report);
+            return $this->db->get($this->spkck)->row();
+        } else {
+            return $this->db->get($this->spkck)->result();
+        }
+    }
+
+    function save_police_report($data_police_report)
+    {
+        $this->db->insert($this->spkck, $data_police_report);
+    }
+
+    function update_police_report($data_police_report, $id_police_report)
+    {
+        $this->db->where('id_pengantarskck', $id_police_report);
+        $this->db->update($this->spkck, $data_police_report);
+    }
+
+    function delete_police_report($id_police_report)
+    {
+        $this->db->where('id_pengantarskck', $id_police_report);
+        $this->db->delete($this->spkck);
     }
 }

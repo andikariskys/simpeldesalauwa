@@ -991,4 +991,137 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/footer');
 		}
 	}
+
+	function police_reports()
+	{
+		$data['active'] = "Surat Pengantar SKCK";
+		$data['police_reports'] = $this->admin_model->get_police_reports();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/police_reports/police_reports', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_police_report()
+	{
+		if ($this->input->post('ttl') != null) {
+
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spkck';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_police_report', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_police_report = array(
+				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Nik' 						=> $this->input->post('nik'),
+				'Ktp' 						=> $image_ktp
+			);
+
+			if (!$this->admin_model->save_police_report($data_police_report)) {
+				$this->session->set_flashdata('success_police_report', 'Tambah data berhasil disimpan!');
+				redirect('police_reports');
+			}
+		} else {
+
+			$data['active'] = "Tambah Surat Pengantar SKCK";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/police_reports/add_police_report');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_police_report($id_police_report)
+	{
+		$data_police_report = array('Status_pengantarskck' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_police_report($data_police_report, $id_police_report)) {
+			$this->session->set_flashdata('success_police_report', 'SK berhasil diverifikasi!');
+			redirect('police_reports');
+		}
+	}
+
+	function delete_police_report($id_police_report)
+	{
+		$image = $this->admin_model->get_police_reports($id_police_report);
+		unlink('./assets/img-admin/spkck/' . $image->Ktp);
+
+		if (!$this->admin_model->delete_police_report($id_police_report)) {
+			$this->session->set_flashdata('danger_police_report', 'Data berhasil dihapus!');
+			redirect('police_reports');
+		}
+	}
+
+	function update_police_report($id_police_report)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_ktp_origin	= $this->input->post('image_ktp_origin');
+			$image_ktp       	= $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spkck';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spkck/' . $image_ktp_origin);
+				}
+			} else {
+				$image_ktp = $image_ktp_origin;
+			}
+
+			$data_police_report = array(
+				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Nik' 						=> $this->input->post('nik'),
+				'Ktp' 						=> $image_ktp
+			);
+
+			if (!$this->admin_model->update_police_report($data_police_report, $id_police_report)) {
+				$this->session->set_flashdata('update_police_report', 'Ubah data berhasil disimpan!');
+				redirect('police_reports');
+			}
+		} else {
+
+			$data['active'] = "Ubah Surat Pengantar SKCK";
+			$data['data_police_report'] = $this->admin_model->get_police_reports($id_police_report);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/police_reports/update_police_report', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
 }
