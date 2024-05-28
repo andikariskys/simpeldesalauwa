@@ -65,11 +65,22 @@ $route['contact']           = 'Service/serviceContact';
 
 //dropdown
 $route['parent-income']             = 'Service/serviceParentIncome';
-$route['incapacity-certificate']    = 'Service/serviceOfIncapacity';
+$route['parent-income/add']         = 'Service/addParentIncome';
+
+$route['financial-hardship']        = 'Service/serviceFinancialHardship';
+$route['financial-hardship/add']    = 'Service/addFinancialHardship';
+
 $route['birth-certificate']         = 'Service/serviceBirthCertificate';
+$route['birth-certificate/add']     = 'Service/addBirthCertificate';
+
 $route['death-certificate']         = 'Service/servicedeathCertificate';
+$route['death-certificate/add']     = 'Service/addDeathCertificate';
+
 $route['marriage-letter']           = 'Service/serviceMarriageLetter';
+$route['marriage-letter/add']       = 'Service/addMarriageLetter';
+
 $route['police-record-letter']      = 'Service/servicePoliceRecordLetter';
+$route['police-record-letter/add']  = 'Service/addPoliceRecordLetter';
 
 // end Frontend Routes
 
