@@ -97,16 +97,42 @@ final class Admin_model extends CI_Model
     function save_parent_income($data_parent_income) {
         $this->db->insert($this->spot, $data_parent_income);
     }
-
+    
     function update_parent_income($data_parent_income, $id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->update($this->spot, $data_parent_income);
     }
-
+    
     function delete_parent_income($id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->delete($this->spot);
+    }
+    
+    function get_financial_hardships($id_financial_hardship = null)
+    {
+        if ($id_financial_hardship != null) {
+            $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+            return $this->db->get($this->sktm)->row();
+        } else {
+            return $this->db->get($this->sktm)->result();
+        }
+    }
+    
+    function save_financial_hardship($data_financial_hardship) {
+        $this->db->insert($this->sktm, $data_financial_hardship);
+    }
+    
+    function update_financial_hardship($data_financial_hardship, $id_financial_hardship)
+    {
+        $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+        $this->db->update($this->sktm, $data_financial_hardship);
+    }
+    
+    function delete_financial_hardship($id_financial_hardship)
+    {
+        $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+        $this->db->delete($this->sktm);
     }
 }

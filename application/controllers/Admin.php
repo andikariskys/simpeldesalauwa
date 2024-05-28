@@ -281,7 +281,7 @@ class Admin extends CI_Controller
 			);
 
 			if (!$this->admin_model->save_parent_income($data_parent_income)) {
-				$this->session->set_flashdata('update_parent_income', 'Ubah data berhasil disimpan!');
+				$this->session->set_flashdata('success_parent_income', 'Tambah data berhasil disimpan!');
 				redirect('parent_incomes');
 			}
 		} else {
@@ -395,6 +395,134 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/templates/sidebar', $data);
 			$this->load->view('backend/parent_incomes/update_parent_income', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function financial_hardships()
+	{
+		$data['active'] = "SK Tidak Mampu";
+		$data['financial_hardships'] = $this->admin_model->get_financial_hardships();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/financial_hardships/financial_hardships', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_financial_hardship()
+	{
+		if ($this->input->post('no_kk') != null) {
+
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/sktm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+
+			$data_financial_hardship = array(
+				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
+				'No_kk' 						=> $this->input->post('no_kk'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama_lengkap'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'kk'							=> $image_kk
+			);
+
+			if (!$this->admin_model->save_financial_hardship($data_financial_hardship)) {
+				$this->session->set_flashdata('success_financial_hardship', 'Tambah data berhasil disimpan!');
+				redirect('financial_hardships');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Tidak Mampu";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/financial_hardships/add_financial_hardship');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_financial_hardship($id_financial_hardship)
+	{
+		$data_financial_hardship = array('Status_keterangantidakmampu' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
+			$this->session->set_flashdata('success_financial_hardship', 'SK berhasil diverifikasi!');
+			redirect('financial_hardships');
+		}
+	}
+
+	function delete_financial_hardship($id_financial_hardship)
+	{
+		if (!$this->admin_model->delete_financial_hardship($id_financial_hardship)) {
+			$this->session->set_flashdata('danger_financial_hardship', 'Data berhasil dihapus!');
+			redirect('financial_hardships');
+		}
+	}
+
+	function update_financial_hardship($id_financial_hardship)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_kk_origin 	= $this->input->post('image_kk_origin');
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spot';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spot/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			$data_financial_hardship = array(
+				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
+				'No_kk' 						=> $this->input->post('no_kk'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama_lengkap'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'kk'							=> $image_kk,
+			);
+
+			if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
+				$this->session->set_flashdata('update_financial_hardship', 'Ubah data berhasil disimpan!');
+				redirect('financial_hardships');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Tidak Mampu";
+			$data['data_financial_hardship'] = $this->admin_model->get_financial_hardships($id_financial_hardship);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/financial_hardships/update_financial_hardship', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}

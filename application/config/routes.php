@@ -94,3 +94,10 @@ $route['parent_incomes/add']                    = 'admin/add_parent_income';
 $route['parent_incomes/(:any)/verification']    = 'admin/verification_parent_income/$1';
 $route['parent_incomes/(:any)/delete']          = 'admin/delete_parent_income/$1';
 $route['parent_incomes/(:any)/update']          = 'admin/update_parent_income/$1';
+
+// Surat Keterangan Tidak Mampu
+$route['financial_hardships']                        = 'admin/financial_hardships';
+$route['financial_hardships/add']                    = 'admin/add_financial_hardship';
+$route['financial_hardships/(:any)/verification']    = 'admin/verification_financial_hardship/$1';
+$route['financial_hardships/(:any)/delete']          = 'admin/delete_financial_hardship/$1';
+$route['financial_hardships/(:any)/update']          = 'admin/update_financial_hardship/$1';
