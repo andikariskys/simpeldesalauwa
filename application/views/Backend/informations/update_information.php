@@ -1,6 +1,6 @@
 <div class="card mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="mb-0">Form Tambah Informasi</h5>
+        <h5 class="mb-0">Form Ubah Informasi</h5>
     </div>
     <div class="card-body">
         <form action="<?= base_url('informations/' . $data_information->id_informasi . '/update') ?>" method="POST" enctype="multipart/form-data">

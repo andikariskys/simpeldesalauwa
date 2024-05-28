@@ -1,6 +1,6 @@
 <div class="card mb-4">
     <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="mb-0">Form Tambah SK Kematian</h5>
+        <h5 class="mb-0">Form Ubah SK Kematian</h5>
     </div>
     <div class="card-body">
         <form action="<?= base_url('death_certificates/' . $data_death_certificate->id_keterangankematian . '/update') ?>" method="POST" enctype="multipart/form-data">

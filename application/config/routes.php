@@ -108,3 +108,10 @@ $route['death_certificates/add']                    = 'admin/add_death_certifica
 $route['death_certificates/(:any)/verification']    = 'admin/verification_death_certificate/$1';
 $route['death_certificates/(:any)/delete']          = 'admin/delete_death_certificate/$1';
 $route['death_certificates/(:any)/update']          = 'admin/update_death_certificate/$1';
+
+// Surat Keterangan Kelahiran
+$route['birth_announcements']                        = 'admin/birth_announcements';
+$route['birth_announcements/add']                    = 'admin/add_birth_announcement';
+$route['birth_announcements/(:any)/verification']    = 'admin/verification_birth_announcement/$1';
+$route['birth_announcements/(:any)/delete']          = 'admin/delete_birth_announcement/$1';
+$route['birth_announcements/(:any)/update']          = 'admin/update_birth_announcement/$1';

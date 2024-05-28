@@ -161,4 +161,30 @@ final class Admin_model extends CI_Model
         $this->db->where('id_keterangankematian', $id_death_certificate);
         $this->db->delete($this->kematian);
     }
+
+    function get_birth_announcements($id_birth_announcement = null)
+    {
+        if ($id_birth_announcement != null) {
+            $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+            return $this->db->get($this->kelahiran)->row();
+        } else {
+            return $this->db->get($this->kelahiran)->result();
+        }
+    }
+    
+    function save_birth_announcement($data_birth_announcement) {
+        $this->db->insert($this->kelahiran, $data_birth_announcement);
+    }
+    
+    function update_birth_announcement($data_birth_announcement, $id_birth_announcement)
+    {
+        $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+        $this->db->update($this->kelahiran, $data_birth_announcement);
+    }
+    
+    function delete_birth_announcement($id_birth_announcement)
+    {
+        $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+        $this->db->delete($this->kelahiran);
+    }
 }

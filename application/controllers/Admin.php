@@ -668,4 +668,135 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/footer');
 		}
 	}
+
+	function birth_announcements()
+	{
+		$data['active'] = "SK Kelahiran";
+		$data['birth_announcements'] = $this->admin_model->get_birth_announcements();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/birth_announcements/birth_announcements', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_birth_announcement()
+	{
+		if ($this->input->post('ttl') != null) {
+
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/skkl';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_birth_announcement', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+
+			$data_birth_announcement = array(
+				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
+				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
+				'kk'                           	=> $image_kk
+			);
+
+			if (!$this->admin_model->save_birth_announcement($data_birth_announcement)) {
+				$this->session->set_flashdata('success_birth_announcement', 'Tambah data berhasil disimpan!');
+				redirect('birth_announcements');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Kelahiran";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/birth_announcements/add_birth_announcement');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_birth_announcement($id_birth_announcement)
+	{
+		$data_birth_announcement = array('Status_keterangankelahiran' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
+			$this->session->set_flashdata('success_birth_announcement', 'SK berhasil diverifikasi!');
+			redirect('birth_announcements');
+		}
+	}
+
+	function delete_birth_announcement($id_birth_announcement)
+	{
+		$image = $this->admin_model->get_birth_announcements($id_birth_announcement);
+		unlink('./assets/img-admin/skkl/' . $image->kk);
+
+		if (!$this->admin_model->delete_birth_announcement($id_birth_announcement)) {
+			$this->session->set_flashdata('danger_birth_announcement', 'Data berhasil dihapus!');
+			redirect('birth_announcements');
+		}
+	}
+
+	function update_birth_announcement($id_birth_announcement)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_ktp_origin     = $this->input->post('image_kk_origin');
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/skkl';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/skkl/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			$data_birth_announcement = array(
+				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
+				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
+				'kk'                           	=> $image_kk
+			);
+
+			if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
+				$this->session->set_flashdata('update_birth_announcement', 'Ubah data berhasil disimpan!');
+				redirect('birth_announcements');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Kelahiran";
+			$data['data_birth_announcement'] = $this->admin_model->get_birth_announcements($id_birth_announcement);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/birth_announcements/update_birth_announcement', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
 }
