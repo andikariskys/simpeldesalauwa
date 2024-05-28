@@ -97,16 +97,94 @@ final class Admin_model extends CI_Model
     function save_parent_income($data_parent_income) {
         $this->db->insert($this->spot, $data_parent_income);
     }
-
+    
     function update_parent_income($data_parent_income, $id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->update($this->spot, $data_parent_income);
     }
-
+    
     function delete_parent_income($id_parent_income)
     {
         $this->db->where('id_penghasilan', $id_parent_income);
         $this->db->delete($this->spot);
+    }
+    
+    function get_financial_hardships($id_financial_hardship = null)
+    {
+        if ($id_financial_hardship != null) {
+            $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+            return $this->db->get($this->sktm)->row();
+        } else {
+            return $this->db->get($this->sktm)->result();
+        }
+    }
+    
+    function save_financial_hardship($data_financial_hardship) {
+        $this->db->insert($this->sktm, $data_financial_hardship);
+    }
+    
+    function update_financial_hardship($data_financial_hardship, $id_financial_hardship)
+    {
+        $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+        $this->db->update($this->sktm, $data_financial_hardship);
+    }
+    
+    function delete_financial_hardship($id_financial_hardship)
+    {
+        $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
+        $this->db->delete($this->sktm);
+    }
+    
+    function get_death_certificates($id_death_certificate = null)
+    {
+        if ($id_death_certificate != null) {
+            $this->db->where('id_keterangankematian', $id_death_certificate);
+            return $this->db->get($this->kematian)->row();
+        } else {
+            return $this->db->get($this->kematian)->result();
+        }
+    }
+    
+    function save_death_certificate($data_death_certificate) {
+        $this->db->insert($this->kematian, $data_death_certificate);
+    }
+    
+    function update_death_certificate($data_death_certificate, $id_death_certificate)
+    {
+        $this->db->where('id_keterangankematian', $id_death_certificate);
+        $this->db->update($this->kematian, $data_death_certificate);
+    }
+    
+    function delete_death_certificate($id_death_certificate)
+    {
+        $this->db->where('id_keterangankematian', $id_death_certificate);
+        $this->db->delete($this->kematian);
+    }
+
+    function get_birth_announcements($id_birth_announcement = null)
+    {
+        if ($id_birth_announcement != null) {
+            $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+            return $this->db->get($this->kelahiran)->row();
+        } else {
+            return $this->db->get($this->kelahiran)->result();
+        }
+    }
+    
+    function save_birth_announcement($data_birth_announcement) {
+        $this->db->insert($this->kelahiran, $data_birth_announcement);
+    }
+    
+    function update_birth_announcement($data_birth_announcement, $id_birth_announcement)
+    {
+        $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+        $this->db->update($this->kelahiran, $data_birth_announcement);
+    }
+    
+    function delete_birth_announcement($id_birth_announcement)
+    {
+        $this->db->where('id_keterangankelahiran', $id_birth_announcement);
+        $this->db->delete($this->kelahiran);
     }
 }

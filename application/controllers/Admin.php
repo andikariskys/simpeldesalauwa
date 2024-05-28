@@ -39,18 +39,12 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('sambutan_kepala_desa') != null) {
 
-			$tanggal 				= $this->input->post('tanggal');
-			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-			$visi 					= $this->input->post('visi');
-			$misi 					= $this->input->post('misi');
-			$jam_kerja 				= $this->input->post('jam_kerja');
-
 			$data_profile = array(
-				'Tanggal_profil' 		=> $tanggal,
-				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-				'Visi' 					=> $visi,
-				'Misi' 					=> $misi,
-				'Jam_kerja' 			=> $jam_kerja
+				'Tanggal_profil' 		=> $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
+				'Visi' 					=> $this->input->post('visi'),
+				'Misi' 					=> $this->input->post('misi'),
+				'Jam_kerja' 			=> $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->save_profile($data_profile)) {
@@ -79,18 +73,12 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 				= $this->input->post('tanggal');
-			$sambutan_kepala_desa 	= $this->input->post('sambutan_kepala_desa');
-			$visi 					= $this->input->post('visi');
-			$misi 					= $this->input->post('misi');
-			$jam_kerja 				= $this->input->post('jam_kerja');
-
 			$data_profile = array(
-				'Tanggal_profil' 		=> $tanggal,
-				'Sambutan_kepaladesa' 	=> $sambutan_kepala_desa,
-				'Visi' 					=> $visi,
-				'Misi' 					=> $misi,
-				'Jam_kerja' 			=> $jam_kerja
+				'Tanggal_profil' 		=> $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
+				'Visi' 					=> $this->input->post('visi'),
+				'Misi' 					=> $this->input->post('misi'),
+				'Jam_kerja' 			=> $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->update_profile($data_profile, $id_profile)) {
@@ -122,10 +110,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('nama_informasi') != null) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$nama_informasi 	= $this->input->post('nama_informasi');
-			$isi_informasi 		= $this->input->post('isi_informasi');
-			$image              = $_FILES['foto_informasi']['name'];
+			$image		= $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/informasi';
@@ -143,9 +128,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_information = array(
-				'Tanggal_informasi' => $tanggal,
-				'Nama_informasi'	=> $nama_informasi,
-				'Isi'				=> $isi_informasi,
+				'Tanggal_informasi' => $this->input->post('tanggal'),
+				'Nama_informasi'	=> $this->input->post('nama_informasi'),
+				'Isi'				=> $this->input->post('isi_informasi'),
 				'Foto'				=> $image
 			);
 
@@ -166,7 +151,7 @@ class Admin extends CI_Controller
 	function delete_information($id_information)
 	{
 		$image = $this->admin_model->get_informations($id_information);
-		unlink('./assets/img-admin/' . $image->Foto);
+		unlink('./assets/img-admin/informasi' . $image->Foto);
 
 		if (!$this->admin_model->delete_information($id_information)) {
 
@@ -180,9 +165,6 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$nama_informasi 	= $this->input->post('nama_informasi');
-			$isi_informasi 		= $this->input->post('isi_informasi');
 			$image_origin 		= $this->input->post('image_origin');
 			$image              = $_FILES['foto_informasi']['name'];
 
@@ -206,9 +188,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_information = array(
-				'Tanggal_informasi' => $tanggal,
-				'Nama_informasi'	=> $nama_informasi,
-				'Isi'				=> $isi_informasi,
+				'Tanggal_informasi' => $this->input->post('tanggal'),
+				'Nama_informasi'	=> $this->input->post('nama_informasi'),
+				'Isi'				=> $this->input->post('isi_informasi'),
 				'Foto'				=> $image
 			);
 
@@ -240,26 +222,6 @@ class Admin extends CI_Controller
 	function add_parent_income()
 	{
 		if ($this->input->post('no_kk') != null) {
-
-			$tanggal 			= $this->input->post('tanggal');
-			$no_kk 				= $this->input->post('no_kk');
-			$nik 				= $this->input->post('nik');
-			$nama_lengkap 		= $this->input->post('nama_lengkap');
-			$ttl 				= $this->input->post('ttl');
-			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
-			$agama 				= $this->input->post('agama');
-			$nik_ayah 			= $this->input->post('nik_ayah');
-			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
-			$ttl_ayah 			= $this->input->post('ttl_ayah');
-			$agama_ayah 		= $this->input->post('agama_ayah');
-			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
-			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
-			$nik_ibu 			= $this->input->post('nik_ibu');
-			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
-			$ttl_ibu 			= $this->input->post('ttl_ibu');
-			$agama_ibu 			= $this->input->post('agama_ibu');
-			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
-			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
 
 			$image_ktp          = $_FILES['foto_ktp']['name'];
 			$image_kk           = $_FILES['foto_kk']['name'];
@@ -295,31 +257,31 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $tanggal,
-				'No_kk'					=> $no_kk,
-				'Nik'					=> $nik,
-				'Nama'					=> $nama_lengkap,
-				'Ttl'					=> $ttl,
-				'Jenis_kelamin'			=> $jenis_kelamin,
-				'Agama'					=> $agama,
-				'Nik_ayah'				=> $nik_ayah,
-				'Nama_ayah'				=> $nama_lengkap_ayah,
-				'Ttl_ayah'				=> $ttl_ayah,
-				'Agama_ayah'			=> $agama_ayah,
-				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
-				'Penghasilan_ayah'		=> $penghasilan_ayah,
-				'Nik_ibu'				=> $nik_ibu,
-				'Nama_ibu'				=> $nama_lengkap_ibu,
-				'Ttl_ibu'				=> $ttl_ibu,
-				'Agama_ibu'				=> $agama_ibu,
-				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
-				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
+				'No_kk'					=> $this->input->post('no_kk'),
+				'Nik'					=> $this->input->post('nik'),
+				'Nama'					=> $this->input->post('nama_lengkap'),
+				'Ttl'					=> $this->input->post('ttl'),
+				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
+				'Agama'					=> $this->input->post('agama'),
+				'Nik_ayah'				=> $this->input->post('nik_ayah'),
+				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
+				'Agama_ayah'			=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
+				'Nik_ibu'				=> $this->input->post('nik_ibu'),
+				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
+				'Agama_ibu'				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
 				'kk'					=> $image_kk,
 				'ktp'					=> $image_ktp
 			);
 
 			if (!$this->admin_model->save_parent_income($data_parent_income)) {
-				$this->session->set_flashdata('update_parent_income', 'Ubah data berhasil disimpan!');
+				$this->session->set_flashdata('success_parent_income', 'Tambah data berhasil disimpan!');
 				redirect('parent_incomes');
 			}
 		} else {
@@ -344,6 +306,10 @@ class Admin extends CI_Controller
 
 	function delete_parent_income($id_parent_income)
 	{
+		$image = $this->admin_model->get_parent_incomes($id_parent_income);
+		unlink('./assets/img-admin/spot/' . $image->ktp);
+		unlink('./assets/img-admin/spot/' . $image->kk);
+
 		if (!$this->admin_model->delete_parent_income($id_parent_income)) {
 			$this->session->set_flashdata('danger_parent_income', 'Data berhasil dihapus!');
 			redirect('parent_incomes');
@@ -354,25 +320,6 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$tanggal 			= $this->input->post('tanggal');
-			$no_kk 				= $this->input->post('no_kk');
-			$nik 				= $this->input->post('nik');
-			$nama_lengkap 		= $this->input->post('nama_lengkap');
-			$ttl 				= $this->input->post('ttl');
-			$jenis_kelamin 		= $this->input->post('jenis_kelamin');
-			$agama 				= $this->input->post('agama');
-			$nik_ayah 			= $this->input->post('nik_ayah');
-			$nama_lengkap_ayah	= $this->input->post('nama_lengkap_ayah');
-			$ttl_ayah 			= $this->input->post('ttl_ayah');
-			$agama_ayah 		= $this->input->post('agama_ayah');
-			$pekerjaan_ayah 	= $this->input->post('pekerjaan_ayah');
-			$penghasilan_ayah 	= $this->input->post('penghasilan_ayah');
-			$nik_ibu 			= $this->input->post('nik_ibu');
-			$nama_lengkap_ibu 	= $this->input->post('nama_lengkap_ibu');
-			$ttl_ibu 			= $this->input->post('ttl_ibu');
-			$agama_ibu 			= $this->input->post('agama_ibu');
-			$pekerjaan_ibu 		= $this->input->post('pekerjaan_ibu');
-			$penghasilan_ibu 	= $this->input->post('penghasilan_ibu');
 			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
 			$image_kk_origin 	= $this->input->post('image_kk_origin');
 
@@ -418,25 +365,25 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $tanggal,
-				'No_kk'					=> $no_kk,
-				'Nik'					=> $nik,
-				'Nama'					=> $nama_lengkap,
-				'Ttl'					=> $ttl,
-				'Jenis_kelamin'			=> $jenis_kelamin,
-				'Agama'					=> $agama,
-				'Nik_ayah'				=> $nik_ayah,
-				'Nama_ayah'				=> $nama_lengkap_ayah,
-				'Ttl_ayah'				=> $ttl_ayah,
-				'Agama_ayah'			=> $agama_ayah,
-				'Pekerjaan_ayah'		=> $pekerjaan_ayah,
-				'Penghasilan_ayah'		=> $penghasilan_ayah,
-				'Nik_ibu'				=> $nik_ibu,
-				'Nama_ibu'				=> $nama_lengkap_ibu,
-				'Ttl_ibu'				=> $ttl_ibu,
-				'Agama_ibu'				=> $agama_ibu,
-				'Pekerjaan_ibu'			=> $pekerjaan_ibu,
-				'Penghasilan_ibu'		=> $penghasilan_ibu,
+				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
+				'No_kk'					=> $this->input->post('no_kk'),
+				'Nik'					=> $this->input->post('nik'),
+				'Nama'					=> $this->input->post('nama_lengkap'),
+				'Ttl'					=> $this->input->post('ttl'),
+				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
+				'Agama'					=> $this->input->post('agama'),
+				'Nik_ayah'				=> $this->input->post('nik_ayah'),
+				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
+				'Agama_ayah'			=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
+				'Nik_ibu'				=> $this->input->post('nik_ibu'),
+				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
+				'Agama_ibu'				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
 				'kk'					=> $image_kk,
 				'ktp'					=> $image_ktp
 			);
@@ -452,6 +399,403 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/templates/sidebar', $data);
 			$this->load->view('backend/parent_incomes/update_parent_income', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function financial_hardships()
+	{
+		$data['active'] = "SK Tidak Mampu";
+		$data['financial_hardships'] = $this->admin_model->get_financial_hardships();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/financial_hardships/financial_hardships', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_financial_hardship()
+	{
+		if ($this->input->post('no_kk') != null) {
+
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/sktm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_financial_hardship', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+
+			$data_financial_hardship = array(
+				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
+				'No_kk' 						=> $this->input->post('no_kk'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama_lengkap'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'kk'							=> $image_kk
+			);
+
+			if (!$this->admin_model->save_financial_hardship($data_financial_hardship)) {
+				$this->session->set_flashdata('success_financial_hardship', 'Tambah data berhasil disimpan!');
+				redirect('financial_hardships');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Tidak Mampu";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/financial_hardships/add_financial_hardship');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_financial_hardship($id_financial_hardship)
+	{
+		$data_financial_hardship = array('Status_keterangantidakmampu' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
+			$this->session->set_flashdata('success_financial_hardship', 'SK berhasil diverifikasi!');
+			redirect('financial_hardships');
+		}
+	}
+
+	function delete_financial_hardship($id_financial_hardship)
+	{
+		$image = $this->admin_model->get_financial_hardships($id_financial_hardship);
+		unlink('./assets/img-admin/sktm/' . $image->kk);
+
+		if (!$this->admin_model->delete_financial_hardship($id_financial_hardship)) {
+			$this->session->set_flashdata('danger_financial_hardship', 'Data berhasil dihapus!');
+			redirect('financial_hardships');
+		}
+	}
+
+	function update_financial_hardship($id_financial_hardship)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_kk_origin 	= $this->input->post('image_kk_origin');
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/sktm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_financial_hardship', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/sktm/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			$data_financial_hardship = array(
+				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
+				'No_kk' 						=> $this->input->post('no_kk'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama_lengkap'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'kk'							=> $image_kk,
+			);
+
+			if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
+				$this->session->set_flashdata('update_financial_hardship', 'Ubah data berhasil disimpan!');
+				redirect('financial_hardships');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Tidak Mampu";
+			$data['data_financial_hardship'] = $this->admin_model->get_financial_hardships($id_financial_hardship);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/financial_hardships/update_financial_hardship', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function death_certificates()
+	{
+		$data['active'] = "SK Kematian";
+		$data['death_certificates'] = $this->admin_model->get_death_certificates();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/death_certificates/death_certificates', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_death_certificate()
+	{
+		if ($this->input->post('nik') != null) {
+
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/skm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_death_certificate', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_death_certificate = array(
+				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
+				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
+				'ktp'							=> $image_ktp
+			);
+
+			if (!$this->admin_model->save_death_certificate($data_death_certificate)) {
+				$this->session->set_flashdata('success_death_certificate', 'Tambah data berhasil disimpan!');
+				redirect('death_certificates');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Kematian";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/death_certificates/add_death_certificate');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_death_certificate($id_death_certificate)
+	{
+		$data_death_certificate = array('Status_keterangankematian' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
+			$this->session->set_flashdata('success_death_certificate', 'SK berhasil diverifikasi!');
+			redirect('death_certificates');
+		}
+	}
+
+	function delete_death_certificate($id_death_certificate)
+	{
+		$image = $this->admin_model->get_death_certificates($id_death_certificate);
+		unlink('./assets/img-admin/skm/' . $image->ktp);
+
+		if (!$this->admin_model->delete_death_certificate($id_death_certificate)) {
+			$this->session->set_flashdata('danger_death_certificate', 'Data berhasil dihapus!');
+			redirect('death_certificates');
+		}
+	}
+
+	function update_death_certificate($id_death_certificate)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/skm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/skm/' . $image_ktp_origin);
+				}
+			} else {
+				$image_ktp = $image_ktp_origin;
+			}
+
+			$data_death_certificate = array(
+				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
+				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
+				'ktp'							=> $image_ktp
+			);
+
+			if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
+				$this->session->set_flashdata('update_death_certificate', 'Ubah data berhasil disimpan!');
+				redirect('death_certificates');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Kematian";
+			$data['data_death_certificate'] = $this->admin_model->get_death_certificates($id_death_certificate);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/death_certificates/update_death_certificate', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function birth_announcements()
+	{
+		$data['active'] = "SK Kelahiran";
+		$data['birth_announcements'] = $this->admin_model->get_birth_announcements();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/birth_announcements/birth_announcements', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_birth_announcement()
+	{
+		if ($this->input->post('ttl') != null) {
+
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/skkl';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_birth_announcement', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+
+			$data_birth_announcement = array(
+				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
+				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
+				'kk'                           	=> $image_kk
+			);
+
+			if (!$this->admin_model->save_birth_announcement($data_birth_announcement)) {
+				$this->session->set_flashdata('success_birth_announcement', 'Tambah data berhasil disimpan!');
+				redirect('birth_announcements');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Kelahiran";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/birth_announcements/add_birth_announcement');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_birth_announcement($id_birth_announcement)
+	{
+		$data_birth_announcement = array('Status_keterangankelahiran' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
+			$this->session->set_flashdata('success_birth_announcement', 'SK berhasil diverifikasi!');
+			redirect('birth_announcements');
+		}
+	}
+
+	function delete_birth_announcement($id_birth_announcement)
+	{
+		$image = $this->admin_model->get_birth_announcements($id_birth_announcement);
+		unlink('./assets/img-admin/skkl/' . $image->kk);
+
+		if (!$this->admin_model->delete_birth_announcement($id_birth_announcement)) {
+			$this->session->set_flashdata('danger_birth_announcement', 'Data berhasil dihapus!');
+			redirect('birth_announcements');
+		}
+	}
+
+	function update_birth_announcement($id_birth_announcement)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_ktp_origin     = $this->input->post('image_kk_origin');
+			$image_kk           = $_FILES['foto_kk']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/skkl';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/skkl/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			$data_birth_announcement = array(
+				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
+				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
+				'kk'                           	=> $image_kk
+			);
+
+			if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
+				$this->session->set_flashdata('update_birth_announcement', 'Ubah data berhasil disimpan!');
+				redirect('birth_announcements');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Kelahiran";
+			$data['data_birth_announcement'] = $this->admin_model->get_birth_announcements($id_birth_announcement);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/birth_announcements/update_birth_announcement', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}
