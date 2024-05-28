@@ -61,17 +61,5 @@
 </div>
 
 <script>
-    new DataTable('#data_tables', {
-        columns: [{
-            width: '5%'
-        }, {
-            width: '10%'
-        }, {
-            width: '25%'
-        }, null, {
-            width: '15%'
-        }, {
-            width: '15%'
-        }]
-    });
+    new DataTable('#data_tables');
 </script>

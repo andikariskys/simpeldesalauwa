@@ -126,3 +126,10 @@ $route['birth_announcements/add']                    = 'admin/add_birth_announce
 $route['birth_announcements/(:any)/verification']    = 'admin/verification_birth_announcement/$1';
 $route['birth_announcements/(:any)/delete']          = 'admin/delete_birth_announcement/$1';
 $route['birth_announcements/(:any)/update']          = 'admin/update_birth_announcement/$1';
+
+// Surat Pengantar Nikah
+$route['marriage_recommendations']                        = 'admin/marriage_recommendations';
+$route['marriage_recommendations/add']                    = 'admin/add_marriage_recommendation';
+$route['marriage_recommendations/(:any)/verification']    = 'admin/verification_marriage_recommendation/$1';
+$route['marriage_recommendations/(:any)/delete']          = 'admin/delete_marriage_recommendation/$1';
+$route['marriage_recommendations/(:any)/update']          = 'admin/update_marriage_recommendation/$1';

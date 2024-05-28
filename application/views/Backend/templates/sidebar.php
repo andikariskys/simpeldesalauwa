@@ -52,7 +52,13 @@
               <div data-i18n="Informasi">Informasi</div>
             </a>
           </li>
-          <li class="menu-item <?php if (($active == "SK Penghasilan Orang Tua") or ($active == 'SK Tidak Mampu') or ($active == "SK Kematian") or ($active == "SK Kelahiran")) {
+          <li class="menu-item <?php if (
+                                  ($active == "SK Penghasilan Orang Tua") or
+                                  ($active == 'SK Tidak Mampu') or
+                                  ($active == "SK Kematian") or
+                                  ($active == "SK Kelahiran") or
+                                  ($active == "Surat Pengantar Nikah")
+                                ) {
                                   echo "active open";
                                 } ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -62,36 +68,38 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item <?php if ($active == "SK Penghasilan Orang Tua") {
-                                  echo "active";
-                                } ?>">
+                                      echo "active";
+                                    } ?>">
                 <a href="<?= base_url('parent_incomes') ?>" class="menu-link">
                   <div data-i18n="SK Penghasilan Orang Tua">SK Penghasilan Orang Tua</div>
                 </a>
               </li>
               <li class="menu-item <?php if ($active == "SK Tidak Mampu") {
-                                  echo "active";
-                                } ?>">
+                                      echo "active";
+                                    } ?>">
                 <a href="<?= base_url('financial_hardships') ?>" class="menu-link">
                   <div data-i18n="SK Tidak Mampu">SK Tidak Mampu</div>
                 </a>
               </li>
               <li class="menu-item <?php if ($active == "SK Kelahiran") {
-                                  echo "active";
-                                } ?>">
+                                      echo "active";
+                                    } ?>">
                 <a href="<?= base_url('birth_announcements') ?>" class="menu-link">
                   <div data-i18n="SK Kelahiran">SK Kelahiran</div>
                 </a>
               </li>
               <li class="menu-item <?php if ($active == "SK Kematian") {
-                                  echo "active";
-                                } ?>">
+                                      echo "active";
+                                    } ?>">
                 <a href="<?= base_url('death_certificates') ?>" class="menu-link">
                   <div data-i18n="SK Kematian">SK Kematian</div>
                 </a>
               </li>
-              <li class="menu-item">
-                <a href="<?= base_url('') ?>" class="menu-link">
-                  <div data-i18n="SP Pengantar Nikah">SP Pengantar Nikah</div>
+              <li class="menu-item <?php if ($active == "Surat Pengantar Nikah") {
+                                      echo "active";
+                                    } ?>">
+                <a href="<?= base_url('marriage_recommendations') ?>" class="menu-link">
+                  <div data-i18n="SP Pengantar Nikah">Surat Pengantar Nikah</div>
                 </a>
               </li>
               <li class="menu-item">

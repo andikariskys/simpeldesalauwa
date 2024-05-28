@@ -11,7 +11,7 @@ final class Admin_model extends CI_Model
     public $sktm = "keterangan_tidak_mampu";
     public $kontak = "kontak";
     public $pengaduan = "pengaduan";
-    public $nikah = "pengantar_nikah";
+    public $pernikahan = "pengantar_nikah";
     public $spot = "penghasilan_orang_tua";
     public $profil = "profil";
     public $spkck = "spkck";
@@ -24,7 +24,7 @@ final class Admin_model extends CI_Model
             (SELECT COUNT(*) FROM " . $this->sktm . ") AS sktm, 
             (SELECT COUNT(*) FROM " . $this->kelahiran . ") AS kelahiran,
             (SELECT COUNT(*) FROM " . $this->kematian . ") AS kematian,
-            (SELECT COUNT(*) FROM " . $this->nikah . ") AS nikah,
+            (SELECT COUNT(*) FROM " . $this->pernikahan . ") AS nikah,
             (SELECT COUNT(*) FROM " . $this->spkck . ") AS spkck
         ");
         return $query->result_array();
@@ -186,5 +186,31 @@ final class Admin_model extends CI_Model
     {
         $this->db->where('id_keterangankelahiran', $id_birth_announcement);
         $this->db->delete($this->kelahiran);
+    }
+
+    function get_marriage_recommendations($id_marriage_recommendation = null)
+    {
+        if ($id_marriage_recommendation != null) {
+            $this->db->where('id_pengantarnikah', $id_marriage_recommendation);
+            return $this->db->get($this->pernikahan)->row();
+        } else {
+            return $this->db->get($this->pernikahan)->result();
+        }
+    }
+    
+    function save_marriage_recommendation($data_marriage_recommendation) {
+        $this->db->insert($this->pernikahan, $data_marriage_recommendation);
+    }
+    
+    function update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)
+    {
+        $this->db->where('id_pengantarnikah', $id_marriage_recommendation);
+        $this->db->update($this->pernikahan, $data_marriage_recommendation);
+    }
+    
+    function delete_marriage_recommendation($id_marriage_recommendation)
+    {
+        $this->db->where('id_pengantarnikah', $id_marriage_recommendation);
+        $this->db->delete($this->pernikahan);
     }
 }

@@ -751,7 +751,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_ktp_origin     = $this->input->post('image_kk_origin');
+			$image_kk_origin     = $this->input->post('image_kk_origin');
 			$image_kk           = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
@@ -796,6 +796,198 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/templates/sidebar', $data);
 			$this->load->view('backend/birth_announcements/update_birth_announcement', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function marriage_recommendations()
+	{
+		$data['active'] = "Surat Pengantar Nikah";
+		$data['marriage_recommendations'] = $this->admin_model->get_marriage_recommendations();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/marriage_recommendations/marriage_recommendations', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_marriage_recommendation()
+	{
+		if ($this->input->post('ttl') != null) {
+
+			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spn';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_marriage_recommendation', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spn';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_marriage_recommendation', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_marriage_recommendation = array(
+				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Anak_ke' 					=> $this->input->post('anak_ke'),
+				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
+				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
+				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
+				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
+				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
+				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
+				'Ktp' 						=> $image_ktp,
+				'kk'                       	=> $image_kk
+			);
+
+			if (!$this->admin_model->save_marriage_recommendation($data_marriage_recommendation)) {
+				$this->session->set_flashdata('success_marriage_recommendation', 'Tambah data berhasil disimpan!');
+				redirect('marriage_recommendations');
+			}
+		} else {
+
+			$data['active'] = "Tambah Surat Pengantar Nikah";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/marriage_recommendations/add_marriage_recommendation');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_marriage_recommendation($id_marriage_recommendation)
+	{
+		$data_marriage_recommendation = array('Status_pengantarnikah' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)) {
+			$this->session->set_flashdata('success_marriage_recommendation', 'SK berhasil diverifikasi!');
+			redirect('marriage_recommendations');
+		}
+	}
+
+	function delete_marriage_recommendation($id_marriage_recommendation)
+	{
+		$image = $this->admin_model->get_marriage_recommendations($id_marriage_recommendation);
+		unlink('./assets/img-admin/spn/' . $image->Kk);
+		unlink('./assets/img-admin/spn/' . $image->Ktp);
+
+		if (!$this->admin_model->delete_marriage_recommendation($id_marriage_recommendation)) {
+			$this->session->set_flashdata('danger_marriage_recommendation', 'Data berhasil dihapus!');
+			redirect('marriage_recommendations');
+		}
+	}
+
+	function update_marriage_recommendation($id_marriage_recommendation)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_kk_origin  	= $this->input->post('image_kk_origin');
+			$image_ktp_origin	= $this->input->post('image_ktp_origin');
+			$image_kk         	= $_FILES['foto_kk']['name'];
+			$image_ktp       	= $_FILES['foto_ktp']['name'];
+
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spn';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spn/' . $image_kk_origin);
+				}
+			} else {
+				$image_kk = $image_kk_origin;
+			}
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spn';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/spn/' . $image_ktp_origin);
+				}
+			} else {
+				$image_ktp = $image_ktp_origin;
+			}
+
+			$data_marriage_recommendation = array(
+				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Anak_ke' 					=> $this->input->post('anak_ke'),
+				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
+				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
+				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
+				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
+				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
+				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
+				'Ktp' 						=> $image_ktp,
+				'kk'                       	=> $image_kk
+			);
+
+			if (!$this->admin_model->update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)) {
+				$this->session->set_flashdata('update_marriage_recommendation', 'Ubah data berhasil disimpan!');
+				redirect('marriage_recommendations');
+			}
+		} else {
+
+			$data['active'] = "Ubah Surat Pengantar Nikah";
+			$data['data_marriage_recommendation'] = $this->admin_model->get_marriage_recommendations($id_marriage_recommendation);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/marriage_recommendations/update_marriage_recommendation', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}
