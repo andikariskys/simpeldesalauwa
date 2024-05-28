@@ -135,4 +135,30 @@ final class Admin_model extends CI_Model
         $this->db->where('id_keterangantidakmampu', $id_financial_hardship);
         $this->db->delete($this->sktm);
     }
+    
+    function get_death_certificates($id_death_certificate = null)
+    {
+        if ($id_death_certificate != null) {
+            $this->db->where('id_keterangankematian', $id_death_certificate);
+            return $this->db->get($this->kematian)->row();
+        } else {
+            return $this->db->get($this->kematian)->result();
+        }
+    }
+    
+    function save_death_certificate($data_death_certificate) {
+        $this->db->insert($this->kematian, $data_death_certificate);
+    }
+    
+    function update_death_certificate($data_death_certificate, $id_death_certificate)
+    {
+        $this->db->where('id_keterangankematian', $id_death_certificate);
+        $this->db->update($this->kematian, $data_death_certificate);
+    }
+    
+    function delete_death_certificate($id_death_certificate)
+    {
+        $this->db->where('id_keterangankematian', $id_death_certificate);
+        $this->db->delete($this->kematian);
+    }
 }

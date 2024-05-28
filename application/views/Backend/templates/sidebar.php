@@ -52,7 +52,7 @@
               <div data-i18n="Informasi">Informasi</div>
             </a>
           </li>
-          <li class="menu-item <?php if (($active == "SK Penghasilan Orang Tua") or ($active == 'SK Tidak Mampu')) {
+          <li class="menu-item <?php if (($active == "SK Penghasilan Orang Tua") or ($active == 'SK Tidak Mampu') or $active == "SK Kematian") {
                                   echo "active open";
                                 } ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -80,8 +80,10 @@
                   <div data-i18n="SK Kelahiran">SK Kelahiran</div>
                 </a>
               </li>
-              <li class="menu-item">
-                <a href="<?= base_url('') ?>" class="menu-link">
+              <li class="menu-item <?php if ($active == "SK Kematian") {
+                                  echo "active";
+                                } ?>">
+                <a href="<?= base_url('death_certificates') ?>" class="menu-link">
                   <div data-i18n="SK Kematian">SK Kematian</div>
                 </a>
               </li>

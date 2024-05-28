@@ -151,7 +151,7 @@ class Admin extends CI_Controller
 	function delete_information($id_information)
 	{
 		$image = $this->admin_model->get_informations($id_information);
-		unlink('./assets/img-admin/' . $image->Foto);
+		unlink('./assets/img-admin/informasi' . $image->Foto);
 
 		if (!$this->admin_model->delete_information($id_information)) {
 
@@ -306,6 +306,10 @@ class Admin extends CI_Controller
 
 	function delete_parent_income($id_parent_income)
 	{
+		$image = $this->admin_model->get_parent_incomes($id_parent_income);
+		unlink('./assets/img-admin/spot/' . $image->ktp);
+		unlink('./assets/img-admin/spot/' . $image->kk);
+
 		if (!$this->admin_model->delete_parent_income($id_parent_income)) {
 			$this->session->set_flashdata('danger_parent_income', 'Data berhasil dihapus!');
 			redirect('parent_incomes');
@@ -423,7 +427,7 @@ class Admin extends CI_Controller
 
 				if (!$this->upload->do_upload('foto_kk')) {
 					$error = $this->upload->display_errors();
-					$this->session->set_flashdata('danger_parent_income', $error);
+					$this->session->set_flashdata('danger_financial_hardship', $error);
 					echo $error;
 				} else {
 					$image_kk = $this->upload->data('file_name');
@@ -468,6 +472,9 @@ class Admin extends CI_Controller
 
 	function delete_financial_hardship($id_financial_hardship)
 	{
+		$image = $this->admin_model->get_financial_hardships($id_financial_hardship);
+		unlink('./assets/img-admin/sktm/' . $image->kk);
+
 		if (!$this->admin_model->delete_financial_hardship($id_financial_hardship)) {
 			$this->session->set_flashdata('danger_financial_hardship', 'Data berhasil dihapus!');
 			redirect('financial_hardships');
@@ -482,19 +489,19 @@ class Admin extends CI_Controller
 			$image_kk           = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
-				$config['upload_path'] = './assets/img-admin/spot';
+				$config['upload_path'] = './assets/img-admin/sktm';
 				$config['allowed_types'] = 'jpg|jpeg|png|webp';
 
 				$this->load->library('upload', $config);
 
 				if (!$this->upload->do_upload('foto_kk')) {
 					$error = $this->upload->display_errors();
-					$this->session->set_flashdata('danger_parent_income', $error);
+					$this->session->set_flashdata('danger_financial_hardship', $error);
 					echo $error;
 				} else {
 					$image_kk = $this->upload->data('file_name');
 
-					unlink('./assets/img-admin/spot/' . $image_kk_origin);
+					unlink('./assets/img-admin/sktm/' . $image_kk_origin);
 				}
 			} else {
 				$image_kk = $image_kk_origin;
@@ -523,6 +530,141 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/templates/sidebar', $data);
 			$this->load->view('backend/financial_hardships/update_financial_hardship', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function death_certificates()
+	{
+		$data['active'] = "SK Kematian";
+		$data['death_certificates'] = $this->admin_model->get_death_certificates();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/death_certificates/death_certificates', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_death_certificate()
+	{
+		if ($this->input->post('nik') != null) {
+
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/skm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_death_certificate', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_death_certificate = array(
+				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
+				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
+				'ktp'							=> $image_ktp
+			);
+
+			if (!$this->admin_model->save_death_certificate($data_death_certificate)) {
+				$this->session->set_flashdata('success_death_certificate', 'Tambah data berhasil disimpan!');
+				redirect('death_certificates');
+			}
+		} else {
+
+			$data['active'] = "Tambah SK Kematian";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/death_certificates/add_death_certificate');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function verification_death_certificate($id_death_certificate)
+	{
+		$data_death_certificate = array('Status_keterangankematian' => 'Terverifikasi');
+
+		if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
+			$this->session->set_flashdata('success_death_certificate', 'SK berhasil diverifikasi!');
+			redirect('death_certificates');
+		}
+	}
+
+	function delete_death_certificate($id_death_certificate)
+	{
+		$image = $this->admin_model->get_death_certificates($id_death_certificate);
+		unlink('./assets/img-admin/skm/' . $image->ktp);
+
+		if (!$this->admin_model->delete_death_certificate($id_death_certificate)) {
+			$this->session->set_flashdata('danger_death_certificate', 'Data berhasil dihapus!');
+			redirect('death_certificates');
+		}
+	}
+
+	function update_death_certificate($id_death_certificate)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/skm';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_parent_income', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/skm/' . $image_ktp_origin);
+				}
+			} else {
+				$image_ktp = $image_ktp_origin;
+			}
+
+			$data_death_certificate = array(
+				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
+				'Nik' 							=> $this->input->post('nik'),
+				'Nama' 							=> $this->input->post('nama'),
+				'Ttl' 							=> $this->input->post('ttl'),
+				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
+				'Agama' 						=> $this->input->post('agama'),
+				'Alamat' 						=> $this->input->post('alamat'),
+				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
+				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
+				'ktp'							=> $image_ktp
+			);
+
+			if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
+				$this->session->set_flashdata('update_death_certificate', 'Ubah data berhasil disimpan!');
+				redirect('death_certificates');
+			}
+		} else {
+
+			$data['active'] = "Ubah SK Kematian";
+			$data['data_death_certificate'] = $this->admin_model->get_death_certificates($id_death_certificate);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/death_certificates/update_death_certificate', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}

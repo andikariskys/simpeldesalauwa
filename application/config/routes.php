@@ -101,3 +101,10 @@ $route['financial_hardships/add']                    = 'admin/add_financial_hard
 $route['financial_hardships/(:any)/verification']    = 'admin/verification_financial_hardship/$1';
 $route['financial_hardships/(:any)/delete']          = 'admin/delete_financial_hardship/$1';
 $route['financial_hardships/(:any)/update']          = 'admin/update_financial_hardship/$1';
+
+// Surat Keterangan Kematian
+$route['death_certificates']                        = 'admin/death_certificates';
+$route['death_certificates/add']                    = 'admin/add_death_certificate';
+$route['death_certificates/(:any)/verification']    = 'admin/verification_death_certificate/$1';
+$route['death_certificates/(:any)/delete']          = 'admin/delete_death_certificate/$1';
+$route['death_certificates/(:any)/update']          = 'admin/update_death_certificate/$1';
