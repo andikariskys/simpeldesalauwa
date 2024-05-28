@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Form Tambah Profile</h5>
+                        <h5 class="mb-0">Form Tambah <?= $title ?></h5>
                     </div>
                     <div class="card-body">
                         <form action="<?= base_url('parent_incomes/add') ?>" method="POST" enctype="multipart/form-data">
@@ -203,6 +203,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-sm-8">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-primary">Batal</button>
                                 </div>
                             </div>
                         </form>
