@@ -416,46 +416,71 @@ class Service extends CI_Controller
 
 	public function addMarriageLetter()
 	{
+		if ($this->input->post('ttl') != null) {
 
-		if ($this->input->post('nik') != null) {
-
+			$image_kk           = $_FILES['foto_kk']['name'];
 			$image_ktp           = $_FILES['foto_ktp']['name'];
 
+			if ($image_kk != null) {
+				$config['upload_path'] = './assets/img-admin/spn';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_kk')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_marriage_recommendation', $error);
+					echo $error;
+				} else {
+					$image_kk = $this->upload->data('file_name');
+				}
+			}
 			if ($image_ktp != null) {
-				$config['upload_path'] = './assets/img-admin/skm';
+				$config['upload_path'] = './assets/img-admin/spn';
 				$config['allowed_types'] = 'jpg|jpeg|png|webp';
 
 				$this->load->library('upload', $config);
 
 				if (!$this->upload->do_upload('foto_ktp')) {
 					$error = $this->upload->display_errors();
-					$this->session->set_flashdata('danger_death_certificate', $error);
+					$this->session->set_flashdata('danger_marriage_recommendation', $error);
 					echo $error;
 				} else {
 					$image_ktp = $this->upload->data('file_name');
 				}
 			}
 
-			$data_death_certificate = array(
-				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
-				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
-				'ktp'							=> $image_ktp
+			$data_marriage_recommendation = array(
+				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Anak_ke' 					=> $this->input->post('anak_ke'),
+				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
+				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
+				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
+				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
+				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
+				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
+				'Ktp' 						=> $image_ktp,
+				'kk'                       	=> $image_kk
 			);
 
-			if (!$this->admin_model->save_death_certificate($data_death_certificate)) {
+			if (!$this->admin_model->save_marriage_recommendation($data_marriage_recommendation)) {
 				$this->session->set_flashdata('alert', 'Data berhasil ditambah.');
 				$this->session->set_flashdata('alert_type', 'info');
-				redirect('death-certificate');
+				redirect('marriage-letter');
 			}
 		} else {
+
 			$data['is_home'] = false;
 			$data['title'] = 'Surat Pengantar Nikah';
 			$this->load->view('service/templates/header');
@@ -480,12 +505,52 @@ class Service extends CI_Controller
 
 	public function addPoliceRecordLetter()
 	{
-		$data['is_home'] = false;
-		$data['title'] = 'Surat Pengantar Catatan Kepolisian';
-		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar', $data);
-		$this->load->view('service/services/police-record-letter/index', $data);
-		$this->load->view('service/templates/footer');
+		if ($this->input->post('ttl') != null) {
+
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spkck';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_police_report', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_police_report = array(
+				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Nik' 						=> $this->input->post('nik'),
+				'Ktp' 						=> $image_ktp
+			);
+
+			if (!$this->admin_model->save_police_report($data_police_report)) {
+				$this->session->set_flashdata('alert', 'Data berhasil ditambah.');
+				$this->session->set_flashdata('alert_type', 'info');
+				redirect('police-record-letter');
+			}
+		} else {
+
+			$data['is_home'] = false;
+			$data['title'] = 'Surat Pengantar Catatan Kepolisian';
+			$this->load->view('service/templates/header');
+			$this->load->view('service/templates/navbar', $data);
+			$this->load->view('service/services/police-record-letter/index', $data);
+			$this->load->view('service/templates/footer');
+		}
 	}
 
 
