@@ -57,7 +57,8 @@
                                   ($active == 'SK Tidak Mampu') or
                                   ($active == "SK Kematian") or
                                   ($active == "SK Kelahiran") or
-                                  ($active == "Surat Pengantar Nikah")
+                                  ($active == "Surat Pengantar Nikah") or
+                                  ($active == "Surat Pengantar SKCK")
                                 ) {
                                   echo "active open";
                                 } ?>">
@@ -102,9 +103,11 @@
                   <div data-i18n="SP Pengantar Nikah">Surat Pengantar Nikah</div>
                 </a>
               </li>
-              <li class="menu-item">
-                <a href="<?= base_url('') ?>" class="menu-link">
-                  <div data-i18n="SP Keterangan Catatan Kepolisian">SP Keterangan Catatan Kepolisian</div>
+              <li class="menu-item <?php if ($active == "Surat Pengantar SKCK") {
+                                      echo "active";
+                                    } ?>">
+                <a href="<?= base_url('police_reports') ?>" class="menu-link">
+                  <div data-i18n="Surat Pengantar SKCK">Surat Pengantar SKCK</div>
                 </a>
               </li>
             </ul>

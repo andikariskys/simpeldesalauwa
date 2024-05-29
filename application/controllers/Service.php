@@ -416,7 +416,6 @@ class Service extends CI_Controller
 
 	public function addMarriageLetter()
 	{
-
 		if ($this->input->post('ttl') != null) {
 
 			$image_kk           = $_FILES['foto_kk']['name'];

@@ -1,5 +1,5 @@
 <style>
-    .form-control border-dark border-dark-submit-button {
+    .form-control border-dark-submit-button {
         width: auto;
         /* Make button size fit content */
         float: left;
