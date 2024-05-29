@@ -13,6 +13,9 @@ class Admin extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('admin_model');
+		if ($this->session->userdata('is_login') != true) {
+			redirect('Service');
+		}
 	}
 
 	public function index()
@@ -401,6 +404,31 @@ class Admin extends CI_Controller
 			$this->load->view('backend/parent_incomes/update_parent_income', $data);
 			$this->load->view('backend/templates/footer');
 		}
+	}
+
+	//pdf parent income
+	public function printParentIncomes($id_parent_income)
+	{
+		$data['parent_incomes'] = $this->admin_model->get_parent_incomes($id_parent_income);
+		$data['title'] = 'Surat Keterangan Penghasilan Orang Tua';
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "Laporan Balita.pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('Backend/parent_incomes/pdf/cetak.php', $data);
 	}
 
 	function financial_hardships()
