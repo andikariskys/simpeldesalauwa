@@ -11,8 +11,18 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('admin_model');
+
+		if ($this->session->userdata('is_login') != true) {
+			echo "
+			<script>
+				var userConfirmed = confirm('Silakan masuk/login terlebih dahulu');
+				if (userConfirmed) {
+					window.location.href = '" . base_url() ."'; 
+				}
+			</script>
+			";
+		}
 	}
 
 	public function index()
@@ -1232,6 +1242,148 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/templates/sidebar', $data);
 			$this->load->view('backend/galleries/update_gallery', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function contacts()
+	{
+		$data['active'] = "Kontak";
+		$data['data_contacts'] = $this->admin_model->get_contacts();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/contacts/contacts', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_contact()
+	{
+		if ($this->input->post('email') != null) {
+
+			$data_contact = array(
+				'Alamat' 		=> $this->input->post('alamat'),
+				'Email' 		=> $this->input->post('email'),
+				'Telepon'       => $this->input->post('telepon')
+			);
+
+			if (!$this->admin_model->save_contact($data_contact)) {
+				$this->session->set_flashdata('add_contact', 'Data berhasil disimpan!');
+				redirect('contacts');
+			}
+		} else {
+
+			$data['active'] = "Tambah Kontak";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/contacts/add_contact');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function delete_contact($id_contact)
+	{
+		if (!$this->admin_model->delete_contact($id_contact)) {
+			$this->session->set_flashdata('delete_contact', 'Data berhasil dihapus!');
+			redirect('contacts');
+		}
+	}
+
+	function update_contact($id_contact)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$data_contact = array(
+				'Alamat' 		=> $this->input->post('alamat'),
+				'Email' 		=> $this->input->post('email'),
+				'Telepon'       => $this->input->post('telepon')
+			);
+
+			if (!$this->admin_model->update_contact($data_contact, $id_contact)) {
+				$this->session->set_flashdata('update_contact', 'Ubah data berhasil disimpan!');
+				redirect('contacts');
+			}
+		} else {
+
+			$data['active'] = "Ubah Kontak";
+			$data['data_contact'] = $this->admin_model->get_contacts($id_contact);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/contacts/update_contact', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function users()
+	{
+		$data['active'] = "User";
+		$data['data_users'] = $this->admin_model->get_users();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/users/users', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_user()
+	{
+		if ($this->input->post('username') != null) {
+
+			$data_user = array(
+				'Nama_user'		=> $this->input->post('nama'),
+				'Username' 		=> $this->input->post('username'),
+				'password'  	=> md5($this->input->post('password'))
+			);
+
+			if (!$this->admin_model->save_user($data_user)) {
+				$this->session->set_flashdata('add_user', 'Data berhasil disimpan!');
+				redirect('users');
+			}
+		} else {
+
+			$data['active'] = "Tambah User";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/users/add_user');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function delete_user($id_user)
+	{
+		if (!$this->admin_model->delete_user($id_user)) {
+			$this->session->set_flashdata('delete_user', 'Data berhasil dihapus!');
+			redirect('users');
+		}
+	}
+
+	function update_user($id_user, $type = null)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			if ($this->input->post('this_reset') == true) {
+				$data_user = array(
+					'password'  	=> md5($this->input->post('password'))
+				);
+				$message = "Ubah password berhasil disimpan!";
+			} else {
+				$data_user = array(
+					'Nama_user'		=> $this->input->post('nama'),
+					'Username' 		=> $this->input->post('username')
+				);
+				$message = "Ubah data berhasil disimpan!";
+			}
+
+			if (!$this->admin_model->update_user($data_user, $id_user)) {
+				$this->session->set_flashdata('update_user', $message);
+				redirect('users');
+			}
+		} else {
+
+			$data['active'] = "Ubah User";
+			$data['data_user'] = $this->admin_model->get_users($id_user);
+			$data['type'] = $type;
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/users/update_user', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}

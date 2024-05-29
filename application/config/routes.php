@@ -96,6 +96,18 @@ $route['police_reports/(:any)/update']          = 'admin/update_police_report/$1
 // Galeri
 $route['galleries']                        = 'admin/galleries';
 $route['galleries/add']                    = 'admin/add_gallery';
-$route['galleries/(:any)/verification']    = 'admin/verification_gallery/$1';
 $route['galleries/(:any)/delete']          = 'admin/delete_gallery/$1';
 $route['galleries/(:any)/update']          = 'admin/update_gallery/$1';
+
+// Kontak
+$route['contacts']                        = 'admin/contacts';
+$route['contacts/add']                    = 'admin/add_contact';
+$route['contacts/(:any)/delete']          = 'admin/delete_contact/$1';
+$route['contacts/(:any)/update']          = 'admin/update_contact/$1';
+
+// User
+$route['users']                         = 'admin/users';
+$route['users/add']                     = 'admin/add_user';
+$route['users/(:any)/delete']           = 'admin/delete_user/$1';
+$route['users/(:any)/update']           = 'admin/update_user/$1';
+$route['users/(:any)/reset_password']   = 'admin/update_user/$1/reset';

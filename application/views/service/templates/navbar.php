@@ -58,7 +58,7 @@
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                          <div class="dropdown-menu" aria-labelledby="dropdown01">
-                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>Admin">Dashboard</a>
+                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>dashboard">Dashboard</a>
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>logout">Logout</a>
                          </div>
@@ -94,12 +94,31 @@
                          <input type="text" name="username" class="form-control" aria-describedby="" placeholder="Enter username" required>
                      </div>
                      <div class="form-group">
-                         <label for="exampleInputPassword1">Password</label>
-                         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                         <label for="passwordInput">Password</label>
+                         <div class="input-group mb-3">
+                             <input type="password" id="passwordInput" name="password" class="form-control" placeholder="Enter your password" required>
+                             <button class="btn btn-secondary" type="button" id="togglePasswordButton">Show</button>
+                         </div>
                      </div>
-                     <button type="submit" class="btn btn-secondary">Login</button>
+                     <button type="submit" class="btn text-white" style="background-color: #4d5055;" >Login</button>
                  </form>
              </div>
          </div>
      </div>
  </div>
+ <script>
+     document.addEventListener("DOMContentLoaded", function() {
+         const passwordInput = document.getElementById("passwordInput");
+         const togglePasswordButton = document.getElementById("togglePasswordButton");
+
+         togglePasswordButton.addEventListener("click", function() {
+             if (passwordInput.type === "password") {
+                 passwordInput.type = "text";
+                 togglePasswordButton.textContent = "Hide";
+             } else {
+                 passwordInput.type = "password";
+                 togglePasswordButton.textContent = "Show";
+             }
+         });
+     });
+ </script>
