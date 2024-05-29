@@ -505,12 +505,52 @@ class Service extends CI_Controller
 
 	public function addPoliceRecordLetter()
 	{
-		$data['is_home'] = false;
-		$data['title'] = 'Surat Pengantar Catatan Kepolisian';
-		$this->load->view('service/templates/header');
-		$this->load->view('service/templates/navbar', $data);
-		$this->load->view('service/services/police-record-letter/index', $data);
-		$this->load->view('service/templates/footer');
+		if ($this->input->post('ttl') != null) {
+
+			$image_ktp           = $_FILES['foto_ktp']['name'];
+
+			if ($image_ktp != null) {
+				$config['upload_path'] = './assets/img-admin/spkck';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_ktp')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('danger_police_report', $error);
+					echo $error;
+				} else {
+					$image_ktp = $this->upload->data('file_name');
+				}
+			}
+
+			$data_police_report = array(
+				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
+				'Nama' 						=> $this->input->post('nama'),
+				'Ttl' 						=> $this->input->post('ttl'),
+				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
+				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
+				'Agama' 					=> $this->input->post('agama'),
+				'Status_kawin' 				=> $this->input->post('status_kawin'),
+				'Alamat' 					=> $this->input->post('alamat'),
+				'Nik' 						=> $this->input->post('nik'),
+				'Ktp' 						=> $image_ktp
+			);
+
+			if (!$this->admin_model->save_police_report($data_police_report)) {
+				$this->session->set_flashdata('alert', 'Data berhasil ditambah.');
+				$this->session->set_flashdata('alert_type', 'info');
+				redirect('police-record-letter');
+			}
+		} else {
+
+			$data['is_home'] = false;
+			$data['title'] = 'Surat Pengantar Catatan Kepolisian';
+			$this->load->view('service/templates/header');
+			$this->load->view('service/templates/navbar', $data);
+			$this->load->view('service/services/police-record-letter/index', $data);
+			$this->load->view('service/templates/footer');
+		}
 	}
 
 

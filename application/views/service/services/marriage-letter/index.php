@@ -208,6 +208,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-primary">Batal</button>
                                 </div>
                             </div>
                         </form>

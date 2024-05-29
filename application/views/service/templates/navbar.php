@@ -56,9 +56,9 @@
                  </li>
                  <?php if (isset($_SESSION['is_login']) && $_SESSION['is_login'] == true) {  ?>
                      <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nama'] ?></a>
+                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                          <div class="dropdown-menu" aria-labelledby="dropdown01">
-                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>session">Profil</a>
+                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>Admin">Dashboard</a>
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>logout">Logout</a>
                          </div>
