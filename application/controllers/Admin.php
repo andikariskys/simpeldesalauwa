@@ -1157,9 +1157,8 @@ class Admin extends CI_Controller
 			}
 
 			$data_gallery = array(
-				'Tanggal_galeri' => $this->input->post('tanggal'),
-				'Nama_galeri'	=> $this->input->post('nama_galeri'),
-				'Isi'				=> $this->input->post('isi_galeri'),
+				'Tanggal_galeri'	=> $this->input->post('tanggal'),
+				'Nama_galeri'		=> $this->input->post('nama_galeri'),
 				'Foto'				=> $image
 			);
 
@@ -1180,7 +1179,7 @@ class Admin extends CI_Controller
 	function delete_gallery($id_gallery)
 	{
 		$image = $this->admin_model->get_galleries($id_gallery);
-		unlink('./assets/img-admin/galeri' . $image->Foto);
+		unlink('./assets/img-admin/galeri/' . $image->Foto);
 
 		if (!$this->admin_model->delete_gallery($id_gallery)) {
 
@@ -1217,9 +1216,8 @@ class Admin extends CI_Controller
 			}
 
 			$data_gallery = array(
-				'Tanggal_galeri' => $this->input->post('tanggal'),
-				'Nama_galeri'	=> $this->input->post('nama_galeri'),
-				'Isi'				=> $this->input->post('isi_galeri'),
+				'Tanggal_galeri' 	=> $this->input->post('tanggal'),
+				'Nama_galeri'		=> $this->input->post('nama_galeri'),
 				'Foto'				=> $image
 			);
 

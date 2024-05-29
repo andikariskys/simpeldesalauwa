@@ -256,26 +256,26 @@ final class Admin_model extends CI_Model
     {
         if ($id_gallery != null) {
             $this->db->where('id_galeri', $id_gallery);
-            return $this->db->get($this->$galeri)->row();
+            return $this->db->get($this->galeri)->row();
         } else {
-            return $this->db->get($this->$galeri)->result();
+            return $this->db->get($this->galeri)->result();
         }
     }
 
     function save_gallery($data_gallery)
     {
-        $this->db->insert($this->$galeri, $data_gallery);
+        $this->db->insert($this->galeri, $data_gallery);
     }
 
     function delete_gallery($id_gallery)
     {
         $this->db->where('id_galeri', $id_gallery);
-        $this->db->delete($this->$galeri);
+        $this->db->delete($this->galeri);
     }
 
     function update_gallery($data_gallery, $id_gallery)
     {
         $this->db->where('id_galeri', $id_gallery);
-        $this->db->update($this->$galeri, $data_gallery);
+        $this->db->update($this->galeri, $data_gallery);
     }
 }

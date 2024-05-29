@@ -112,8 +112,10 @@
               </li>
             </ul>
           </li>
-          <li class="menu-item">
-            <a href="<?= base_url('') ?>" class="menu-link">
+          <li class="menu-item <?php if ($active == "Galeri") {
+                                      echo "active";
+                                    } ?>">
+            <a href="<?= base_url('galleries') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-photo"></i>
               <div data-i18n="Galeri">Galeri</div>
             </a>
