@@ -21,6 +21,15 @@
 </div> <!-- end of basic-3 -->
 <!-- end of projects -->
 <!-- end of about -->
+<?php if ($this->session->flashdata('alert')) { ?>
+    <div class="alert alert-<?php echo $this->session->flashdata('alert_type'); ?> alert-dismissible fade show" role="alert">
+        <?php echo $this->session->flashdata('alert'); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+<?php } ?>
 
 <div class="basic-4 bg-white">
     <div class="container">
@@ -28,10 +37,10 @@
             <div class="container">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Form Tambah Profile</h5>
+                        <h5 class="mb-0">Form Tambah <?= $title ?></h5>
                     </div>
                     <div class="card-body">
-                        <form action="<?= base_url('parent_incomes/add') ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('parent-income/add') ?>" method="POST" enctype="multipart/form-data">
                             <hr class="ml-0 mr-0 mb-3">
                             <small class="text-light fw-semibold">Biodata Pribadi</small>
                             <div class="row mb-3">
@@ -203,6 +212,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-sm-8">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-primary">Batal</button>
                                 </div>
                             </div>
                         </form>

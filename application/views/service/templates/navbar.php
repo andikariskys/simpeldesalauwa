@@ -37,7 +37,7 @@
                      <div class="dropdown-menu" aria-labelledby="dropdown01">
                          <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>parent-income">Surat Keterangan Pengasilan Ortu</a>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>incapacity-certificate">Surat Keterangan Tidak Mampu</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>financial-hardship">Surat Keterangan Tidak Mampu</a>
                          <div class="dropdown-divider"></div>
                          <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>birth-certificate">Surat Keterangan Kelahiran</a>
                          <div class="dropdown-divider"></div>

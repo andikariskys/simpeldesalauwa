@@ -21,11 +21,17 @@ final class Admin_model extends CI_Model
     {
         $query = $this->db->query("SELECT 
             (SELECT COUNT(*) FROM " . $this->spot . ") AS spot,
+            (SELECT COUNT(*) FROM " . $this->spot . " WHERE Status_penghasilanorangtua = 'Terverifikasi') AS spot_verified,
             (SELECT COUNT(*) FROM " . $this->sktm . ") AS sktm, 
+            (SELECT COUNT(*) FROM " . $this->sktm . " WHERE Status_keterangantidakmampu = 'Terverifikasi') AS sktm_verified, 
             (SELECT COUNT(*) FROM " . $this->kelahiran . ") AS kelahiran,
+            (SELECT COUNT(*) FROM " . $this->kelahiran . " WHERE Status_keterangankelahiran = 'Terverifikasi') AS kelahiran_verified,
             (SELECT COUNT(*) FROM " . $this->kematian . ") AS kematian,
+            (SELECT COUNT(*) FROM " . $this->kematian . " WHERE Status_keterangankematian = 'Terverifikasi') AS kematian_verified,
             (SELECT COUNT(*) FROM " . $this->pernikahan . ") AS nikah,
-            (SELECT COUNT(*) FROM " . $this->spkck . ") AS spkck
+            (SELECT COUNT(*) FROM " . $this->pernikahan . " WHERE Status_pengantarnikah = 'Terverifikasi') AS nikah_verified,
+            (SELECT COUNT(*) FROM " . $this->spkck . ") AS spkck,
+            (SELECT COUNT(*) FROM " . $this->spkck . " WHERE Status_pengantarskck = 'Terverifikasi') AS spkck_verified
         ");
         return $query->result_array();
     }
