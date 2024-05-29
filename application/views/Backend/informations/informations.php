@@ -43,7 +43,7 @@
                         <td><?= $information->Tanggal_informasi ?></td>
                         <td><?= $information->Nama_informasi ?></td>
                         <td><?= $information->Isi ?></td>
-                        <td><img src="<?= base_url('assets/img-admin/' . $information->Foto) ?>" alt="" class="rounded" style="max-width: 150px; height: auto;"></td>
+                        <td><img src="<?= base_url('assets/img-admin/informasi/' . $information->Foto) ?>" alt="" class="rounded" style="max-width: 150px; height: auto;"></td>
                         <td>
                             <div class="d-flex">
                                 <a href="<?= base_url('informations/' . $information->id_informasi . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
