@@ -256,26 +256,80 @@ final class Admin_model extends CI_Model
     {
         if ($id_gallery != null) {
             $this->db->where('id_galeri', $id_gallery);
-            return $this->db->get($this->$galeri)->row();
+            return $this->db->get($this->galeri)->row();
         } else {
-            return $this->db->get($this->$galeri)->result();
+            return $this->db->get($this->galeri)->result();
         }
     }
 
     function save_gallery($data_gallery)
     {
-        $this->db->insert($this->$galeri, $data_gallery);
+        $this->db->insert($this->galeri, $data_gallery);
     }
 
     function delete_gallery($id_gallery)
     {
         $this->db->where('id_galeri', $id_gallery);
-        $this->db->delete($this->$galeri);
+        $this->db->delete($this->galeri);
     }
 
     function update_gallery($data_gallery, $id_gallery)
     {
         $this->db->where('id_galeri', $id_gallery);
-        $this->db->update($this->$galeri, $data_gallery);
+        $this->db->update($this->galeri, $data_gallery);
+    }
+
+    function get_contacts($id_contact = null)
+    {
+        if ($id_contact != null) {
+            $this->db->where('id_kontak', $id_contact);
+            return $this->db->get($this->kontak)->row();
+        } else {
+            return $this->db->get($this->kontak)->result();
+        }
+    }
+
+    function save_contact($data_contact)
+    {
+        $this->db->insert($this->kontak, $data_contact);
+    }
+
+    function delete_contact($id_contact)
+    {
+        $this->db->where('id_kontak', $id_contact);
+        $this->db->delete($this->kontak);
+    }
+
+    function update_contact($data_contact, $id_contact)
+    {
+        $this->db->where('id_kontak', $id_contact);
+        $this->db->update($this->kontak, $data_contact);
+    }
+
+    function get_users($id_user = null)
+    {
+        if ($id_user != null) {
+            $this->db->where('id_user', $id_user);
+            return $this->db->get($this->user)->row();
+        } else {
+            return $this->db->get($this->user)->result();
+        }
+    }
+
+    function save_user($data_user)
+    {
+        $this->db->insert($this->user, $data_user);
+    }
+
+    function delete_user($id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        $this->db->delete($this->user);
+    }
+
+    function update_user($data_user, $id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        $this->db->update($this->user, $data_user);
     }
 }

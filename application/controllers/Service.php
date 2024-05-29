@@ -45,14 +45,13 @@ class Service extends CI_Controller
 				'id_user'   => $user->id_user,
 				'nama'      => $user->Nama_user,
 				'username'  => $user->Username,
-				// 'level'     => $user->level,
 				'is_login'  => true
 			);
 
 			$this->session->set_userdata($data_user);
 
 			// Redirect with JavaScript to open admin page in a new tab
-			redirect('Admin');
+			redirect('dashboard');
 		} else {
 			$this->session->set_flashdata(array('error_login' => true));
 			redirect('');

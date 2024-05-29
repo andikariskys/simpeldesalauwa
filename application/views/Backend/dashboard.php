@@ -1,6 +1,10 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-text">Selamat datang, <?= $this->session->userdata('nama') ?>!</h5>
+    </div>
+</div>
 <?php $count_all = $count_all[0] ?>
-
-<div class="row">
+<div class="row mt-4">
 
     <div class="col-lg-4 col-sm-6 mb-4">
         <div class="card mb-3 h-100">
