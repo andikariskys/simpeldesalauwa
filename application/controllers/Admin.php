@@ -1124,4 +1124,117 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/footer');
 		}
 	}
+
+	function galleries()
+	{
+		$data['active'] = "Galeri";
+		$data['data_galleries'] = $this->admin_model->get_galleries();
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/templates/sidebar', $data);
+		$this->load->view('backend/galleries/galleries', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
+	function add_gallery()
+	{
+		if ($this->input->post('nama_galeri') != null) {
+
+			$image		= $_FILES['foto_galeri']['name'];
+
+			if ($image != null) {
+				$config['upload_path'] = './assets/img-admin/galeri';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_galeri')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('failed_upload_image', $error);
+					echo $error;
+				} else {
+					$image = $this->upload->data('file_name');
+				}
+			}
+
+			$data_gallery = array(
+				'Tanggal_galeri' => $this->input->post('tanggal'),
+				'Nama_galeri'	=> $this->input->post('nama_galeri'),
+				'Isi'				=> $this->input->post('isi_galeri'),
+				'Foto'				=> $image
+			);
+
+			if (!$this->admin_model->save_gallery($data_gallery)) {
+				$this->session->set_flashdata('add_gallery', 'Data berhasil disimpan!');
+				redirect('galleries');
+			}
+		} else {
+
+			$data['active'] = "Tambah Galeri";
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/galleries/add_gallery');
+			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	function delete_gallery($id_gallery)
+	{
+		$image = $this->admin_model->get_galleries($id_gallery);
+		unlink('./assets/img-admin/galeri' . $image->Foto);
+
+		if (!$this->admin_model->delete_gallery($id_gallery)) {
+
+			$this->session->set_flashdata('delete_gallery', 'Data berhasil dihapus!');
+
+			redirect('galleries');
+		}
+	}
+
+	function update_gallery($id_gallery)
+	{
+		if ($this->input->post('this_update') == true) {
+
+			$image_origin 		= $this->input->post('image_origin');
+			$image              = $_FILES['foto_galeri']['name'];
+
+			if ($image != null) {
+				$config['upload_path'] = './assets/img-admin/galeri';
+				$config['allowed_types'] = 'jpg|jpeg|png|webp';
+
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('foto_galeri')) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('failed_upload_image', $error);
+					echo $error;
+				} else {
+					$image = $this->upload->data('file_name');
+
+					unlink('./assets/img-admin/galeri/' . $image_origin);
+				}
+			} else {
+				$image = $image_origin;
+			}
+
+			$data_gallery = array(
+				'Tanggal_galeri' => $this->input->post('tanggal'),
+				'Nama_galeri'	=> $this->input->post('nama_galeri'),
+				'Isi'				=> $this->input->post('isi_galeri'),
+				'Foto'				=> $image
+			);
+
+			if (!$this->admin_model->update_gallery($data_gallery, $id_gallery)) {
+				$this->session->set_flashdata('update_gallery', 'Ubah data berhasil disimpan!');
+				redirect('galleries');
+			}
+		} else {
+
+			$data['active'] = "Ubah Galeri";
+			$data['data_gallery'] = $this->admin_model->get_galleries($id_gallery);
+			$this->load->view('backend/templates/header', $data);
+			$this->load->view('backend/templates/sidebar', $data);
+			$this->load->view('backend/galleries/update_gallery', $data);
+			$this->load->view('backend/templates/footer');
+		}
+	}
 }

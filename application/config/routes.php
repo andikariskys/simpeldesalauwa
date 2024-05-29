@@ -36,16 +36,16 @@ $route['police-record-letter/add']  = 'Service/addPoliceRecordLetter';
 
 // end Frontend Routes
 
-// dashboard
+// Dashboard
 $route['dashboard']         = 'admin';
 
-// profiles
+// Profil
 $route['profiles']                  = 'admin/profiles';
 $route['profiles/add']              = 'admin/add_profile';
 $route['profiles/(:any)/delete']    = 'admin/delete_profile/$1';
 $route['profiles/(:any)/update']    = 'admin/update_profile/$1';
 
-// informations
+// Informasi
 $route['informations']                  = 'admin/informations';
 $route['informations/add']              = 'admin/add_information';
 $route['informations/(:any)/delete']    = 'admin/delete_information/$1';
@@ -92,3 +92,10 @@ $route['police_reports/add']                    = 'admin/add_police_report';
 $route['police_reports/(:any)/verification']    = 'admin/verification_police_report/$1';
 $route['police_reports/(:any)/delete']          = 'admin/delete_police_report/$1';
 $route['police_reports/(:any)/update']          = 'admin/update_police_report/$1';
+
+// Galeri
+$route['galleries']                        = 'admin/galleries';
+$route['galleries/add']                    = 'admin/add_gallery';
+$route['galleries/(:any)/verification']    = 'admin/verification_gallery/$1';
+$route['galleries/(:any)/delete']          = 'admin/delete_gallery/$1';
+$route['galleries/(:any)/update']          = 'admin/update_gallery/$1';
