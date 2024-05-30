@@ -413,11 +413,9 @@ class Admin extends CI_Controller
 		}
 	}
 
-	//pdf parent income
-	public function printParentIncomes($id_parent_income)
+	function print_parent_income($id_parent_income)
 	{
-		$data['parent_incomes'] = $this->admin_model->get_parent_incomes($id_parent_income);
-		$data['title'] = 'Surat Keterangan Penghasilan Orang Tua';
+		$data['parent_income'] = $this->admin_model->get_parent_incomes($id_parent_income);
 		//logo 1
 		$imgpath1 = base_url('assets/mark/images/luwu.png');
 		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
@@ -432,10 +430,10 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "Laporan Balita.pdf";
+		$this->pdf->filename = "SKPOT-" . $data['parent_income']->Nama . ".pdf";
 
 		// Load the view and create PDF
-		$this->pdf->load_view('Backend/parent_incomes/pdf/cetak.php', $data);
+		$this->pdf->load_view('backend/pdf/print_parent_income', $data);
 	}
 
 	function financial_hardships()
@@ -567,6 +565,29 @@ class Admin extends CI_Controller
 			$this->load->view('backend/financial_hardships/update_financial_hardship', $data);
 			$this->load->view('backend/templates/footer');
 		}
+	}
+
+	function print_financial_hardship($id_financial_hardship)
+	{
+		$data['financial_hardship'] = $this->admin_model->get_financial_hardships($id_financial_hardship);
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "SKTM-" . $data['financial_hardship']->Nama . ".pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('backend/pdf/print_financial_hardship', $data);
 	}
 
 	function death_certificates()
@@ -704,11 +725,9 @@ class Admin extends CI_Controller
 		}
 	}
 
-	//pdf death certificate
-	public function printDeathCertificate($id_death_certificate)
+	function print_death_certificate($id_death_certificate)
 	{
-		$data['death_certificates'] = $this->admin_model->get_death_certificates($id_death_certificate);
-		$data['title'] = 'Surat Keterangan Kematian';
+		$data['death_certificate'] = $this->admin_model->get_death_certificates($id_death_certificate);
 		//logo 1
 		$imgpath1 = base_url('assets/mark/images/luwu.png');
 		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
@@ -723,12 +742,11 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "Laporan Kematian.pdf";
+		$this->pdf->filename = "SKM-" . $data['death_certificate']->Nama .".pdf";
 
 		// Load the view and create PDF
-		$this->pdf->load_view('Backend/pdf/cetak_death_certificates.php', $data);
+		$this->pdf->load_view('backend/pdf/print_death_certificate', $data);
 	}
-	//end pdf death certificate
 
 	function birth_announcements()
 	{
@@ -859,6 +877,29 @@ class Admin extends CI_Controller
 			$this->load->view('backend/birth_announcements/update_birth_announcement', $data);
 			$this->load->view('backend/templates/footer');
 		}
+	}
+
+	function print_birth_announcement($id_birth_announcement)
+	{
+		$data['birth_announcement'] = $this->admin_model->get_birth_announcements($id_birth_announcement);
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "SKK-" . $data['birth_announcement']->Nama . ".pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('backend/pdf/print_birth_announcement', $data);
 	}
 
 	function marriage_recommendations()
@@ -1053,11 +1094,9 @@ class Admin extends CI_Controller
 		}
 	}
 
-	//pdf marriage recommendation
-	public function printMarriageRecommendation($id_marriage_recommendation)
+	function print_marriage_recommendation($id_marriage_recommendation)
 	{
-		$data['cetak_marriage_recommendations'] = $this->admin_model->get_marriage_recommendations($id_marriage_recommendation);
-		$data['title'] = 'Surat Pengantar Nikah';
+		$data['marriage_recommendation'] = $this->admin_model->get_marriage_recommendations($id_marriage_recommendation);
 		//logo 1
 		$imgpath1 = base_url('assets/mark/images/luwu.png');
 		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
@@ -1072,12 +1111,11 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "Laporan Kematian.pdf";
+		$this->pdf->filename = "SKBM-" . $data['marriage_recommendation']->Nama .".pdf";
 
 		// Load the view and create PDF
-		$this->pdf->load_view('Backend/pdf/cetak_marriage_recommendations.php', $data);
+		$this->pdf->load_view('backend/pdf/print_marriage_recommendation', $data);
 	}
-	//end marriage recommendation
 
 	function police_reports()
 	{
@@ -1212,11 +1250,9 @@ class Admin extends CI_Controller
 		}
 	}
 
-	//pdf police report
-	public function printPoliceReport($id_police_report)
+	function print_police_report($id_police_report)
 	{
-		$data['police_reports'] = $this->admin_model->get_police_reports($id_police_report);
-		$data['title'] = 'Surat Pengantar';
+		$data['police_report'] = $this->admin_model->get_police_reports($id_police_report);
 		//logo 1
 		$imgpath1 = base_url('assets/mark/images/luwu.png');
 		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
@@ -1231,12 +1267,11 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "Laporan Kematian.pdf";
+		$this->pdf->filename = "SP-SKCK-" . $data['police_report']->Nama . ".pdf";
 
 		// Load the view and create PDF
-		$this->pdf->load_view('Backend/pdf/cetak_police_reports.php', $data);
+		$this->pdf->load_view('backend/pdf/print_police_report', $data);
 	}
-	//end pdf police report
 
 	function galleries()
 	{

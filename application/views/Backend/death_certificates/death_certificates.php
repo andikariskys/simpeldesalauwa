@@ -56,7 +56,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($death_certificate->Status_keterangankematian == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('death_certificates/' . $death_certificate->id_keterangankematian . '/cetak') ?>" target="_blank" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('death_certificates/' . $death_certificate->id_keterangankematian . '/print') ?>" target="_blank" class="btn btn-info mx-1">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('death_certificates/' . $death_certificate->id_keterangankematian . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('death_certificates/' . $death_certificate->id_keterangankematian . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>

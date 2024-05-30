@@ -56,7 +56,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($marriage_recommendation->Status_pengantarnikah == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('marriage_recommendations/' . $marriage_recommendation->id_pengantarnikah . '/cetak') ?>" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('marriage_recommendations/' . $marriage_recommendation->id_pengantarnikah . '/print') ?>" class="btn btn-info mx-1" target="_blank">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('marriage_recommendations/' . $marriage_recommendation->id_pengantarnikah . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('marriage_recommendations/' . $marriage_recommendation->id_pengantarnikah . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>

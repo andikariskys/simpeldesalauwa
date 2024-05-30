@@ -108,15 +108,16 @@ CREATE TABLE `keterangan_kematian` (
   `Hari_kematian` varchar(100) DEFAULT NULL,
   `Tanggal_kematian` date DEFAULT NULL,
   `ktp` varchar(100) DEFAULT NULL,
-  `Status_keterangankematian` varchar(100) DEFAULT NULL
+  `Nama_pelapor` varchar(100) DEFAULT NULL,
+  `Hubungan_pelapor` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `keterangan_kematian`
 --
 
-INSERT INTO `keterangan_kematian` (`id_keterangankematian`, `Tanggal_keterangankematian`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Alamat`, `Hari_kematian`, `Tanggal_kematian`, `ktp`, `Status_keterangankematian`) VALUES
-(1, '2023-05-20', 1234567890123456, 'Udin', 'Jakarta, 4 April 1950', 'Laki-laki', 'Pensiunan', 'Islam', 'Jl. Merdeka No. 30', 'Senin', '2023-04-15', 'ktp_udin.jpg', 'Terverifikasi');
+INSERT INTO `keterangan_kematian` (`id_keterangankematian`, `Tanggal_keterangankematian`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Alamat`, `Hari_kematian`, `Tanggal_kematian`, `ktp`, `Nama_pelapor`, `Hubungan_pelapor`, `Status_keterangankematian`) VALUES
+(1, '2023-05-20', 1234567890123456, 'Udin', 'Jakarta, 4 April 1950', 'Laki-laki', 'Pensiunan', 'Islam', 'Jl. Merdeka No. 30', 'Senin', '2023-04-15', 'ktp_udin.jpg', 'Abdur', 'Anak kandung', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -194,6 +195,7 @@ INSERT INTO `pengaduan` (`id_pengaduan`, `Tanggal_pengaduan`, `Nama`, `Isi_penga
 CREATE TABLE `pengantar_nikah` (
   `id_pengantarnikah` int NOT NULL,
   `Tanggal_pengantarnikah` date DEFAULT NULL,
+  `Nik` bigint DEFAULT NULL,
   `Nama` varchar(100) DEFAULT NULL,
   `Ttl` varchar(100) DEFAULT NULL,
   `Jenis_kelamin` varchar(100) DEFAULT NULL,
@@ -221,8 +223,8 @@ CREATE TABLE `pengantar_nikah` (
 -- Dumping data for table `pengantar_nikah`
 --
 
-INSERT INTO `pengantar_nikah` (`id_pengantarnikah`, `Tanggal_pengantarnikah`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Anak_ke`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Alamat_ayah`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Alamat_ibu`, `Ktp`, `Kk`, `Status_pengantarnikah`) VALUES
-(1, '2023-05-20', 'Joko', 'Jakarta, 5 Mei 1990', 'Laki-laki', 'Karyawan Swasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 40', '1', 'Bapak Joko', 'Bandung, 1 Januari 1960', 'Islam', 'Petani', 'Jl. Desa No. 1', 'Ibu Joko', 'Surabaya, 1 Januari 1965', 'Islam', 'Ibu Rumah Tangga', 'Jl. Desa No. 1', 'ktp_joko.jpg', 'kk_joko.jpg', 'Terverifikasi');
+INSERT INTO `pengantar_nikah` (`id_pengantarnikah`, `Tanggal_pengantarnikah`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Anak_ke`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Alamat_ayah`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Alamat_ibu`, `Ktp`, `Kk`, `Status_pengantarnikah`) VALUES
+(1, '2023-05-20', 1212121234345656, 'Joko', 'Jakarta, 5 Mei 1990', 'Laki-laki', 'Karyawan Swasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 40', '1', 'Bapak Joko', 'Bandung, 1 Januari 1960', 'Islam', 'Petani', 'Jl. Desa No. 1', 'Ibu Joko', 'Surabaya, 1 Januari 1965', 'Islam', 'Ibu Rumah Tangga', 'Jl. Desa No. 1', 'ktp_joko.jpg', 'kk_joko.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -301,6 +303,7 @@ CREATE TABLE `spkck` (
   `Agama` varchar(100) DEFAULT NULL,
   `Status_kawin` varchar(100) DEFAULT NULL,
   `Alamat` varchar(100) DEFAULT NULL,
+  `No_kk` bigint DEFAULT NULL,
   `Nik` bigint DEFAULT NULL,
   `Ktp` varchar(100) DEFAULT NULL,
   `Status_pengantarskck` varchar(100) DEFAULT NULL
@@ -310,8 +313,8 @@ CREATE TABLE `spkck` (
 -- Dumping data for table `spkck`
 --
 
-INSERT INTO `spkck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `Nik`, `Ktp`, `Status_pengantarskck`) VALUES
-(1, '2023-05-20', 'Tono', 'Jakarta, 6 Juni 1985', 'Laki-laki', 'Wiraswasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 50', 1234567890123456, 'ktp_tono.jpg', 'Terverifikasi');
+INSERT INTO `spkck` (`id_pengantarskck`, `Tanggal_pengantarskck`, `Nama`, `Ttl`, `Jenis_kelamin`, `Pekerjaan`, `Agama`, `Status_kawin`, `Alamat`, `No_kk`, `Nik`, `Ktp`, `Status_pengantarskck`) VALUES
+(1, '2023-05-20', 'Tono', 'Jakarta, 6 Juni 1985', 'Laki-laki', 'Wiraswasta', 'Islam', 'Belum Kawin', 'Jl. Merdeka No. 50', 6543211234567890, 1234567890123456, 'ktp_tono.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 

@@ -54,7 +54,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($financial_hardship->Status_keterangantidakmampu == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('financial_hardships/' . $financial_hardship->id_keterangantidakmampu . '/cetak') ?>" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('financial_hardships/' . $financial_hardship->id_keterangantidakmampu . '/print') ?>" class="btn btn-info mx-1" target="_blank">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('financial_hardships/' . $financial_hardship->id_keterangantidakmampu . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('financial_hardships/' . $financial_hardship->id_keterangantidakmampu . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>

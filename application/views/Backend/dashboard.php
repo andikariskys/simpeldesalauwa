@@ -13,7 +13,7 @@
                 <p class="card-text badge bg-label-success badge bg-label-success"><?= $count_all['spot_verified'] ?> / <?= $count_all['spot'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('parent_incomes') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                 <p class="card-text badge bg-label-success"><?= $count_all['sktm_verified'] ?> / <?= $count_all['sktm'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('financial_hardships') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
                 <p class="card-text badge bg-label-success"><?= $count_all['kelahiran_verified'] ?> / <?= $count_all['kelahiran'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('birth_announcements') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                 <p class="card-text badge bg-label-success"><?= $count_all['kematian_verified'] ?> / <?= $count_all['kematian'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('death_certificates') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                 <p class="card-text badge bg-label-success"><?= $count_all['nikah_verified'] ?> / <?= $count_all['nikah'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('marriage_recommendations') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@
                 <p class="card-text badge bg-label-success"><?= $count_all['spkck_verified'] ?> / <?= $count_all['spkck'] ?> surat telah diterbitkan.</p>
             </div>
             <div class="card-footer">
-                <a href="<?= base_url('') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
+                <a href="<?= base_url('police_reports') ?>" class="btn btn-primary waves-effect waves-light">Lihat Selengkapnya</a>
             </div>
         </div>
     </div>

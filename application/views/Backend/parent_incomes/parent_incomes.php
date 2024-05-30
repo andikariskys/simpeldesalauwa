@@ -54,7 +54,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($parent_income->Status_penghasilanorangtua == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('parent_incomes/' . $parent_income->id_penghasilan . '/cetak') ?>" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('parent_incomes/' . $parent_income->id_penghasilan . '/print') ?>" class="btn btn-info mx-1" target="_blank">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('parent_incomes/' . $parent_income->id_penghasilan . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('parent_incomes/' . $parent_income->id_penghasilan . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>

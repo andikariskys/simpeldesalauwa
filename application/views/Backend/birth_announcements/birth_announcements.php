@@ -54,7 +54,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($birth_announcement->Status_keterangankelahiran == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('birth_announcements/' . $birth_announcement->id_keterangankelahiran . '/cetak') ?>" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('birth_announcements/' . $birth_announcement->id_keterangankelahiran . '/print') ?>" class="btn btn-info mx-1" target="_blank">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('birth_announcements/' . $birth_announcement->id_keterangankelahiran . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('birth_announcements/' . $birth_announcement->id_keterangankelahiran . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>
