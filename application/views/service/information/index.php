@@ -52,7 +52,7 @@
                                         $timestamp = strtotime($val->Tanggal_informasi);
                                         echo date("d F Y", $timestamp); // Format the date as DD MonthName YYYY
                                         ?></strong></p>
-                            <h6><a href="" class="text-decoration-none"><?= $val->Nama_informasi ?></a></h6>
+                            <h6><a class="text-decoration-none"><?= $val->Nama_informasi ?></a></h6>
                             </p>
                             <a class="btn btn-outline-secondary text-decoration-none mb-2" data-toggle="collapse" href="#multiCollapseExample1<?= $val->id_informasi ?>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1<?= $val->id_informasi ?>">Selengkapnya..</a>
                             <div class="collapse multi-collapse mb-2" id="multiCollapseExample1<?= $val->id_informasi ?>">
