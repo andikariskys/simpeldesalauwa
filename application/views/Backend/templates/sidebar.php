@@ -113,24 +113,24 @@
             </ul>
           </li>
           <li class="menu-item <?php if ($active == "Galeri") {
-                                      echo "active";
-                                    } ?>">
+                                  echo "active";
+                                } ?>">
             <a href="<?= base_url('galleries') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-photo"></i>
               <div data-i18n="Galeri">Galeri</div>
             </a>
           </li>
           <li class="menu-item <?php if ($active == "Kontak") {
-                                      echo "active";
-                                    } ?>">
+                                  echo "active";
+                                } ?>">
             <a href="<?= base_url('contacts') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-address-book"></i>
               <div data-i18n="Kontak">Kontak</div>
             </a>
           </li>
           <li class="menu-item <?php if ($active == "User") {
-                                      echo "active";
-                                    } ?>">
+                                  echo "active";
+                                } ?>">
             <a href="<?= base_url('users') ?>" class="menu-link">
               <i class="menu-icon tf-icons ti ti-users"></i>
               <div data-i18n="User">User</div>
@@ -143,7 +143,7 @@
             </a>
           </li>
           <li class="menu-item active mt-3">
-            <a href="<?= base_url('Service') ?>" class="menu-link">
+            <a href="<?= base_url('') ?>" target="_blank" class="menu-link">
               <i class="menu-icon tf-icons  ti ti-logout"></i>
               <div data-i18n="Service">Lihat Halaman Web</div>
             </a>

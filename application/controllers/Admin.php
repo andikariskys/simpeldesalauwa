@@ -18,7 +18,7 @@ class Admin extends CI_Controller
 			<script>
 				var userConfirmed = confirm('Silakan masuk/login terlebih dahulu');
 				if (userConfirmed) {
-					window.location.href = '" . base_url() ."'; 
+					window.location.href = '" . base_url() . "'; 
 				}
 			</script>
 			";
@@ -704,6 +704,32 @@ class Admin extends CI_Controller
 		}
 	}
 
+	//pdf death certificate
+	public function printDeathCertificate($id_death_certificate)
+	{
+		$data['death_certificates'] = $this->admin_model->get_death_certificates($id_death_certificate);
+		$data['title'] = 'Surat Keterangan Kematian';
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "Laporan Kematian.pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('Backend/pdf/cetak_death_certificates.php', $data);
+	}
+	//end pdf death certificate
+
 	function birth_announcements()
 	{
 		$data['active'] = "SK Kelahiran";
@@ -1027,6 +1053,32 @@ class Admin extends CI_Controller
 		}
 	}
 
+	//pdf marriage recommendation
+	public function printMarriageRecommendation($id_marriage_recommendation)
+	{
+		$data['cetak_marriage_recommendations'] = $this->admin_model->get_marriage_recommendations($id_marriage_recommendation);
+		$data['title'] = 'Surat Pengantar Nikah';
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "Laporan Kematian.pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('Backend/pdf/cetak_marriage_recommendations.php', $data);
+	}
+	//end marriage recommendation
+
 	function police_reports()
 	{
 		$data['active'] = "Surat Pengantar SKCK";
@@ -1159,6 +1211,32 @@ class Admin extends CI_Controller
 			$this->load->view('backend/templates/footer');
 		}
 	}
+
+	//pdf police report
+	public function printPoliceReport($id_police_report)
+	{
+		$data['police_reports'] = $this->admin_model->get_police_reports($id_police_report);
+		$data['title'] = 'Surat Pengantar';
+		//logo 1
+		$imgpath1 = base_url('assets/mark/images/luwu.png');
+		$ext1 = pathinfo($imgpath1, PATHINFO_EXTENSION);
+		$img1 = file_get_contents($imgpath1);
+		$data['logo1'] = 'data:image/' . $ext1 . ';base64,' . base64_encode($img1);
+
+
+		// Load library DOMPDF
+		$this->load->library('pdf');
+
+		// Set paper size and orientation
+		$this->pdf->setPaper('A4', 'potrait');
+
+		// Set filename
+		$this->pdf->filename = "Laporan Kematian.pdf";
+
+		// Load the view and create PDF
+		$this->pdf->load_view('Backend/pdf/cetak_police_reports.php', $data);
+	}
+	//end pdf police report
 
 	function galleries()
 	{

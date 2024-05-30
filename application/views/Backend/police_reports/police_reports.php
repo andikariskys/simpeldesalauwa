@@ -54,7 +54,7 @@
                         <td>
                             <div class="d-flex">
                                 <?php if ($police_report->Status_pengantarskck == 'Terverifikasi') { ?>
-                                    <a href="<?= base_url('police_reports/' . $police_report->id_pengantarskck  . '/cetak') ?>" class="btn btn-info mx-1">Cetak</a>
+                                    <a href="<?= base_url('police_reports/' . $police_report->id_pengantarskck  . '/cetak') ?>" target="_blank" class="btn btn-info mx-1">Cetak</a>
                                 <?php } ?>
                                 <a href="<?= base_url('police_reports/' . $police_report->id_pengantarskck  . '/update') ?>" class="btn btn-warning mx-1">Ubah</a>
                                 <a href="<?= base_url('police_reports/' . $police_report->id_pengantarskck  . '/delete') ?>" class="btn btn-danger mx-1">Hapus</a>

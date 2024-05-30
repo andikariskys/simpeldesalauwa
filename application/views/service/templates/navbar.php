@@ -58,7 +58,7 @@
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                          <div class="dropdown-menu" aria-labelledby="dropdown01">
-                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>dashboard">Dashboard</a>
+                             <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>dashboard" target="_blank">Dashboard</a>
                              <div class="dropdown-divider"></div>
                              <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>logout">Logout</a>
                          </div>
@@ -100,7 +100,7 @@
                              <button class="btn btn-secondary" type="button" id="togglePasswordButton">Show</button>
                          </div>
                      </div>
-                     <button type="submit" class="btn text-white" style="background-color: #4d5055;" >Login</button>
+                     <button type="submit" class="btn text-white" style="background-color: #4d5055;">Login</button>
                  </form>
              </div>
          </div>

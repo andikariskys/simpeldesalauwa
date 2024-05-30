@@ -72,6 +72,8 @@ $route['death_certificates/add']                    = 'admin/add_death_certifica
 $route['death_certificates/(:any)/verification']    = 'admin/verification_death_certificate/$1';
 $route['death_certificates/(:any)/delete']          = 'admin/delete_death_certificate/$1';
 $route['death_certificates/(:any)/update']          = 'admin/update_death_certificate/$1';
+$route['death_certificates/(:any)/cetak']           = 'admin/printDeathCertificate/$1';
+
 
 // Surat Keterangan Kelahiran
 $route['birth_announcements']                        = 'admin/birth_announcements';
@@ -86,6 +88,8 @@ $route['marriage_recommendations/add']                    = 'admin/add_marriage_
 $route['marriage_recommendations/(:any)/verification']    = 'admin/verification_marriage_recommendation/$1';
 $route['marriage_recommendations/(:any)/delete']          = 'admin/delete_marriage_recommendation/$1';
 $route['marriage_recommendations/(:any)/update']          = 'admin/update_marriage_recommendation/$1';
+$route['marriage_recommendations/(:any)/cetak']           = 'admin/printMarriageRecommendation/$1';
+
 
 // Surat Pengantar Keterangan Catatan Kepolisian
 $route['police_reports']                        = 'admin/police_reports';
@@ -93,6 +97,8 @@ $route['police_reports/add']                    = 'admin/add_police_report';
 $route['police_reports/(:any)/verification']    = 'admin/verification_police_report/$1';
 $route['police_reports/(:any)/delete']          = 'admin/delete_police_report/$1';
 $route['police_reports/(:any)/update']          = 'admin/update_police_report/$1';
+$route['police_reports/(:any)/cetak']           = 'admin/printPoliceReport/$1';
+
 
 // Galeri
 $route['galleries']                        = 'admin/galleries';
