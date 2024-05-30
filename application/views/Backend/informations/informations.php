@@ -42,7 +42,7 @@
                         <td><?= $no ?></td>
                         <td><?= $information->Tanggal_informasi ?></td>
                         <td><?= $information->Nama_informasi ?></td>
-                        <td><?= $information->Isi ?></td>
+                        <td><?= substr($information->Isi, 0, 200) ?> <?php if (strlen($information->Isi > 200)) {echo ".....";} ?></td>
                         <td><img src="<?= base_url('assets/img-admin/informasi/' . $information->Foto) ?>" alt="" class="rounded" style="max-width: 150px; height: auto;"></td>
                         <td>
                             <div class="d-flex">

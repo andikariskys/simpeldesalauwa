@@ -125,6 +125,20 @@
                     <input type="date" id="input-tanggal-kematian" name="tanggal_kematian" value="<?= $data_death_certificate->Tanggal_kematian ?>" placeholder="MM/DD/YYYY" class="form-control">
                 </div>
             </div>
+            <hr class="ml-0 mr-0 mb-3">
+            <small class="text-light fw-semibold">Informasi Pelapor</small>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-nama-pelapor">Nama Pelapor</label>
+                <div class="col-sm-10">
+                    <input type="text" id="input-nama-pelapor" name="nama_pelapor" value="<?= $data_death_certificate->Nama_pelapor ?>" placeholder="Abdur" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-hubungan-pelapor">Hubungan Pelapor</label>
+                <div class="col-sm-10">
+                    <input type="text" id="input-hubungan-pelapor" name="hubungan_pelapor" value="<?= $data_death_certificate->Hubungan_pelapor ?>" placeholder="Anak Kandung" class="form-control">
+                </div>
+            </div>
             <div class="row justify-content-end">
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Simpan</button>

@@ -380,6 +380,8 @@ class Service extends CI_Controller
 				'Alamat' 						=> $this->input->post('alamat'),
 				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
 				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
+				'Nama_pelapor' 					=> $this->input->post('nama_pelapor'),
+				'Hubungan_pelapor' 				=> $this->input->post('hubungan_pelapor'),
 				'ktp'							=> $image_ktp
 			);
 
@@ -451,6 +453,7 @@ class Service extends CI_Controller
 
 			$data_marriage_recommendation = array(
 				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
+				'Nik' 						=> $this->input->post('nik'),
 				'Nama' 						=> $this->input->post('nama'),
 				'Ttl' 						=> $this->input->post('ttl'),
 				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
@@ -532,6 +535,7 @@ class Service extends CI_Controller
 				'Agama' 					=> $this->input->post('agama'),
 				'Status_kawin' 				=> $this->input->post('status_kawin'),
 				'Alamat' 					=> $this->input->post('alamat'),
+				'No_kk' 					=> $this->input->post('no_kk'),
 				'Nik' 						=> $this->input->post('nik'),
 				'Ktp' 						=> $image_ktp
 			);

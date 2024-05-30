@@ -49,6 +49,12 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="input-no-kk">Nomor KK</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control border-dark" id="input-no-kk" name="no_kk" placeholder="1234567890112233" required />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="input-nik">NIK</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control border-dark" id="input-nik" name="nik" placeholder="1234567890123456" required />

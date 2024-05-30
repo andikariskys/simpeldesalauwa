@@ -142,12 +142,6 @@
               <div data-i18n="Logout">Logout</div>
             </a>
           </li>
-          <li class="menu-item active mt-3">
-            <a href="<?= base_url('') ?>" target="_blank" class="menu-link">
-              <i class="menu-icon tf-icons  ti ti-logout"></i>
-              <div data-i18n="Service">Lihat Halaman Web</div>
-            </a>
-          </li>
         </ul>
       </aside>
 

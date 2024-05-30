@@ -14,6 +14,12 @@
                 </div>
             </div>
             <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-no-kk">Nomor KK</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="input-no-kk" name="no_kk" value="<?= $data_police_report->No_kk ?>" placeholder="1234567890112233" required />
+                </div>
+            </div>
+            <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nik">NIK</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="input-nik" name="nik" value="<?= $data_police_report->Nik ?>" placeholder="1234567890123456" required />

@@ -48,6 +48,12 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="input-nik">NIK</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control border-dark" id="input-nik" name="nik" placeholder="1122334455667788" required />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="input-nama">Nama</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control border-dark" id="input-nama" name="nama" placeholder="Magfira Islamia" required />
