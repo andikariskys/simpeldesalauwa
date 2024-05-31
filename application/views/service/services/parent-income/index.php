@@ -106,7 +106,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-4 col-form-label" for="select-agama">Agama/Kepercayaan</label>
                                 <div class="col-sm-8">
-                                    <select name="agama" class="form-select" aria-label="Default select example" id="select-agama" required>
+                                    <select name="agama" class="form-select border-dark" aria-label="Default select example" id="select-agama" required>
                                         <option value="" selected disabled>Pilih Agama atau Kepercayaan</option>
                                         <option value="Islam">Islam</option>
                                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -114,6 +114,18 @@
                                         <option value="Hindu">Hindu</option>
                                         <option value="Buddha">Buddha</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label" for="input-alamat">Alamat</label>
+                                <div class="col-sm-8">
+                                    <textarea name="alamat" id="input-alamat" class="form-control border-dark" placeholder="Jl. Mawar Merah No. 12" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label" for="input-pekerjaan">Pekerjaan</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control border-dark" id="input-pekerjaan" name="pekerjaan" placeholder="Pelajar/Mahasiswa" required />
                                 </div>
                             </div>
 

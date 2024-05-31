@@ -175,6 +175,8 @@ class Service extends CI_Controller
 				'Ttl'					=> $this->input->post('ttl'),
 				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
 				'Agama'					=> $this->input->post('agama'),
+				'Alamat'				=> $this->input->post('alamat'),
+				'Pekerjaan'				=> $this->input->post('pekerjaan'),
 				'Nik_ayah'				=> $this->input->post('nik_ayah'),
 				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
 				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),

@@ -35,7 +35,7 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pelayanan</a>
                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>parent-income">Surat Keterangan Pengasilan Ortu</a>
+                         <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>parent-income">Surat Keterangan Pengasilan Orang Tua</a>
                          <div class="dropdown-divider"></div>
                          <a class="dropdown-item page-scroll" href="<?php echo base_url() ?>financial-hardship">Surat Keterangan Tidak Mampu</a>
                          <div class="dropdown-divider"></div>
