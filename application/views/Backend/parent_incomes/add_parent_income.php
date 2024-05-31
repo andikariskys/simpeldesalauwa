@@ -74,6 +74,18 @@
                     </select>
                 </div>
             </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-alamat">Alamat</label>
+                <div class="col-sm-10">
+                    <textarea name="alamat" id="input-alamat" class="form-control" placeholder="Jl. Mawar Merah No. 12" required></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="input-pekerjaan">Pekerjaan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="input-pekerjaan" name="pekerjaan" placeholder="Pelajar/Mahasiswa" required />
+                </div>
+            </div>
 
             <hr class="ml-0 mr-0 mb-3">
             <small class="text-light fw-semibold">Biodata Ayah</small>

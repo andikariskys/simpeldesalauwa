@@ -32,7 +32,7 @@ CREATE TABLE `galeri` (
   `Tanggal_galeri` date DEFAULT NULL,
   `Nama_galeri` varchar(100) DEFAULT NULL,
   `Foto` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `galeri`
@@ -53,7 +53,7 @@ CREATE TABLE `informasi` (
   `Nama_informasi` varchar(100) DEFAULT NULL,
   `Isi` text,
   `Foto` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `informasi`
@@ -80,7 +80,7 @@ CREATE TABLE `keterangan_kelahiran` (
   `Nama_ibu` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
   `Status_keterangankelahiran` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `keterangan_kelahiran`
@@ -109,8 +109,9 @@ CREATE TABLE `keterangan_kematian` (
   `Tanggal_kematian` date DEFAULT NULL,
   `ktp` varchar(100) DEFAULT NULL,
   `Nama_pelapor` varchar(100) DEFAULT NULL,
-  `Hubungan_pelapor` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Hubungan_pelapor` varchar(100) DEFAULT NULL,
+  `Status_keterangankematian` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `keterangan_kematian`
@@ -137,7 +138,7 @@ CREATE TABLE `keterangan_tidak_mampu` (
   `Alamat` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
   `Status_keterangantidakmampu` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `keterangan_tidak_mampu`
@@ -157,7 +158,7 @@ CREATE TABLE `kontak` (
   `Alamat` varchar(100) DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,
   `Telepon` bigint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kontak`
@@ -177,7 +178,7 @@ CREATE TABLE `pengaduan` (
   `Tanggal_pengaduan` date DEFAULT NULL,
   `Nama` varchar(100) DEFAULT NULL,
   `Isi_pengaduan` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengaduan`
@@ -217,7 +218,7 @@ CREATE TABLE `pengantar_nikah` (
   `Ktp` varchar(100) DEFAULT NULL,
   `Kk` varchar(100) DEFAULT NULL,
   `Status_pengantarnikah` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengantar_nikah`
@@ -241,29 +242,31 @@ CREATE TABLE `penghasilan_orang_tua` (
   `Ttl` varchar(100) DEFAULT NULL,
   `Jenis_kelamin` varchar(100) DEFAULT NULL,
   `Agama` varchar(100) DEFAULT NULL,
+  `Alamat` varchar(100) DEFAULT NULL,
+  `Pekerjaan` varchar(100) DEFAULT NULL,
   `Nik_ayah` bigint DEFAULT NULL,
   `Nama_ayah` varchar(100) DEFAULT NULL,
   `Ttl_ayah` varchar(100) DEFAULT NULL,
   `Agama_ayah` varchar(100) DEFAULT NULL,
   `Pekerjaan_ayah` varchar(100) DEFAULT NULL,
-  `Penghasilan_ayah` varchar(100) DEFAULT NULL,
+  `Penghasilan_ayah` int(11) DEFAULT NULL,
   `Nik_ibu` bigint DEFAULT NULL,
   `Nama_ibu` varchar(100) DEFAULT NULL,
   `Ttl_ibu` varchar(100) DEFAULT NULL,
   `Agama_ibu` varchar(100) DEFAULT NULL,
   `Pekerjaan_ibu` varchar(100) DEFAULT NULL,
-  `Penghasilan_ibu` varchar(100) DEFAULT NULL,
+  `Penghasilan_ibu` int(11) DEFAULT NULL,
   `ktp` varchar(100) DEFAULT NULL,
   `kk` varchar(100) DEFAULT NULL,
   `Status_penghasilanorangtua` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `penghasilan_orang_tua`
 --
 
-INSERT INTO `penghasilan_orang_tua` (`id_penghasilan`, `Tanggal_penghasilan`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Nik_ayah`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Penghasilan_ayah`, `Nik_ibu`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Penghasilan_ibu`, `ktp`, `kk`, `Status_penghasilanorangtua`) VALUES
-(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Andi', 'Jakarta, 1 Januari 2000', 'Laki-laki', 'Islam', 2345678901234567, 'Bapak Andi', 'Bandung, 1 Januari 1970', 'Islam', 'Petani', 'Rp 3.000.000', 3456789012345678, 'Ibu Andi', 'Surabaya, 1 Januari 1975', 'Islam', 'Ibu Rumah Tangga', 'Rp 2.000.000', 'ktp_andi.jpg', 'kk_andi.jpg', 'Terverifikasi');
+INSERT INTO `penghasilan_orang_tua` (`id_penghasilan`, `Tanggal_penghasilan`, `No_kk`, `Nik`, `Nama`, `Ttl`, `Jenis_kelamin`, `Agama`, `Alamat`, `Pekerjaan`, `Nik_ayah`, `Nama_ayah`, `Ttl_ayah`, `Agama_ayah`, `Pekerjaan_ayah`, `Penghasilan_ayah`, `Nik_ibu`, `Nama_ibu`, `Ttl_ibu`, `Agama_ibu`, `Pekerjaan_ibu`, `Penghasilan_ibu`, `ktp`, `kk`, `Status_penghasilanorangtua`) VALUES
+(1, '2023-05-20', 1234567890123456, 1234567890123456, 'Andi', 'Jakarta, 1 Januari 2000', 'Laki-laki', 'Islam', 'Jl. Mawar Indah No. 13', 'Wiraswasta', 2345678901234567, 'Bapak Andi', 'Bandung, 1 Januari 1970', 'Islam', 'Petani', 3000000, 3456789012345678, 'Ibu Andi', 'Surabaya, 1 Januari 1975', 'Islam', 'Ibu Rumah Tangga', 2000000, 'ktp_andi.jpg', 'kk_andi.jpg', 'Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -278,7 +281,7 @@ CREATE TABLE `profil` (
   `Visi` text,
   `Misi` text,
   `Jam_kerja` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `profil`
@@ -307,7 +310,7 @@ CREATE TABLE `spkck` (
   `Nik` bigint DEFAULT NULL,
   `Ktp` varchar(100) DEFAULT NULL,
   `Status_pengantarskck` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `spkck`
@@ -327,7 +330,7 @@ CREATE TABLE `user` (
   `Nama_user` varchar(100) DEFAULT NULL,
   `Username` varchar(100) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`

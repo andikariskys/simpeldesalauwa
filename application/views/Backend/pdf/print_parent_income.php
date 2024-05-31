@@ -18,9 +18,8 @@ $day = date("d");
 $month = $bulan[date("F")];
 $year = date("Y");
 
-$penghasilan_ayah = (int)$parent_income->Penghasilan_ayah;
-$penghasilan_ibu = (int)$parent_income->Penghasilan_ibu;
-$penghasilan = $penghasilan_ayah + $penghasilan_ibu;
+$penghasilan_ayah_ibu = $parent_income->Penghasilan_ayah + $parent_income->Penghasilan_ibu;
+$penghasilan = "Rp " . number_format($penghasilan_ayah_ibu, 2,',','.');
 ?>
 
 <!DOCTYPE html>
@@ -62,24 +61,24 @@ $penghasilan = $penghasilan_ayah + $penghasilan_ibu;
                     <td>:</td>
                     <td><?= $parent_income->Jenis_kelamin ?></td>
                 </tr>
-                <!-- <tr>
+                <tr>
                     <td>Pekerjaan</td>
                     <td>:</td>
                     <td><?= $parent_income->Pekerjaan ?></td>
-                </tr> -->
-                <!-- <tr>
+                </tr>
+                <tr>
                     <td>Alamat</td>
                     <td>:</td>
                     <td><?= $parent_income->Alamat ?></td>
-                </tr> -->
+                </tr>
                 <tr>
                     <td>Penghasilan</td>
                     <td>:</td>
-                    <td><?= $penghasilan ?></td>
+                    <td>&plusmn; <?= $penghasilan ?></td>
                 </tr>
             </table>
         </div>
-        <p style="position: absolute; top: 175px; text-align: justify;">&nbsp; &nbsp; Demikian Surat Keterangan ini dibuat untuk dipergunakan  sebagaimana mestinya.</p>
+        <p style="position: absolute; top: 200px; text-align: justify;">&nbsp; &nbsp; Demikian Surat Keterangan ini dibuat untuk dipergunakan  sebagaimana mestinya.</p>
     </div>
     <div style="position: relative; top: 250px;">
         <div style="position: absolute; right: 0;">
