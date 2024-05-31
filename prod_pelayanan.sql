@@ -404,9 +404,9 @@ ALTER TABLE `profil`
   ADD PRIMARY KEY (`id_profil`);
 
 --
--- Indexes for table `skck`
+-- Indexes for table `spkck`
 --
-ALTER TABLE `skck`
+ALTER TABLE `spkck`
   ADD PRIMARY KEY (`id_pengantarskck`);
 
 --
@@ -480,9 +480,9 @@ ALTER TABLE `profil`
   MODIFY `id_profil` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `skck`
+-- AUTO_INCREMENT for table `spkck`
 --
-ALTER TABLE `skck`
+ALTER TABLE `spkck`
   MODIFY `id_pengantarskck` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
