@@ -50,11 +50,11 @@ class Admin extends CI_Controller
 		if ($this->input->post('sambutan_kepala_desa') != null) {
 
 			$data_profile = array(
-				'Tanggal_profil' 		=> $this->input->post('tanggal'),
-				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
-				'Visi' 					=> $this->input->post('visi'),
-				'Misi' 					=> $this->input->post('misi'),
-				'Jam_kerja' 			=> $this->input->post('jam_kerja')
+				'Tanggal_profil' => $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' => $this->input->post('sambutan_kepala_desa'),
+				'Visi' => $this->input->post('visi'),
+				'Misi' => $this->input->post('misi'),
+				'Jam_kerja' => $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->save_profile($data_profile)) {
@@ -84,11 +84,11 @@ class Admin extends CI_Controller
 		if ($this->input->post('this_update') == true) {
 
 			$data_profile = array(
-				'Tanggal_profil' 		=> $this->input->post('tanggal'),
-				'Sambutan_kepaladesa' 	=> $this->input->post('sambutan_kepala_desa'),
-				'Visi' 					=> $this->input->post('visi'),
-				'Misi' 					=> $this->input->post('misi'),
-				'Jam_kerja' 			=> $this->input->post('jam_kerja')
+				'Tanggal_profil' => $this->input->post('tanggal'),
+				'Sambutan_kepaladesa' => $this->input->post('sambutan_kepala_desa'),
+				'Visi' => $this->input->post('visi'),
+				'Misi' => $this->input->post('misi'),
+				'Jam_kerja' => $this->input->post('jam_kerja')
 			);
 
 			if (!$this->admin_model->update_profile($data_profile, $id_profile)) {
@@ -120,7 +120,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('nama_informasi') != null) {
 
-			$image		= $_FILES['foto_informasi']['name'];
+			$image = $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/informasi';
@@ -139,9 +139,9 @@ class Admin extends CI_Controller
 
 			$data_information = array(
 				'Tanggal_informasi' => $this->input->post('tanggal'),
-				'Nama_informasi'	=> $this->input->post('nama_informasi'),
-				'Isi'				=> $this->input->post('isi_informasi'),
-				'Foto'				=> $image
+				'Nama_informasi' => $this->input->post('nama_informasi'),
+				'Isi' => $this->input->post('isi_informasi'),
+				'Foto' => $image
 			);
 
 			if (!$this->admin_model->save_information($data_information)) {
@@ -175,8 +175,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_origin 		= $this->input->post('image_origin');
-			$image              = $_FILES['foto_informasi']['name'];
+			$image_origin = $this->input->post('image_origin');
+			$image = $_FILES['foto_informasi']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/informasi';
@@ -199,9 +199,9 @@ class Admin extends CI_Controller
 
 			$data_information = array(
 				'Tanggal_informasi' => $this->input->post('tanggal'),
-				'Nama_informasi'	=> $this->input->post('nama_informasi'),
-				'Isi'				=> $this->input->post('isi_informasi'),
-				'Foto'				=> $image
+				'Nama_informasi' => $this->input->post('nama_informasi'),
+				'Isi' => $this->input->post('isi_informasi'),
+				'Foto' => $image
 			);
 
 			if (!$this->admin_model->update_information($data_information, $id_information)) {
@@ -233,8 +233,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('no_kk') != null) {
 
-			$image_ktp          = $_FILES['foto_ktp']['name'];
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spot';
@@ -267,29 +267,29 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
-				'No_kk'					=> $this->input->post('no_kk'),
-				'Nik'					=> $this->input->post('nik'),
-				'Nama'					=> $this->input->post('nama_lengkap'),
-				'Ttl'					=> $this->input->post('ttl'),
-				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
-				'Agama'					=> $this->input->post('agama'),
-				'Alamat'				=> $this->input->post('alamat'),
-				'Pekerjaan'				=> $this->input->post('pekerjaan'),
-				'Nik_ayah'				=> $this->input->post('nik_ayah'),
-				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
-				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
-				'Agama_ayah'			=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
-				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
-				'Nik_ibu'				=> $this->input->post('nik_ibu'),
-				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
-				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
-				'Agama_ibu'				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
-				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
-				'kk'					=> $image_kk,
-				'ktp'					=> $image_ktp
+				'Tanggal_penghasilan' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Nik_ayah' => $this->input->post('nik_ayah'),
+				'Nama_ayah' => $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah' => $this->input->post('penghasilan_ayah'),
+				'Nik_ibu' => $this->input->post('nik_ibu'),
+				'Nama_ibu' => $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu' => $this->input->post('penghasilan_ibu'),
+				'kk' => $image_kk,
+				'ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->save_parent_income($data_parent_income)) {
@@ -332,11 +332,11 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
-			$image_kk_origin 	= $this->input->post('image_kk_origin');
+			$image_ktp_origin = $this->input->post('image_ktp_origin');
+			$image_kk_origin = $this->input->post('image_kk_origin');
 
-			$image_ktp          = $_FILES['foto_ktp']['name'];
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spot';
@@ -377,29 +377,29 @@ class Admin extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
-				'No_kk'					=> $this->input->post('no_kk'),
-				'Nik'					=> $this->input->post('nik'),
-				'Nama'					=> $this->input->post('nama_lengkap'),
-				'Ttl'					=> $this->input->post('ttl'),
-				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
-				'Agama'					=> $this->input->post('agama'),
-				'Alamat'				=> $this->input->post('alamat'),
-				'Pekerjaan'				=> $this->input->post('pekerjaan'),
-				'Nik_ayah'				=> $this->input->post('nik_ayah'),
-				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
-				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
-				'Agama_ayah'			=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
-				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
-				'Nik_ibu'				=> $this->input->post('nik_ibu'),
-				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
-				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
-				'Agama_ibu'				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
-				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
-				'kk'					=> $image_kk,
-				'ktp'					=> $image_ktp
+				'Tanggal_penghasilan' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Nik_ayah' => $this->input->post('nik_ayah'),
+				'Nama_ayah' => $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah' => $this->input->post('penghasilan_ayah'),
+				'Nik_ibu' => $this->input->post('nik_ibu'),
+				'Nama_ibu' => $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu' => $this->input->post('penghasilan_ibu'),
+				'kk' => $image_kk,
+				'ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->update_parent_income($data_parent_income, $id_parent_income)) {
@@ -454,7 +454,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('no_kk') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/sktm';
@@ -472,15 +472,15 @@ class Admin extends CI_Controller
 			}
 
 			$data_financial_hardship = array(
-				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
-				'No_kk' 						=> $this->input->post('no_kk'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama_lengkap'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'kk'							=> $image_kk
+				'Tanggal_keterangantidakmampu' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'kk' => $image_kk
 			);
 
 			if (!$this->admin_model->save_financial_hardship($data_financial_hardship)) {
@@ -522,8 +522,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_kk_origin 	= $this->input->post('image_kk_origin');
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk_origin = $this->input->post('image_kk_origin');
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/sktm';
@@ -545,15 +545,15 @@ class Admin extends CI_Controller
 			}
 
 			$data_financial_hardship = array(
-				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
-				'No_kk' 						=> $this->input->post('no_kk'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama_lengkap'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'kk'							=> $image_kk,
+				'Tanggal_keterangantidakmampu' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'kk' => $image_kk,
 			);
 
 			if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
@@ -608,7 +608,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('nik') != null) {
 
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/skm';
@@ -626,19 +626,19 @@ class Admin extends CI_Controller
 			}
 
 			$data_death_certificate = array(
-				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
-				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
-				'Nama_pelapor' 					=> $this->input->post('nama_pelapor'),
-				'Hubungan_pelapor' 				=> $this->input->post('hubungan_pelapor'),
-				'ktp'							=> $image_ktp
+				'Tanggal_keterangankematian' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Hari_kematian' => $this->input->post('hari_kematian'),
+				'Tanggal_kematian' => $this->input->post('tanggal_kematian'),
+				'Nama_pelapor' => $this->input->post('nama_pelapor'),
+				'Hubungan_pelapor' => $this->input->post('hubungan_pelapor'),
+				'ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->save_death_certificate($data_death_certificate)) {
@@ -680,8 +680,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_ktp_origin 	= $this->input->post('image_ktp_origin');
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_ktp_origin = $this->input->post('image_ktp_origin');
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/skm';
@@ -703,19 +703,19 @@ class Admin extends CI_Controller
 			}
 
 			$data_death_certificate = array(
-				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
-				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
-				'Nama_pelapor' 					=> $this->input->post('nama_pelapor'),
-				'Hubungan_pelapor' 				=> $this->input->post('hubungan_pelapor'),
-				'ktp'							=> $image_ktp
+				'Tanggal_keterangankematian' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Hari_kematian' => $this->input->post('hari_kematian'),
+				'Tanggal_kematian' => $this->input->post('tanggal_kematian'),
+				'Nama_pelapor' => $this->input->post('nama_pelapor'),
+				'Hubungan_pelapor' => $this->input->post('hubungan_pelapor'),
+				'ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
@@ -750,7 +750,7 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "SKM-" . $data['death_certificate']->Nama .".pdf";
+		$this->pdf->filename = "SKM-" . $data['death_certificate']->Nama . ".pdf";
 
 		// Load the view and create PDF
 		$this->pdf->load_view('backend/pdf/print_death_certificate', $data);
@@ -770,7 +770,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('ttl') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/skkl';
@@ -788,15 +788,15 @@ class Admin extends CI_Controller
 			}
 
 			$data_birth_announcement = array(
-				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
-				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
-				'kk'                           	=> $image_kk
+				'Tanggal_keterangankelahiran' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'kk' => $image_kk
 			);
 
 			if (!$this->admin_model->save_birth_announcement($data_birth_announcement)) {
@@ -838,8 +838,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_kk_origin     = $this->input->post('image_kk_origin');
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk_origin = $this->input->post('image_kk_origin');
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/skkl';
@@ -861,15 +861,15 @@ class Admin extends CI_Controller
 			}
 
 			$data_birth_announcement = array(
-				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
-				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
-				'kk'                           	=> $image_kk
+				'Tanggal_keterangankelahiran' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'kk' => $image_kk
 			);
 
 			if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
@@ -924,8 +924,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('ttl') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/spn';
@@ -957,28 +957,28 @@ class Admin extends CI_Controller
 			}
 
 			$data_marriage_recommendation = array(
-				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'Anak_ke' 					=> $this->input->post('anak_ke'),
-				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
-				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
-				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
-				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
-				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
-				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
-				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
-				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
-				'Ktp' 						=> $image_ktp,
-				'kk'                       	=> $image_kk
+				'Tanggal_pengantarnikah' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'Anak_ke' => $this->input->post('anak_ke'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' => $this->input->post('alamat_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' => $this->input->post('alamat_ibu'),
+				'Ktp' => $image_ktp,
+				'kk' => $image_kk
 			);
 
 			if (!$this->admin_model->save_marriage_recommendation($data_marriage_recommendation)) {
@@ -1021,10 +1021,10 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_kk_origin  	= $this->input->post('image_kk_origin');
-			$image_ktp_origin	= $this->input->post('image_ktp_origin');
-			$image_kk         	= $_FILES['foto_kk']['name'];
-			$image_ktp       	= $_FILES['foto_ktp']['name'];
+			$image_kk_origin = $this->input->post('image_kk_origin');
+			$image_ktp_origin = $this->input->post('image_ktp_origin');
+			$image_kk = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/spn';
@@ -1065,28 +1065,28 @@ class Admin extends CI_Controller
 			}
 
 			$data_marriage_recommendation = array(
-				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'Anak_ke' 					=> $this->input->post('anak_ke'),
-				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
-				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
-				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
-				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
-				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
-				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
-				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
-				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
-				'Ktp' 						=> $image_ktp,
-				'kk'                       	=> $image_kk
+				'Tanggal_pengantarnikah' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'Anak_ke' => $this->input->post('anak_ke'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' => $this->input->post('alamat_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' => $this->input->post('alamat_ibu'),
+				'Ktp' => $image_ktp,
+				'kk' => $image_kk
 			);
 
 			if (!$this->admin_model->update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)) {
@@ -1121,7 +1121,7 @@ class Admin extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 
 		// Set filename
-		$this->pdf->filename = "SKBM-" . $data['marriage_recommendation']->Nama .".pdf";
+		$this->pdf->filename = "SKBM-" . $data['marriage_recommendation']->Nama . ".pdf";
 
 		// Load the view and create PDF
 		$this->pdf->load_view('backend/pdf/print_marriage_recommendation', $data);
@@ -1141,7 +1141,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('ttl') != null) {
 
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spkck';
@@ -1159,17 +1159,17 @@ class Admin extends CI_Controller
 			}
 
 			$data_police_report = array(
-				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'No_kk' 					=> $this->input->post('no_kk'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Ktp' 						=> $image_ktp
+				'Tanggal_pengantarskck' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->save_police_report($data_police_report)) {
@@ -1211,8 +1211,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_ktp_origin	= $this->input->post('image_ktp_origin');
-			$image_ktp       	= $_FILES['foto_ktp']['name'];
+			$image_ktp_origin = $this->input->post('image_ktp_origin');
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spkck';
@@ -1234,17 +1234,17 @@ class Admin extends CI_Controller
 			}
 
 			$data_police_report = array(
-				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'No_kk' 					=> $this->input->post('no_kk'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Ktp' 						=> $image_ktp
+				'Tanggal_pengantarskck' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Ktp' => $image_ktp
 			);
 
 			if (!$this->admin_model->update_police_report($data_police_report, $id_police_report)) {
@@ -1299,7 +1299,7 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('nama_galeri') != null) {
 
-			$image		= $_FILES['foto_galeri']['name'];
+			$image = $_FILES['foto_galeri']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/galeri';
@@ -1317,9 +1317,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_gallery = array(
-				'Tanggal_galeri'	=> $this->input->post('tanggal'),
-				'Nama_galeri'		=> $this->input->post('nama_galeri'),
-				'Foto'				=> $image
+				'Tanggal_galeri' => $this->input->post('tanggal'),
+				'Nama_galeri' => $this->input->post('nama_galeri'),
+				'Foto' => $image
 			);
 
 			if (!$this->admin_model->save_gallery($data_gallery)) {
@@ -1353,8 +1353,8 @@ class Admin extends CI_Controller
 	{
 		if ($this->input->post('this_update') == true) {
 
-			$image_origin 		= $this->input->post('image_origin');
-			$image              = $_FILES['foto_galeri']['name'];
+			$image_origin = $this->input->post('image_origin');
+			$image = $_FILES['foto_galeri']['name'];
 
 			if ($image != null) {
 				$config['upload_path'] = './assets/img-admin/galeri';
@@ -1376,9 +1376,9 @@ class Admin extends CI_Controller
 			}
 
 			$data_gallery = array(
-				'Tanggal_galeri' 	=> $this->input->post('tanggal'),
-				'Nama_galeri'		=> $this->input->post('nama_galeri'),
-				'Foto'				=> $image
+				'Tanggal_galeri' => $this->input->post('tanggal'),
+				'Nama_galeri' => $this->input->post('nama_galeri'),
+				'Foto' => $image
 			);
 
 			if (!$this->admin_model->update_gallery($data_gallery, $id_gallery)) {
@@ -1411,9 +1411,9 @@ class Admin extends CI_Controller
 		if ($this->input->post('email') != null) {
 
 			$data_contact = array(
-				'Alamat' 		=> $this->input->post('alamat'),
-				'Email' 		=> $this->input->post('email'),
-				'Telepon'       => $this->input->post('telepon')
+				'Alamat' => $this->input->post('alamat'),
+				'Email' => $this->input->post('email'),
+				'Telepon' => $this->input->post('telepon')
 			);
 
 			if (!$this->admin_model->save_contact($data_contact)) {
@@ -1443,9 +1443,9 @@ class Admin extends CI_Controller
 		if ($this->input->post('this_update') == true) {
 
 			$data_contact = array(
-				'Alamat' 		=> $this->input->post('alamat'),
-				'Email' 		=> $this->input->post('email'),
-				'Telepon'       => $this->input->post('telepon')
+				'Alamat' => $this->input->post('alamat'),
+				'Email' => $this->input->post('email'),
+				'Telepon' => $this->input->post('telepon')
 			);
 
 			if (!$this->admin_model->update_contact($data_contact, $id_contact)) {
@@ -1478,9 +1478,9 @@ class Admin extends CI_Controller
 		if ($this->input->post('username') != null) {
 
 			$data_user = array(
-				'Nama_user'		=> $this->input->post('nama'),
-				'Username' 		=> $this->input->post('username'),
-				'password'  	=> md5($this->input->post('password'))
+				'Nama_user' => $this->input->post('nama'),
+				'Username' => $this->input->post('username'),
+				'password' => md5($this->input->post('password'))
 			);
 
 			if (!$this->admin_model->save_user($data_user)) {
@@ -1511,13 +1511,13 @@ class Admin extends CI_Controller
 
 			if ($this->input->post('this_reset') == true) {
 				$data_user = array(
-					'password'  	=> md5($this->input->post('password'))
+					'password' => md5($this->input->post('password'))
 				);
 				$message = "Ubah password berhasil disimpan!";
 			} else {
 				$data_user = array(
-					'Nama_user'		=> $this->input->post('nama'),
-					'Username' 		=> $this->input->post('username')
+					'Nama_user' => $this->input->post('nama'),
+					'Username' => $this->input->post('username')
 				);
 				$message = "Ubah data berhasil disimpan!";
 			}
