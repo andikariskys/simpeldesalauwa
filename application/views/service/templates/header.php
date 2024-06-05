@@ -23,28 +23,37 @@
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/mark/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/mark/css/fontawesome-all.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/mark/css/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/rtl/core.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/rtl/theme-default.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/demo.css') ?>" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/mark/datatables/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/node-waves/node-waves.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/typeahead-js/typeahead.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/apex-charts/apex-charts.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/swiper/swiper.css') ?>" />
+
 
     <!-- Favicon  -->
     <link rel="icon" href="<?php echo base_url() ?>assets/mark/images/luwu.png">
     <style>
         .header {
-            padding-top: 20rem;
+            padding-top: 10rem;
             padding-bottom: 5.5rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('assets/mark/images/welcome.jpg') center center no-repeat;
-            background-size: cover;
+            background: #ffffff;
+            /* Ubah warna latar belakang menjadi putih */
             text-align: center;
         }
 
         .logo-img {
             width: 100px;
-            /* Sesuaikan dengan ukuran yang diinginkan */
+            /* Tetapkan ukuran logo jika perlu */
             height: auto;
             /* Tetapkan tinggi ke auto agar rasio aspek gambar tetap terjaga */
         }

@@ -22,13 +22,56 @@ class Service extends CI_Controller
 
 	public function index()
 	{
-		$data['is_home'] = true;
+		$data['is_home'] = false;
 		$this->load->view('service/templates/header');
 		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/dashboard');
 		// echo json_encode($data);
 		// exit;
 		// $this->load->view('service/templates/footer');
+	}
+
+	public function serviceLoginPage()
+	{
+		$data['is_home'] = false;
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/auth/login', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+	public function serviceregister()
+	{
+		$data['is_home'] = false;
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/auth/register', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+	function procces_regis()
+	{
+		$username = $this->input->post('username');
+
+		$cek_username = $this->M_service->check_username($username);
+
+		if ($cek_username->num_rows() > 0) {
+			$this->session->set_flashdata(array('error_login' => true));
+			redirect('register');
+		} else {
+			$data_user = array(
+				'Nama_user' => $this->input->post('nama'),
+				'Username' => $this->input->post('username'),
+				'password' => md5($this->input->post('password'))
+			);
+
+			if (!$this->admin_model->save_user($data_user)) {
+				$this->session->set_flashdata('alert', 'Pendaftaran Berhasil...');
+				$this->session->set_flashdata('alert_type', 'info');
+				redirect('register');
+			}
+		}
+
 	}
 
 	public function serviceLogin()
@@ -42,19 +85,28 @@ class Service extends CI_Controller
 			$user = $cek_login->row();
 
 			$data_user = array(
-				'id_user'   => $user->id_user,
-				'nama'      => $user->Nama_user,
-				'username'  => $user->Username,
-				'is_login'  => true
+				'id_user' => $user->id_user,
+				'nama' => $user->Nama_user,
+				'username' => $user->Username,
+				'level' => $user->level,
+				'is_login' => true
 			);
 
-			$this->session->set_userdata($data_user);
+			if ($user->level == 1) {
+				$this->session->set_userdata($data_user);
 
-			// Redirect with JavaScript to open admin page in a new tab
-			redirect('dashboard');
+				// Redirect with JavaScript to open admin page in a new tab
+				redirect('dashboard');
+			} else {
+				$this->session->set_userdata($data_user);
+
+				// Redirect with JavaScript to open admin page in a new tab
+				redirect('');
+			}
+
 		} else {
 			$this->session->set_flashdata(array('error_login' => true));
-			redirect('');
+			redirect('login');
 		}
 	}
 
@@ -83,6 +135,36 @@ class Service extends CI_Controller
 		$this->load->view('service/templates/header');
 		$this->load->view('service/templates/navbar', $data);
 		$this->load->view('service/profile/index', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+	public function serviceHistory()
+	{
+		$data['is_home'] = false;
+		$data['profil'] = $this->M_profile->get_data();
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/profile/sejarah', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+	public function serviceVisionMision()
+	{
+		$data['is_home'] = false;
+		$data['profil'] = $this->M_profile->get_data();
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/profile/visi_misi', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+	public function serviceStructure()
+	{
+		$data['is_home'] = false;
+		$data['profil'] = $this->M_profile->get_data();
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/profile/struktur', $data);
 		$this->load->view('service/templates/footer');
 	}
 
@@ -132,10 +214,12 @@ class Service extends CI_Controller
 
 	public function addParentIncome()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('no_kk') != null) {
 
-			$image_ktp          = $_FILES['foto_ktp']['name'];
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spot';
@@ -168,29 +252,30 @@ class Service extends CI_Controller
 			}
 
 			$data_parent_income = array(
-				'Tanggal_penghasilan' 	=> $this->input->post('tanggal'),
-				'No_kk'					=> $this->input->post('no_kk'),
-				'Nik'					=> $this->input->post('nik'),
-				'Nama'					=> $this->input->post('nama_lengkap'),
-				'Ttl'					=> $this->input->post('ttl'),
-				'Jenis_kelamin'			=> $this->input->post('jenis_kelamin'),
-				'Agama'					=> $this->input->post('agama'),
-				'Alamat'				=> $this->input->post('alamat'),
-				'Pekerjaan'				=> $this->input->post('pekerjaan'),
-				'Nik_ayah'				=> $this->input->post('nik_ayah'),
-				'Nama_ayah'				=> $this->input->post('nama_lengkap_ayah'),
-				'Ttl_ayah'				=> $this->input->post('ttl_ayah'),
-				'Agama_ayah'			=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah'		=> $this->input->post('pekerjaan_ayah'),
-				'Penghasilan_ayah'		=> $this->input->post('penghasilan_ayah'),
-				'Nik_ibu'				=> $this->input->post('nik_ibu'),
-				'Nama_ibu'				=> $this->input->post('nama_lengkap_ibu'),
-				'Ttl_ibu'				=> $this->input->post('ttl_ibu'),
-				'Agama_ibu'				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
-				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
-				'kk'					=> $image_kk,
-				'ktp'					=> $image_ktp
+				'Tanggal_penghasilan' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Nik_ayah' => $this->input->post('nik_ayah'),
+				'Nama_ayah' => $this->input->post('nama_lengkap_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Penghasilan_ayah' => $this->input->post('penghasilan_ayah'),
+				'Nik_ibu' => $this->input->post('nik_ibu'),
+				'Nama_ibu' => $this->input->post('nama_lengkap_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Penghasilan_ibu' => $this->input->post('penghasilan_ibu'),
+				'kk' => $image_kk,
+				'ktp' => $image_ktp,
+				'created_id' => $auth['id_user']
 			);
 
 			// echo json_encode($data_parent_income);
@@ -211,6 +296,22 @@ class Service extends CI_Controller
 		}
 	}
 
+	public function printParentIncome()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Surat Keterangan Penghasilan Orang Tua';
+		$data['data'] = $this->M_service->get_parent_incomes($auth['id_user']);
+		// echo json_encode($data);
+		// exit;
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/parent-income/cetak', $data);
+		$this->load->view('service/templates/footer');
+
+	}
+
 	/**end parent Income */
 
 	/**FinancialHardship */
@@ -226,9 +327,11 @@ class Service extends CI_Controller
 
 	public function addFinancialHardship()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('no_kk') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/sktm';
@@ -246,15 +349,17 @@ class Service extends CI_Controller
 			}
 
 			$data_financial_hardship = array(
-				'Tanggal_keterangantidakmampu' 	=> $this->input->post('tanggal'),
-				'No_kk' 						=> $this->input->post('no_kk'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama_lengkap'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'kk'							=> $image_kk
+				'Tanggal_keterangantidakmampu' => $this->input->post('tanggal'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama_lengkap'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'kk' => $image_kk,
+				'created_id' => $auth['id_user']
+
 			);
 
 			if (!$this->admin_model->save_financial_hardship($data_financial_hardship)) {
@@ -273,6 +378,22 @@ class Service extends CI_Controller
 		}
 	}
 
+	public function printFinancialHardship()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Surat Keterangan Tidak Mampu';
+		$data['data'] = $this->M_service->get_financial_hardships($auth['id_user']);
+		// echo json_encode($data);
+		// exit;
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/financial-hardship/cetak', $data);
+		$this->load->view('service/templates/footer');
+
+	}
+
 	/**end FinancialHardship */
 
 
@@ -289,9 +410,11 @@ class Service extends CI_Controller
 
 	public function addBirthCertificate()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('ttl') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/skkl';
@@ -309,15 +432,17 @@ class Service extends CI_Controller
 			}
 
 			$data_birth_announcement = array(
-				'Tanggal_keterangankelahiran'	=> $this->input->post('tanggal'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
-				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
-				'kk'                           	=> $image_kk
+				'Tanggal_keterangankelahiran' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'kk' => $image_kk,
+				'created_id' => $auth['id_user']
+
 			);
 
 			if (!$this->admin_model->save_birth_announcement($data_birth_announcement)) {
@@ -336,6 +461,22 @@ class Service extends CI_Controller
 		}
 	}
 
+	public function printBirthCertificate()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Keterangan Kelahiran';
+		$data['data'] = $this->M_service->get_birth_certificate($auth['id_user']);
+		// echo json_encode($data);
+		// exit;
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/birth-certificate/cetak', $data);
+		$this->load->view('service/templates/footer');
+
+	}
+
 
 	/**end serviceBirthCertificate */
 
@@ -352,9 +493,11 @@ class Service extends CI_Controller
 
 	public function addDeathCertificate()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('nik') != null) {
 
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/skm';
@@ -372,19 +515,21 @@ class Service extends CI_Controller
 			}
 
 			$data_death_certificate = array(
-				'Tanggal_keterangankematian'	=> $this->input->post('tanggal'),
-				'Nik' 							=> $this->input->post('nik'),
-				'Nama' 							=> $this->input->post('nama'),
-				'Ttl' 							=> $this->input->post('ttl'),
-				'Jenis_kelamin' 				=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 					=> $this->input->post('pekerjaan'),
-				'Agama' 						=> $this->input->post('agama'),
-				'Alamat' 						=> $this->input->post('alamat'),
-				'Hari_kematian' 				=> $this->input->post('hari_kematian'),
-				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
-				'Nama_pelapor' 					=> $this->input->post('nama_pelapor'),
-				'Hubungan_pelapor' 				=> $this->input->post('hubungan_pelapor'),
-				'ktp'							=> $image_ktp
+				'Tanggal_keterangankematian' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Alamat' => $this->input->post('alamat'),
+				'Hari_kematian' => $this->input->post('hari_kematian'),
+				'Tanggal_kematian' => $this->input->post('tanggal_kematian'),
+				'Nama_pelapor' => $this->input->post('nama_pelapor'),
+				'Hubungan_pelapor' => $this->input->post('hubungan_pelapor'),
+				'ktp' => $image_ktp,
+				'created_id' => $auth['id_user']
+
 			);
 
 			if (!$this->admin_model->save_death_certificate($data_death_certificate)) {
@@ -404,6 +549,20 @@ class Service extends CI_Controller
 	}
 
 
+	public function printDeathCertificate()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Surat Keterangan Kematian';
+		$data['data'] = $this->M_service->get_death_certificate($auth['id_user']);
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/death-certificate/cetak', $data);
+		$this->load->view('service/templates/footer');
+	}
+
+
 	/**end servicedeathCertificate */
 
 	/**serviceMarriageLetter */
@@ -419,10 +578,12 @@ class Service extends CI_Controller
 
 	public function addMarriageLetter()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('ttl') != null) {
 
-			$image_kk           = $_FILES['foto_kk']['name'];
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_kk = $_FILES['foto_kk']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_kk != null) {
 				$config['upload_path'] = './assets/img-admin/spn';
@@ -454,28 +615,30 @@ class Service extends CI_Controller
 			}
 
 			$data_marriage_recommendation = array(
-				'Tanggal_pengantarnikah'	=> $this->input->post('tanggal'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'Anak_ke' 					=> $this->input->post('anak_ke'),
-				'Nama_ayah' 				=> $this->input->post('nama_ayah'),
-				'Ttl_ayah' 					=> $this->input->post('ttl_ayah'),
-				'Agama_ayah' 				=> $this->input->post('agama_ayah'),
-				'Pekerjaan_ayah' 			=> $this->input->post('pekerjaan_ayah'),
-				'Alamat_ayah' 				=> $this->input->post('alamat_ayah'),
-				'Nama_ibu' 					=> $this->input->post('nama_ibu'),
-				'Ttl_ibu' 					=> $this->input->post('ttl_ibu'),
-				'Agama_ibu' 				=> $this->input->post('agama_ibu'),
-				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
-				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
-				'Ktp' 						=> $image_ktp,
-				'kk'                       	=> $image_kk
+				'Tanggal_pengantarnikah' => $this->input->post('tanggal'),
+				'Nik' => $this->input->post('nik'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'Anak_ke' => $this->input->post('anak_ke'),
+				'Nama_ayah' => $this->input->post('nama_ayah'),
+				'Ttl_ayah' => $this->input->post('ttl_ayah'),
+				'Agama_ayah' => $this->input->post('agama_ayah'),
+				'Pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+				'Alamat_ayah' => $this->input->post('alamat_ayah'),
+				'Nama_ibu' => $this->input->post('nama_ibu'),
+				'Ttl_ibu' => $this->input->post('ttl_ibu'),
+				'Agama_ibu' => $this->input->post('agama_ibu'),
+				'Pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+				'Alamat_ibu' => $this->input->post('alamat_ibu'),
+				'Ktp' => $image_ktp,
+				'kk' => $image_kk,
+				'created_id' => $auth['id_user']
+
 			);
 
 			if (!$this->admin_model->save_marriage_recommendation($data_marriage_recommendation)) {
@@ -494,6 +657,19 @@ class Service extends CI_Controller
 		}
 	}
 
+	public function printMarriageLetter()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Surat Pengantar Nikah';
+		$data['data'] = $this->M_service->get_marriage_letter($auth['id_user']);
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/marriage-letter/cetak', $data);
+		$this->load->view('service/templates/footer');
+	}
+
 	/**end serviceMarriageLetter */
 
 	/**servicePoliceRecordLetter */
@@ -509,9 +685,11 @@ class Service extends CI_Controller
 
 	public function addPoliceRecordLetter()
 	{
+		$auth = $this->session->userdata();
+
 		if ($this->input->post('ttl') != null) {
 
-			$image_ktp           = $_FILES['foto_ktp']['name'];
+			$image_ktp = $_FILES['foto_ktp']['name'];
 
 			if ($image_ktp != null) {
 				$config['upload_path'] = './assets/img-admin/spkck';
@@ -529,17 +707,19 @@ class Service extends CI_Controller
 			}
 
 			$data_police_report = array(
-				'Tanggal_pengantarskck'		=> $this->input->post('tanggal'),
-				'Nama' 						=> $this->input->post('nama'),
-				'Ttl' 						=> $this->input->post('ttl'),
-				'Jenis_kelamin' 			=> $this->input->post('jenis_kelamin'),
-				'Pekerjaan' 				=> $this->input->post('pekerjaan'),
-				'Agama' 					=> $this->input->post('agama'),
-				'Status_kawin' 				=> $this->input->post('status_kawin'),
-				'Alamat' 					=> $this->input->post('alamat'),
-				'No_kk' 					=> $this->input->post('no_kk'),
-				'Nik' 						=> $this->input->post('nik'),
-				'Ktp' 						=> $image_ktp
+				'Tanggal_pengantarskck' => $this->input->post('tanggal'),
+				'Nama' => $this->input->post('nama'),
+				'Ttl' => $this->input->post('ttl'),
+				'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'Pekerjaan' => $this->input->post('pekerjaan'),
+				'Agama' => $this->input->post('agama'),
+				'Status_kawin' => $this->input->post('status_kawin'),
+				'Alamat' => $this->input->post('alamat'),
+				'No_kk' => $this->input->post('no_kk'),
+				'Nik' => $this->input->post('nik'),
+				'Ktp' => $image_ktp,
+				'created_id' => $auth['id_user']
+
 			);
 
 			if (!$this->admin_model->save_police_report($data_police_report)) {
@@ -558,6 +738,18 @@ class Service extends CI_Controller
 		}
 	}
 
+	public function printPoliceRecordLetter()
+	{
+		$auth = $this->session->userdata();
+
+		$data['is_home'] = false;
+		$data['title'] = 'Cetak Surat Pengantar Catatan Kepolisian';
+		$data['data'] = $this->M_service->get_police_record_letter($auth['id_user']);
+		$this->load->view('service/templates/header');
+		$this->load->view('service/templates/navbar', $data);
+		$this->load->view('service/services/police-record-letter/cetak', $data);
+		$this->load->view('service/templates/footer');
+	}
 
 	/**end servicePoliceRecordLetter */
 }

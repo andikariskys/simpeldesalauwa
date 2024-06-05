@@ -6,33 +6,46 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /**Frontend Routes */
-$route['authentication']    = 'Service/serviceLogin';
-$route['logout']            = 'Service/serviceLogout';
-$route['session']           = 'Service/serviceSession';
+$route['login'] = 'Service/serviceLoginPage';
+$route['register'] = 'Service/serviceRegister';
+$route['registration'] = 'Service/procces_regis';
+$route['authentication'] = 'Service/serviceLogin';
+$route['logout'] = 'Service/serviceLogout';
+$route['session'] = 'Service/serviceSession';
 
-$route['profile']           = 'Service/serviceProfile';
-$route['information']       = 'Service/serviceInformation';
-$route['galery']            = 'Service/serviceGalery';
-$route['contact']           = 'Service/serviceContact';
+$route['profile'] = 'Service/serviceProfile';
+$route['sejarah'] = 'Service/serviceHistory';
+$route['visi-misi'] = 'Service/serviceVisionMision';
+$route['struktur'] = 'Service/serviceStructure';
+
+$route['information'] = 'Service/serviceInformation';
+$route['galery'] = 'Service/serviceGalery';
+$route['contact'] = 'Service/serviceContact';
 
 //dropdown
-$route['parent-income']             = 'Service/serviceParentIncome';
-$route['parent-income/add']         = 'Service/addParentIncome';
+$route['parent-income'] = 'Service/serviceParentIncome';
+$route['parent-income/add'] = 'Service/addParentIncome';
+$route['parent-income/cetak'] = 'Service/printParentIncome';
 
-$route['financial-hardship']        = 'Service/serviceFinancialHardship';
-$route['financial-hardship/add']    = 'Service/addFinancialHardship';
+$route['financial-hardship'] = 'Service/serviceFinancialHardship';
+$route['financial-hardship/add'] = 'Service/addFinancialHardship';
+$route['financial-hardship/cetak'] = 'Service/printFinancialHardship';
 
-$route['birth-certificate']         = 'Service/serviceBirthCertificate';
-$route['birth-certificate/add']     = 'Service/addBirthCertificate';
+$route['birth-certificate'] = 'Service/serviceBirthCertificate';
+$route['birth-certificate/add'] = 'Service/addBirthCertificate';
+$route['birth-certificate/cetak'] = 'Service/printBirthCertificate';
 
-$route['death-certificate']         = 'Service/servicedeathCertificate';
-$route['death-certificate/add']     = 'Service/addDeathCertificate';
+$route['death-certificate'] = 'Service/servicedeathCertificate';
+$route['death-certificate/add'] = 'Service/addDeathCertificate';
+$route['death-certificate/cetak'] = 'Service/printDeathCertificate';
 
-$route['marriage-letter']           = 'Service/serviceMarriageLetter';
-$route['marriage-letter/add']       = 'Service/addMarriageLetter';
+$route['marriage-letter'] = 'Service/serviceMarriageLetter';
+$route['marriage-letter/add'] = 'Service/addMarriageLetter';
+$route['marriage-letter/cetak'] = 'Service/printMarriageLetter';
 
-$route['police-record-letter']      = 'Service/servicePoliceRecordLetter';
-$route['police-record-letter/add']  = 'Service/addPoliceRecordLetter';
+$route['police-record-letter'] = 'Service/servicePoliceRecordLetter';
+$route['police-record-letter/add'] = 'Service/addPoliceRecordLetter';
+$route['police-record-letter/cetak'] = 'Service/printPoliceRecordLetter';
 
 // end Frontend Routes
 
