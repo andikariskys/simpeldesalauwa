@@ -9,50 +9,43 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-tanggal">Tanggal (Read-only)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-tanggal" name="tanggal" placeholder="2024-05-24"
-                        value="<?= date("Y-m-d") ?>" readonly />
+                    <input type="text" class="form-control" id="input-tanggal" name="tanggal" placeholder="2024-05-24" value="<?= date("Y-m-d") ?>" readonly />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-kk">No. KK</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-kk" onchange="validateLength(this)"
-                        name="no_kk" placeholder="3313123456780003" required />
+                    <input type="number" class="form-control" id="input-no-kk" name="no_kk" placeholder="3313123456780003" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-foto-kartu-keluarga">Foto Kartu Keluarga</label>
                 <div class="col-sm-10">
-                    <input type="file" name="foto_kk" id="input-foto-kartu-keluarga" class="form-control"
-                        accept="image/jpg, image/jpeg, image/png, image/webp" required>
+                    <input type="file" name="foto_kk" id="input-foto-kartu-keluarga" class="form-control" accept="image/jpg, image/jpeg, image/png, image/webp" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-nik">NIK</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-nik"  onchange="validateLength(this)" name="nik"
-                        placeholder="3313123456780004" required />
+                    <input type="number" class="form-control" id="input-no-nik" name="nik" placeholder="3313123456780004" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-foto-ktp">Foto KTP</label>
                 <div class="col-sm-10">
-                    <input type="file" name="foto_ktp" id="input-foto-ktp" class="form-control"
-                        accept="image/jpg, image/jpeg, image/png, image/webp" required>
+                    <input type="file" name="foto_ktp" id="input-foto-ktp" class="form-control" accept="image/jpg, image/jpeg, image/png, image/webp" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nama-lengkap">Nama Lengkap</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-nama-lengkap" name="nama_lengkap"
-                        placeholder="Magfira Islamia" required />
+                    <input type="text" class="form-control" id="input-nama-lengkap" name="nama_lengkap" placeholder="Magfira Islamia" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-ttl">Tempat, Tanggal Lahir</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-ttl" name="ttl"
-                        placeholder="Jakarta, 1 Januari 2000" required />
+                    <input type="text" class="form-control" id="input-ttl" name="ttl" placeholder="Jakarta, 1 Januari 2000" required />
                 </div>
             </div>
             <div class="row mb-3">
@@ -60,21 +53,18 @@
                 <div class="col-sm-10">
                     <div class="form-check">
                         <label class="form-check-label" for="radio-laki-laki"> Laki-laki </label>
-                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-laki"
-                            id="radio-laki-laki" required>
+                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-laki" id="radio-laki-laki" required>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label" for="radio-perempuan"> Perempuan </label>
-                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan"
-                            id="radio-perempuan">
+                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan" id="radio-perempuan">
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="select-agama">Agama/Kepercayaan</label>
                 <div class="col-sm-10">
-                    <select name="agama" class="form-select" aria-label="Default select example" id="select-agama"
-                        required>
+                    <select name="agama" class="form-select" aria-label="Default select example" id="select-agama" required>
                         <option value="" selected disabled>Pilih Agama atau Kepercayaan</option>
                         <option value="Islam">Islam</option>
                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -87,15 +77,13 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-alamat">Alamat</label>
                 <div class="col-sm-10">
-                    <textarea name="alamat" id="input-alamat" class="form-control" placeholder="Jl. Mawar Merah No. 12"
-                        required></textarea>
+                    <textarea name="alamat" id="input-alamat" class="form-control" placeholder="Jl. Mawar Merah No. 12" required></textarea>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-pekerjaan">Pekerjaan</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-pekerjaan" name="pekerjaan"
-                        placeholder="Pelajar/Mahasiswa" required />
+                    <input type="text" class="form-control" id="input-pekerjaan" name="pekerjaan" placeholder="Pelajar/Mahasiswa" required />
                 </div>
             </div>
 
@@ -104,29 +92,25 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-nik-ayah">NIK Ayah</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-nik-ayah" name="nik_ayah"
-                        placeholder="3313123456780001" required />
+                    <input type="number" class="form-control" id="input-no-nik-ayah" name="nik_ayah" placeholder="3313123456780001" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nama-lengkap-ayah">Nama Lengkap Ayah</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-nama-lengkap-ayah" name="nama_lengkap_ayah"
-                        placeholder="Nama Lengkap Ayah" required />
+                    <input type="text" class="form-control" id="input-nama-lengkap-ayah" name="nama_lengkap_ayah" placeholder="Nama Lengkap Ayah" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-ttl-ayah">Tempat, Tanggal Lahir Ayah</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-ttl-ayah" name="ttl_ayah"
-                        placeholder="Jakarta, 1 Januari 1980" required />
+                    <input type="text" class="form-control" id="input-ttl-ayah" name="ttl_ayah" placeholder="Jakarta, 1 Januari 1980" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="select-agama-ayah">Agama/Kepercayaan Ayah</label>
                 <div class="col-sm-10">
-                    <select name="agama_ayah" class="form-select" aria-label="Default select example"
-                        id="select-agama-ayah" required>
+                    <select name="agama_ayah" class="form-select" aria-label="Default select example" id="select-agama-ayah" required>
                         <option value="" selected disabled>Pilih Agama atau Kepercayaan</option>
                         <option value="Islam">Islam</option>
                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -139,15 +123,13 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-pekerjaan-ayah">Pekerjaan Ayah</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-pekerjaan-ayah" name="pekerjaan_ayah"
-                        placeholder="Pegawai Swasta" required />
+                    <input type="text" class="form-control" id="input-pekerjaan-ayah" name="pekerjaan_ayah" placeholder="Pegawai Swasta" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-penghasilan-ayah">Penghasilan Ayah (Rp. )</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-penghasilan-ayah" name="penghasilan_ayah"
-                        placeholder="2100000" required />
+                    <input type="number" class="form-control" id="input-penghasilan-ayah" name="penghasilan_ayah" placeholder="2100000" required />
                 </div>
             </div>
 
@@ -156,29 +138,25 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-nik-ibu">NIK Ibu</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-nik-ibu" name="nik_ibu"
-                        placeholder="3313123456780002" required />
+                    <input type="number" class="form-control" id="input-no-nik-ibu" name="nik_ibu" placeholder="3313123456780002" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nama-lengkap-ibu">Nama Lengkap Ibu</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-nama-lengkap-ibu" name="nama_lengkap_ibu"
-                        placeholder="Nama Lengkap Ibu" required />
+                    <input type="text" class="form-control" id="input-nama-lengkap-ibu" name="nama_lengkap_ibu" placeholder="Nama Lengkap Ibu" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-ttl-ibu">Tempat, Tanggal Lahir Ibu</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-ttl-ibu" name="ttl_ibu"
-                        placeholder="Jakarta, 1 Januari 1982" required />
+                    <input type="text" class="form-control" id="input-ttl-ibu" name="ttl_ibu" placeholder="Jakarta, 1 Januari 1982" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="select-agama-ibu">Agama/Kepercayaan Ibu</label>
                 <div class="col-sm-10">
-                    <select name="agama_ibu" class="form-select" aria-label="Default select example"
-                        id="select-agama-ibu" required>
+                    <select name="agama_ibu" class="form-select" aria-label="Default select example" id="select-agama-ibu" required>
                         <option value="" selected disabled>Pilih Agama atau Kepercayaan</option>
                         <option value="Islam">Islam</option>
                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -191,15 +169,13 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-pekerjaan-ibu">Pekerjaan Ibu</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-pekerjaan-ibu" name="pekerjaan_ibu"
-                        placeholder="Ibu Rumah Tangga" required />
+                    <input type="text" class="form-control" id="input-pekerjaan-ibu" name="pekerjaan_ibu" placeholder="Ibu Rumah Tangga" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-penghasilan-ibu">Penghasilan Ibu (Rp. )</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-penghasilan-ibu" name="penghasilan_ibu"
-                        placeholder="0" required />
+                    <input type="number" class="form-control" id="input-penghasilan-ibu" name="penghasilan_ibu" placeholder="0" required />
                 </div>
             </div>
 

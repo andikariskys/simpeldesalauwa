@@ -308,7 +308,10 @@ class Admin extends CI_Controller
 
 	function verification_parent_income($id_parent_income)
 	{
-		$data_parent_income = array('Status_penghasilanorangtua' => 'Terverifikasi');
+		$data_parent_income = array(
+			'Status_penghasilanorangtua' 	=> 'Terverifikasi',
+			'updated_id' 					=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_parent_income($data_parent_income, $id_parent_income)) {
 			$this->session->set_flashdata('success_parent_income', 'SK berhasil diverifikasi!');
@@ -399,7 +402,8 @@ class Admin extends CI_Controller
 				'Pekerjaan_ibu'			=> $this->input->post('pekerjaan_ibu'),
 				'Penghasilan_ibu'		=> $this->input->post('penghasilan_ibu'),
 				'kk'					=> $image_kk,
-				'ktp'					=> $image_ktp
+				'ktp'					=> $image_ktp,
+				'updated_id' 			=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_parent_income($data_parent_income, $id_parent_income)) {
@@ -499,7 +503,10 @@ class Admin extends CI_Controller
 
 	function verification_financial_hardship($id_financial_hardship)
 	{
-		$data_financial_hardship = array('Status_keterangantidakmampu' => 'Terverifikasi');
+		$data_financial_hardship = array(
+			'Status_keterangantidakmampu' 	=> 'Terverifikasi',
+			'updated_id' 					=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
 			$this->session->set_flashdata('success_financial_hardship', 'SK berhasil diverifikasi!');
@@ -554,6 +561,7 @@ class Admin extends CI_Controller
 				'Agama' 						=> $this->input->post('agama'),
 				'Alamat' 						=> $this->input->post('alamat'),
 				'kk'							=> $image_kk,
+				'updated_id' 					=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_financial_hardship($data_financial_hardship, $id_financial_hardship)) {
@@ -657,7 +665,10 @@ class Admin extends CI_Controller
 
 	function verification_death_certificate($id_death_certificate)
 	{
-		$data_death_certificate = array('Status_keterangankematian' => 'Terverifikasi');
+		$data_death_certificate = array(
+			'Status_keterangankematian' 	=> 'Terverifikasi',
+			'updated_id' 					=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
 			$this->session->set_flashdata('success_death_certificate', 'SK berhasil diverifikasi!');
@@ -715,7 +726,8 @@ class Admin extends CI_Controller
 				'Tanggal_kematian' 				=> $this->input->post('tanggal_kematian'),
 				'Nama_pelapor' 					=> $this->input->post('nama_pelapor'),
 				'Hubungan_pelapor' 				=> $this->input->post('hubungan_pelapor'),
-				'ktp'							=> $image_ktp
+				'ktp'							=> $image_ktp,
+				'updated_id' 					=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_death_certificate($data_death_certificate, $id_death_certificate)) {
@@ -815,7 +827,10 @@ class Admin extends CI_Controller
 
 	function verification_birth_announcement($id_birth_announcement)
 	{
-		$data_birth_announcement = array('Status_keterangankelahiran' => 'Terverifikasi');
+		$data_birth_announcement = array(
+			'Status_keterangankelahiran' => 'Terverifikasi',
+			'updated_id' 					=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
 			$this->session->set_flashdata('success_birth_announcement', 'SK berhasil diverifikasi!');
@@ -869,7 +884,8 @@ class Admin extends CI_Controller
 				'Alamat' 						=> $this->input->post('alamat'),
 				'Nama_ayah' 					=> $this->input->post('nama_ayah'),
 				'Nama_ibu' 						=> $this->input->post('nama_ibu'),
-				'kk'                           	=> $image_kk
+				'kk'                           	=> $image_kk,
+				'updated_id' 					=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_birth_announcement($data_birth_announcement, $id_birth_announcement)) {
@@ -997,7 +1013,10 @@ class Admin extends CI_Controller
 
 	function verification_marriage_recommendation($id_marriage_recommendation)
 	{
-		$data_marriage_recommendation = array('Status_pengantarnikah' => 'Terverifikasi');
+		$data_marriage_recommendation = array(
+			'Status_pengantarnikah' => 'Terverifikasi',
+			'updated_id' 					=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)) {
 			$this->session->set_flashdata('success_marriage_recommendation', 'SK berhasil diverifikasi!');
@@ -1086,7 +1105,8 @@ class Admin extends CI_Controller
 				'Pekerjaan_ibu'		 		=> $this->input->post('pekerjaan_ibu'),
 				'Alamat_ibu' 				=> $this->input->post('alamat_ibu'),
 				'Ktp' 						=> $image_ktp,
-				'kk'                       	=> $image_kk
+				'kk'                       	=> $image_kk,
+				'updated_id' 				=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_marriage_recommendation($data_marriage_recommendation, $id_marriage_recommendation)) {
@@ -1188,7 +1208,10 @@ class Admin extends CI_Controller
 
 	function verification_police_report($id_police_report)
 	{
-		$data_police_report = array('Status_pengantarskck' => 'Terverifikasi');
+		$data_police_report = array(
+			'Status_pengantarskck'	=> 'Terverifikasi',
+			'updated_id'			=> $this->session->userdata('id_user')
+		);
 
 		if (!$this->admin_model->update_police_report($data_police_report, $id_police_report)) {
 			$this->session->set_flashdata('success_police_report', 'SK berhasil diverifikasi!');
@@ -1244,7 +1267,8 @@ class Admin extends CI_Controller
 				'Alamat' 					=> $this->input->post('alamat'),
 				'No_kk' 					=> $this->input->post('no_kk'),
 				'Nik' 						=> $this->input->post('nik'),
-				'Ktp' 						=> $image_ktp
+				'Ktp' 						=> $image_ktp,
+				'updated_id' 				=> $this->session->userdata('id_user')
 			);
 
 			if (!$this->admin_model->update_police_report($data_police_report, $id_police_report)) {
@@ -1480,7 +1504,8 @@ class Admin extends CI_Controller
 			$data_user = array(
 				'Nama_user'		=> $this->input->post('nama'),
 				'Username' 		=> $this->input->post('username'),
-				'password'  	=> md5($this->input->post('password'))
+				'password'  	=> md5($this->input->post('password')),
+				'level'			=> 1
 			);
 
 			if (!$this->admin_model->save_user($data_user)) {

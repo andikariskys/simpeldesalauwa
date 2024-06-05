@@ -7,56 +7,48 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-tanggal">Tanggal (Read-only)</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-tanggal" name="tanggal"
-                        value="<?= date("Y-m-d") ?>" readonly />
+                    <input type="text" class="form-control" id="input-tanggal" name="tanggal" value="<?= date("Y-m-d") ?>" readonly />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-kk">No. KK</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-kk" onchange="validateLength(this)"
-                        name="no_kk" placeholder="3313123456780004" required />
+                    <input type="number" class="form-control" id="input-no-kk" name="no_kk" placeholder="3313123456780004" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-foto-kk">Foto Kartu Keluarga</label>
                 <div class="col-sm-10">
-                    <input type="file" name="foto_kk" id="input-foto-kk" class="form-control"
-                        accept="image/jpg, image/jpeg, image/png, image/webp" required>
+                    <input type="file" name="foto_kk" id="input-foto-kk" class="form-control" accept="image/jpg, image/jpeg, image/png, image/webp" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-no-nik">NIK</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-no-nik"  onchange="validateLength(this)" name="nik"
-                        placeholder="3313123456780003" required />
+                    <input type="number" class="form-control" id="input-no-nik" name="nik" placeholder="3313123456780003" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nama-lengkap">Nama Lengkap</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-nama-lengkap" name="nama_lengkap"
-                        placeholder="Magfira Islamia" required />
+                    <input type="text" class="form-control" id="input-nama-lengkap" name="nama_lengkap" placeholder="Magfira Islamia" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-ttl">Tempat, Tanggal Lahir</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="input-ttl" name="ttl"
-                        placeholder="Jakarta, 2 Februari 2000" required />
+                    <input type="text" class="form-control" id="input-ttl" name="ttl" placeholder="Jakarta, 2 Februari 2000" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                 <div class="col-sm-10">
                     <div class="form-check">
-                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-laki"
-                            id="radio-laki-laki" required>
+                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Laki-laki" id="radio-laki-laki" required>
                         <label class="form-check-label" for="radio-laki-laki"> Laki-laki </label>
                     </div>
                     <div class="form-check">
-                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan"
-                            id="radio-perempuan">
+                        <input name="jenis_kelamin" class="form-check-input" type="radio" value="Perempuan" id="radio-perempuan">
                         <label class="form-check-label" for="radio-perempuan"> Perempuan </label>
                     </div>
                 </div>
@@ -64,8 +56,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="select-agama">Agama/Kepercayaan</label>
                 <div class="col-sm-10">
-                    <select name="agama" class="form-select" aria-label="Default select example" id="select-agama"
-                        required>
+                    <select name="agama" class="form-select" aria-label="Default select example" id="select-agama" required>
                         <option value="" selected disabled>Pilih Agama atau Kepercayaan</option>
                         <option value="Islam">Islam</option>
                         <option value="Kristen Protestan">Kristen Protestan</option>
@@ -78,8 +69,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-alamat">Alamat</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" id="input-alamat" name="alamat" placeholder="Jl. Merdeka No. 10"
-                        required></textarea>
+                    <textarea class="form-control" id="input-alamat" name="alamat" placeholder="Jl. Merdeka No. 10" required></textarea>
                 </div>
             </div>
             <div class="row justify-content-end">
