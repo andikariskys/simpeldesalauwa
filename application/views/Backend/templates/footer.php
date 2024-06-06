@@ -43,6 +43,8 @@
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 <script src="<?= base_url('assets/js/dashboards-analytics.js') ?>"></script>
+
+<script src="<?= base_url('assets/vendor/js/validation.js') ?>"></script>
 </body>
 
 </html>

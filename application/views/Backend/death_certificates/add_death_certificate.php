@@ -12,10 +12,14 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="input-nik">NIK</label>
+                <label class="col-sm-2 col-form-label" for="input-no-nik">NIK</label>
                 <div class="col-sm-10">
+<<<<<<< HEAD
                     <input type="number" class="form-control" id="input-nik" onchange="validateLength(this)" name="nik"
                         placeholder="1234567890123456" required />
+=======
+                    <input type="number" class="form-control " id="input-no-nik" name="nik" placeholder="1234567890123456" required />
+>>>>>>> origin
                 </div>
             </div>
             <div class="row mb-3">

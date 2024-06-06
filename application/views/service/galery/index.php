@@ -20,15 +20,12 @@
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                            <a href="project.html">
-                                <img class="img-fluid" src="<?php echo base_url() ?>assets/img-admin/galeri/<?= $val->Foto ?>" alt="alternative">
-                            </a>
-                        </div> <!-- end of image-container -->
+                            <img class="img-fluid" src="<?php echo base_url() ?>assets/img-admin/galeri/<?= $val->Foto ?>" alt="alternative" style="height: 30vh; width: auto; object-fit: cover;">
+                        </div>
                         <p><strong><?= $val->Nama_galeri ?></strong></p>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
+                    </div>
+                </div>
             <?php } ?>
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of basic-4 -->
-<!-- end of works -->
+        </div>
+    </div>
+</div>

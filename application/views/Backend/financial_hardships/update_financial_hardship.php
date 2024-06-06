@@ -3,9 +3,13 @@
         <h5 class="mb-0">Form Ubah SK Tidak Mampu</h5>
     </div>
     <div class="card-body">
+<<<<<<< HEAD
         <form
             action="<?= base_url('financial_hardships/' . $data_financial_hardship->id_keterangantidakmampu . '/update') ?>"
             method="POST" enctype="multipart/form-data">
+=======
+        <form action="<?= base_url('financial_hardships/' . $data_financial_hardship->id_keterangantidakmampu . '/update') ?>" method="POST" enctype="multipart/form-data">
+>>>>>>> origin
             <input type="hidden" name="this_update" value="true">
             <hr class="ml-0 mr-0 mb-3">
             <small class="text-light fw-semibold">Biodata Pribadi</small>

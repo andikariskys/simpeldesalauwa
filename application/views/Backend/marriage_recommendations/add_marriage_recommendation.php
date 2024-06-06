@@ -13,10 +13,14 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="input-nik">NIK</label>
+                <label class="col-sm-2 col-form-label" for="input-no-nik">NIK</label>
                 <div class="col-sm-10">
+<<<<<<< HEAD
                     <input type="text" class="form-control" id="input-nik" onchange="validateLength(this)" name="nik"
                         placeholder="1122334455667788" required />
+=======
+                    <input type="text" class="form-control" id="input-no-nik" name="nik" placeholder="1122334455667788" required />
+>>>>>>> origin
                 </div>
             </div>
             <div class="row mb-3">
@@ -89,8 +93,6 @@
                         required></textarea>
                 </div>
             </div>
-            <hr class="ml-0 mr-0 mb-3">
-            <small class="text-light fw-semibold">Biodata Orang Tua</small>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-anak-ke">Anak Ke-</label>
                 <div class="col-sm-10">
@@ -98,6 +100,8 @@
                         required />
                 </div>
             </div>
+            <hr class="ml-0 mr-0 mb-3">
+            <small class="text-light fw-semibold">Biodata Orang Tua</small>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="input-nama-ayah">Nama Ayah</label>
                 <div class="col-sm-10">
